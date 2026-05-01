@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <main className="relative z-10 min-h-dvh font-serif">
       <div className="mx-auto w-full max-w-[600px] px-6 pt-[112px] pb-24 sm:px-0">
-        <div className="flex justify-center">
+        <div className="flex justify-center rise" style={{ ["--rise-delay" as string]: "0ms" }}>
           <Image
             src="/logo.svg"
             alt="The Agentic Intelligence Co."
@@ -15,11 +15,14 @@ export default function Home() {
           />
         </div>
 
-        <h1 className="mt-[48px] text-center text-[48px] leading-none tracking-tight">
+        <h1
+          className="rise mt-[48px] text-center text-[48px] leading-none tracking-tight text-balance"
+          style={{ ["--rise-delay" as string]: "200ms" }}
+        >
           The Agentic Intelligence Co.
         </h1>
 
-        <div className="mt-[68px] space-y-[30px] text-[20px] leading-[30px]">
+        <div className="mt-[68px] space-y-[30px] text-[20px] leading-[30px] [&>p]:rise [&>p:nth-child(1)]:[--rise-delay:420ms] [&>p:nth-child(2)]:[--rise-delay:520ms] [&>p:nth-child(3)]:[--rise-delay:600ms] [&>p:nth-child(4)]:[--rise-delay:680ms] [&>p:nth-child(5)]:[--rise-delay:760ms] [&>p:nth-child(6)]:[--rise-delay:840ms]">
           <p>
             The interface between humans and computers is changing. For sixty
             years, people have communicated with machines through keyboards,
@@ -70,7 +73,10 @@ export default function Home() {
           </p>
         </div>
 
-        <footer className="mt-[120px] text-center font-sans text-[14px] leading-6 text-[#afafaf]">
+        <footer
+          className="rise mt-[120px] text-center font-sans text-[14px] leading-6 text-[#afafaf]"
+          style={{ ["--rise-delay" as string]: "1000ms" }}
+        >
           © The Agentic Intelligence Company 2026
         </footer>
       </div>
