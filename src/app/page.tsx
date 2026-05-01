@@ -31,7 +31,7 @@ export default function Home() {
         </div>
 
         <div className="mt-[44px] space-y-[30px] text-[20px] leading-[30px] [&>p]:rise [&>p:nth-child(1)]:[--rise-delay:520ms] [&>p:nth-child(2)]:[--rise-delay:600ms] [&>p:nth-child(3)]:[--rise-delay:680ms] [&>p:nth-child(4)]:[--rise-delay:760ms] [&>p:nth-child(5)]:[--rise-delay:840ms] [&>p:nth-child(6)]:[--rise-delay:920ms]">
-          <p className="dropcap">
+          <p>
             The interface between humans and computers is changing. For sixty
             years, people have communicated with machines through keyboards,
             mice, and screens — a series of workarounds for the medium humans
