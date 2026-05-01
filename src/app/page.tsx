@@ -23,14 +23,7 @@ export default function Home() {
           The Agentic Intelligence Co.
         </h1>
 
-        <div
-          className="rise mt-[44px] flex justify-center text-black/60"
-          style={{ ["--rise-delay" as string]: "320ms" }}
-        >
-          <Waveform />
-        </div>
-
-        <div className="mt-[44px] space-y-[30px] text-[20px] leading-[30px] [&>p]:rise [&>p:nth-child(1)]:[--rise-delay:520ms] [&>p:nth-child(2)]:[--rise-delay:600ms] [&>p:nth-child(3)]:[--rise-delay:680ms] [&>p:nth-child(4)]:[--rise-delay:760ms] [&>p:nth-child(5)]:[--rise-delay:840ms] [&>p:nth-child(6)]:[--rise-delay:920ms]">
+        <div className="mt-[68px] space-y-[30px] text-[20px] leading-[30px] [&>p]:rise [&>p:nth-child(1)]:[--rise-delay:420ms] [&>p:nth-child(2)]:[--rise-delay:520ms] [&>p:nth-child(3)]:[--rise-delay:600ms] [&>p:nth-child(4)]:[--rise-delay:680ms] [&>p:nth-child(5)]:[--rise-delay:760ms] [&>p:nth-child(6)]:[--rise-delay:840ms]">
           <p>
             The interface between humans and computers is changing. For sixty
             years, people have communicated with machines through keyboards,
@@ -89,9 +82,17 @@ export default function Home() {
           </p>
         </div>
 
+        <div
+          className="rise mt-[96px] flex justify-center text-black/40"
+          style={{ ["--rise-delay" as string]: "1000ms" }}
+          aria-hidden
+        >
+          <Waveform />
+        </div>
+
         <footer
-          className="rise mt-[120px] text-center font-sans text-[14px] leading-6 text-[#afafaf]"
-          style={{ ["--rise-delay" as string]: "1080ms" }}
+          className="rise mt-[40px] text-center font-sans text-[14px] leading-6 text-[#afafaf]"
+          style={{ ["--rise-delay" as string]: "1100ms" }}
         >
           © The Agentic Intelligence Company 2026
         </footer>
