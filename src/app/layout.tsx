@@ -26,6 +26,12 @@ export const metadata: Metadata = {
     siteName: "The Agentic Intelligence Co.",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "The Agentic Intelligence Co.",
+    description:
+      "Conversational data at frontier scale for the labs training the next era of speech models.",
+  },
 };
 
 export default function RootLayout({
