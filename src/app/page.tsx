@@ -70,15 +70,7 @@ export default function Home() {
             building the company equal to it.
           </p>
           <p>
-            If you are training a speech model, we would like to work with
-            you.{" "}
-            <a
-              href="mailto:matias@theagenticintelligencecompany.com"
-              className="contact-link italic"
-            >
-              matias@theagenticintelligencecompany.com
-            </a>
-            .
+            If you are training a speech model, we would like to work with you.
           </p>
         </div>
 
