@@ -59,3 +59,14 @@ body::before {
     filter: none;
   }
 }
+
+.dropcap::first-letter {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  float: left;
+  font-size: 76px;
+  line-height: 0.85;
+  padding: 6px 10px 0 0;
+  margin-top: 4px;
+  color: var(--color-ink);
+}
