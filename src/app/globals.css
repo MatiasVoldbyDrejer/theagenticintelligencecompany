@@ -60,6 +60,23 @@ body::before {
   }
 }
 
+@keyframes breathe {
+  from {
+    transform: scaleY(0.55);
+    opacity: 0.55;
+  }
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  svg line {
+    animation: none !important;
+  }
+}
+
 .dropcap::first-letter {
   font-family: var(--font-serif);
   font-weight: 400;
