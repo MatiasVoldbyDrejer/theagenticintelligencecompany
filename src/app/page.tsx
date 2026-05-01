@@ -2,64 +2,78 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main className="min-h-dvh bg-white text-black font-serif">
+      <div className="mx-auto w-full max-w-[600px] px-6 pt-[112px] pb-24 sm:px-0">
+        <div className="flex justify-center">
+          <Image
+            src="/logo.svg"
+            alt="The Agentic Intelligence Co."
+            width={142}
+            height={212}
+            priority
+            className="h-[212px] w-[141.5px]"
+          />
+        </div>
+
+        <h1 className="mt-[48px] text-center text-[48px] leading-none tracking-tight">
+          The Agentic Intelligence Co.
+        </h1>
+
+        <div className="mt-[68px] space-y-[30px] text-[20px] leading-[30px]">
+          <p>
+            The interface between humans and computers is changing. For sixty
+            years, people have communicated with machines through keyboards,
+            mice, and screens — a series of workarounds for the medium humans
+            actually use to communicate with one another. Recent progress in
+            speech models suggests that this is ending. Within a decade, most
+            interaction with computers will be conducted through speech, and
+            the systems on the other end will respond with fluency approaching
+            that of a person.
+          </p>
+          <p>
+            Voice is the hardest modality. Speech carries not only words but
+            identity, emotion, intent, hesitation, and the texture of a room.
+            To train a model that hears the way humans do, you need data that
+            captures all of it — at scale, across languages, across the long
+            tail of how people actually talk.
+          </p>
+          <p>
+            Current speech models are trained largely on audiobooks, podcasts,
+            scraped video, and synthetic dialogue. None of these are
+            conversation. People do not speak the way narrators read or the
+            way podcasters perform, and models trained without real
+            conversational data exhibit characteristic failures: they miss
+            intent, mishandle turn-taking, and feel uncanny in extended use.
+            The gap between current training data and the data required to
+            close these failures is large, and it is not closing on its own.
+            Conversation is not present on the open internet at the scale or
+            fidelity that frontier training requires. It cannot be synthesized
+            without inheriting the limitations of the model that generates it.
+            It has to be collected.
+          </p>
+          <p>
+            We are the company collecting it. We record real people in real
+            conversations, at the scale a frontier lab requires, and deliver
+            the resulting corpora to the teams training the models that will
+            define the next era of computing. Every hour is consented,
+            licensed, and paid for at the source. Every dataset is built to a
+            standard suitable for frontier training.
+          </p>
+          <p>
+            Our hypothesis is that the labs that lead the voice era will be
+            the labs with the best conversational data, and that the work of
+            producing that data is itself a generational undertaking. We are
+            building the company equal to it.
+          </p>
+          <p>
+            If you are training a speech model, we would like to work with you.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+
+        <footer className="mt-[120px] text-center font-sans text-[14px] leading-6 text-[#afafaf]">
+          © The Agentic Intelligence Company 2026
+        </footer>
+      </div>
+    </main>
   );
 }
