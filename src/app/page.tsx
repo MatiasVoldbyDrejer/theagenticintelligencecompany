@@ -7,10 +7,10 @@ export default function Home() {
       <div className="mx-auto w-full max-w-[600px] px-6 pt-[112px] pb-24 sm:px-0">
         <div className="flex justify-center rise" style={{ ["--rise-delay" as string]: "0ms" }}>
           <Image
-            src="/logo.svg"
+            src="/logo.png"
             alt="The Agentic Intelligence Co."
-            width={142}
-            height={212}
+            width={283}
+            height={424}
             priority
             className="h-[212px] w-[141.5px]"
           />
