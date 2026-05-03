@@ -69,9 +69,6 @@ export default function Home() {
             producing that data is itself a generational undertaking. We are
             building the company equal to it.
           </p>
-          <p>
-            If you are training a speech model, we would like to work with you.
-          </p>
         </div>
 
         <div
