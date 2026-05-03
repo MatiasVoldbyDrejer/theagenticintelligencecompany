@@ -16,7 +16,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "The Agentic Intelligence Co.",
   description:
-    "We record real people in real conversations, at the scale a frontier lab requires, and deliver the resulting corpora to the teams training the models that will define the next era of computing.",
+    "Conversational data at frontier scale for the labs training the next era of speech models.",
   metadataBase: new URL("https://theagenticintelligencecompany.com"),
   openGraph: {
     title: "The Agentic Intelligence Co.",
