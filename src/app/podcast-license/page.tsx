@@ -102,30 +102,30 @@ export default function PodcastLicensePage() {
               </p>
               <ol className="my-[8px] list-decimal space-y-[18px] pl-[24px] marker:text-black/45">
                 <li>
-                  <em>Speech recognition.</em> Transcription, captioning,
+                  <em>Speech recognition.</em>{" "}Transcription, captioning,
                   dictation, and voice search. Systems trained on real
                   conversation handle accents, overlapping speech, and casual
                   phrasing far better than ones trained only on read-aloud or
                   scripted text.
                 </li>
                 <li>
-                  <em>Accessibility tools.</em> Captioning, voice control, and
+                  <em>Accessibility tools.</em>{" "}Captioning, voice control, and
                   assistive communication for people who depend on those
                   interfaces &mdash; domains where accuracy on natural,
                   real-world speech matters most.
                 </li>
                 <li>
-                  <em>Translation.</em> Speech-to-text and speech-to-speech
+                  <em>Translation.</em>{" "}Speech-to-text and speech-to-speech
                   translation across languages and accents.
                 </li>
                 <li>
-                  <em>Conversational systems.</em> Software that needs to
+                  <em>Conversational systems.</em>{" "}Software that needs to
                   handle real back-and-forth &mdash; interruptions, overlap,
                   casual phrasing &mdash; instead of one-turn-at-a-time
                   scripted dialogue.
                 </li>
                 <li>
-                  <em>Voice and audio models.</em> Text-to-speech and similar
+                  <em>Voice and audio models.</em>{" "}Text-to-speech and similar
                   systems learn the rhythm, intonation, and texture of human
                   speech from large, diverse collections of voices. Your
                   recordings are one of many inputs that help those systems
@@ -142,7 +142,7 @@ export default function PodcastLicensePage() {
 
             <Section id="pay" title="What we pay">
               <p>
-                We pay <em>US$15 per hour</em> of accepted audio, paid up front
+                We pay <em>US$15 per hour</em>{" "}of accepted audio, paid up front
                 by bank transfer or PayPal once we&rsquo;ve verified your
                 recordings &mdash; before we use the audio for anything. There
                 is no cap on how many hours you send us, and no exclusivity:
@@ -154,12 +154,12 @@ export default function PodcastLicensePage() {
             <Section id="how" title="How it works">
               <ol className="my-[8px] list-decimal space-y-[18px] pl-[24px] marker:text-black/45">
                 <li>
-                  <em>You send us recordings.</em> Upload the raw, unprocessed
+                  <em>You send us recordings.</em>{" "}Upload the raw, unprocessed
                   speaker tracks from each conversation through the link we
                   share with you.
                 </li>
                 <li>
-                  <em>We verify them.</em> We check audio quality, speaker
+                  <em>We verify them.</em>{" "}We check audio quality, speaker
                   count, and that the rights are clean. We let you know what
                   qualifies.
                 </li>
@@ -195,17 +195,17 @@ export default function PodcastLicensePage() {
                   Just the speaker&rsquo;s voice.
                 </li>
                 <li>
-                  <em>No mixed or mastered tracks.</em> Don&rsquo;t send the
+                  <em>No mixed or mastered tracks.</em>{" "}Don&rsquo;t send the
                   final published episode or any combined stereo mix.
                 </li>
                 <li>
-                  <em>No post-processing.</em> No noise reduction, EQ,
+                  <em>No post-processing.</em>{" "}No noise reduction, EQ,
                   compression, de-essing, leveling, normalization, reverb, or
                   voice enhancement tools (e.g., Adobe Enhance, Auphonic,
                   Descript Studio Sound).
                 </li>
                 <li>
-                  <em>No edits.</em> Don&rsquo;t cut out pauses, mistakes,
+                  <em>No edits.</em>{" "}Don&rsquo;t cut out pauses, mistakes,
                   retakes, or off-topic moments. We want the full unedited
                   recording.
                 </li>
@@ -218,25 +218,25 @@ export default function PodcastLicensePage() {
               </p>
               <ul className="my-[4px] list-disc space-y-[14px] pl-[24px] marker:text-black/35">
                 <li>
-                  <em>Riverside.fm:</em> the individual &ldquo;separate audio
+                  <em>Riverside.fm:</em>{" "}the individual &ldquo;separate audio
                   tracks&rdquo; for each participant (not the &ldquo;magic
                   editor&rdquo; export).
                 </li>
                 <li>
-                  <em>Zencastr:</em> the per-guest WAV files from the recording
+                  <em>Zencastr:</em>{" "}the per-guest WAV files from the recording
                   session, before any post-production.
                 </li>
                 <li>
-                  <em>SquadCast:</em> the original per-participant track
+                  <em>SquadCast:</em>{" "}the original per-participant track
                   downloads.
                 </li>
                 <li>
-                  <em>Descript / Captivate / Cleanfeed / others:</em> the
+                  <em>Descript / Captivate / Cleanfeed / others:</em>{" "}the
                   original per-speaker source files, not the edited project
                   export.
                 </li>
                 <li>
-                  <em>In-person recording:</em> the individual lavalier or
+                  <em>In-person recording:</em>{" "}the individual lavalier or
                   shotgun mic tracks from your recorder, before they were
                   mixed.
                 </li>
@@ -245,10 +245,10 @@ export default function PodcastLicensePage() {
               <SubHeading>File format</SubHeading>
               <ul className="my-[4px] list-disc space-y-[14px] pl-[24px] marker:text-black/35">
                 <li>
-                  <em>Format:</em> WAV (uncompressed) or FLAC (lossless).
+                  <em>Format:</em>{" "}WAV (uncompressed) or FLAC (lossless).
                 </li>
                 <li>
-                  <em>Channels:</em> mono per file (one speaker per file). If
+                  <em>Channels:</em>{" "}mono per file (one speaker per file). If
                   your tool only outputs stereo, that&rsquo;s okay &mdash;
                   just don&rsquo;t mix multiple speakers into one file.
                 </li>
@@ -271,15 +271,15 @@ export default function PodcastLicensePage() {
               <SubHeading>Conversations themselves</SubHeading>
               <ul className="my-[4px] list-disc space-y-[14px] pl-[24px] marker:text-black/35">
                 <li>
-                  <em>2 or 3 speakers per conversation.</em> Solo episodes and
+                  <em>2 or 3 speakers per conversation.</em>{" "}Solo episodes and
                   large panels aren&rsquo;t a fit right now.
                 </li>
                 <li>
-                  <em>Released or unreleased episodes are both fine.</em> The
+                  <em>Released or unreleased episodes are both fine.</em>{" "}The
                   recording doesn&rsquo;t need to have ever aired.
                 </li>
                 <li>
-                  <em>Permission.</em> By uploading your recordings, you agree
+                  <em>Permission.</em>{" "}By uploading your recordings, you agree
                   that you have permission to license them to us under the
                   terms of the agreement.
                 </li>
