@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
-export const alt = "The Agentic Intelligence Co.";
+export const alt = "The Agentic Data Company";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -40,7 +40,7 @@ export default async function OG() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={iconDataUrl} width={180} height={180} alt="" />
         <div style={{ fontSize: 84, marginTop: 56, letterSpacing: "-0.01em" }}>
-          The Agentic Intelligence Co.
+          The Agentic Data Company
         </div>
         <div
           style={{
