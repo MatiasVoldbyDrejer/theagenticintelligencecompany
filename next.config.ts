@@ -5,8 +5,16 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/:path*",
-        has: [{ type: "host", value: "www.theagenticintelligencecompany.com" }],
-        destination: "https://theagenticintelligencecompany.com/:path*",
+        has: [{ type: "host", value: "www.theagenticdatacompany.com" }],
+        destination: "https://theagenticdatacompany.com/:path*",
+        permanent: true,
+      },
+      {
+        source: "/:path*",
+        has: [
+          { type: "host", value: "(www\\.)?theagenticintelligencecompany\\.com" },
+        ],
+        destination: "https://theagenticdatacompany.com/:path*",
         permanent: true,
       },
       {

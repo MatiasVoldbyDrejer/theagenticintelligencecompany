@@ -14,21 +14,21 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "The Agentic Intelligence Co.",
+  title: "The Agentic Data Company",
   description:
     "Conversational data at frontier scale for the labs training the next era of speech models.",
-  metadataBase: new URL("https://theagenticintelligencecompany.com"),
+  metadataBase: new URL("https://theagenticdatacompany.com"),
   openGraph: {
-    title: "The Agentic Intelligence Co.",
+    title: "The Agentic Data Company",
     description:
       "Conversational data at frontier scale for the labs training the next era of speech models.",
-    url: "https://theagenticintelligencecompany.com",
-    siteName: "The Agentic Intelligence Co.",
+    url: "https://theagenticdatacompany.com",
+    siteName: "The Agentic Data Company",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Agentic Intelligence Co.",
+    title: "The Agentic Data Company",
     description:
       "Conversational data at frontier scale for the labs training the next era of speech models.",
   },

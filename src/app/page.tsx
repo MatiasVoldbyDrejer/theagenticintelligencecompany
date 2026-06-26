@@ -8,7 +8,7 @@ export default function Home() {
         <div className="flex justify-center rise" style={{ ["--rise-delay" as string]: "0ms" }}>
           <Image
             src="/logo.png"
-            alt="The Agentic Intelligence Co."
+            alt="The Agentic Data Company"
             width={283}
             height={424}
             priority
@@ -20,7 +20,7 @@ export default function Home() {
           className="rise mt-[48px] text-center text-[48px] leading-none tracking-tight text-balance"
           style={{ ["--rise-delay" as string]: "200ms" }}
         >
-          The Agentic Intelligence Co.
+          The Agentic Data Company
         </h1>
 
         <div className="mt-[68px] space-y-[30px] text-[20px] leading-[30px] [&>p]:rise [&>p:nth-child(1)]:[--rise-delay:420ms] [&>p:nth-child(2)]:[--rise-delay:520ms] [&>p:nth-child(3)]:[--rise-delay:600ms] [&>p:nth-child(4)]:[--rise-delay:680ms] [&>p:nth-child(5)]:[--rise-delay:760ms] [&>p:nth-child(6)]:[--rise-delay:840ms]">
@@ -83,7 +83,7 @@ export default function Home() {
           className="rise mt-[40px] text-center font-sans text-[14px] leading-6 text-[#afafaf]"
           style={{ ["--rise-delay" as string]: "1100ms" }}
         >
-          © The Agentic Intelligence Company 2026
+          © The Agentic Data Company 2026
         </footer>
       </div>
     </main>
