@@ -1,5 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
+import snapshot from "@/data/open-release.json";
 import { Waveform } from "./waveform";
+
+const DATASET_NAME = snapshot.name;
 
 export default function Home() {
   return (
@@ -68,6 +72,23 @@ export default function Home() {
             the labs with the best conversational data, and that the work of
             producing that data is itself a generational undertaking. We are
             building the company equal to it.
+          </p>
+        </div>
+
+        <div
+          className="rise mt-[68px] border-t border-black/10 pt-[30px] text-[20px] leading-[30px]"
+          style={{ ["--rise-delay" as string]: "920ms" }}
+        >
+          <p>
+            The first thousand hours are free. Read what is in them, and who can
+            have them, on{" "}
+            <Link
+              href="/dataset"
+              className="underline decoration-black/25 underline-offset-4 transition-colors hover:decoration-black/60"
+            >
+              {DATASET_NAME}
+            </Link>
+            .
           </p>
         </div>
 

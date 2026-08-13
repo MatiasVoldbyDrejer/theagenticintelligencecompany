@@ -1,0 +1,101 @@
+/**
+ * Shape of the baked dataset snapshot in `src/data/`.
+ *
+ * An Open Release is frozen by construction — its conversations are reserved
+ * permanently, so every number here is a publish-time constant rather than
+ * something to query at request time. The file is generated upstream and
+ * committed, which is what keeps this page static and independent of any
+ * running service.
+ */
+
+export type OverviewRow = {
+  detail: string;
+  value: string;
+  /** Render the value as a mono chip rather than plain text. */
+  chip?: boolean;
+  /** Renders as `value` to `valueExtra` — for ranges. */
+  valueExtra?: string;
+  suffix?: string;
+  note?: string;
+};
+
+export type MetadataField = {
+  /** Archive-relative path of the file this field ships in. */
+  file: string;
+  field: string;
+  description: string;
+};
+
+export type Distribution = Record<string, number>;
+
+/**
+ * One measured quantity across the corpus. `bins` are counts over equal-width
+ * buckets spanning [binMin, binMax] — a shape, not a lookup — and the
+ * percentiles carry the actual claim.
+ */
+export type Metric = {
+  label: string;
+  unit: string;
+  p5: number;
+  p50: number;
+  p95: number;
+  bins: number[];
+  binMin: number;
+  binMax: number;
+  /** Precision for the percentile readout. */
+  decimals?: number;
+  note?: string;
+};
+
+export type MetricGroup = {
+  title: string;
+  description: string;
+  metrics: Metric[];
+};
+
+/** A pass-rate against a stated threshold, expressed over delivered hours. */
+export type ConformanceCheck = {
+  check: string;
+  threshold: string;
+  passRate: number;
+};
+
+export type Sample = {
+  id: string;
+  label: string;
+  durationSeconds: number;
+  /** Public paths to the two per-speaker tracks. */
+  tracks: [string, string];
+  /** Pre-computed peak envelopes, one per track, normalised to 0–1. */
+  peaks: [number[], number[]];
+};
+
+export type DatasetSnapshot = {
+  /** Placeholder until the release is named — swap here and in the page route. */
+  name: string;
+  tagline: string;
+  description: string;
+  license: { name: string; summary: string };
+  stats: {
+    conversations: number;
+    hours: number;
+    speakers: number;
+    averageDurationMinutes: number;
+  };
+  overview: OverviewRow[];
+  audio: {
+    groups: MetricGroup[];
+    conformance: ConformanceCheck[];
+  };
+  demographics: {
+    gender: Distribution;
+    age: Distribution;
+    education: Distribution;
+    nativeEnglish: Distribution;
+  };
+  /** Per-speaker delivered minutes, unsorted. Drives the contribution chart. */
+  speakerMinutes: number[];
+  samples: Sample[];
+  metadataFields: MetadataField[];
+  fileStructure: string;
+};

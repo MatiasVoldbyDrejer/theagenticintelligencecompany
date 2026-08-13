@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Goudy_Bookletter_1911, Inter } from "next/font/google";
+import { Geist, Geist_Mono, Goudy_Bookletter_1911, Inter } from "next/font/google";
 import "./globals.css";
 
 const goudy = Goudy_Bookletter_1911({
@@ -10,6 +10,16 @@ const goudy = Goudy_Bookletter_1911({
 
 const inter = Inter({
   variable: "--font-inter",
+  subsets: ["latin"],
+});
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
   subsets: ["latin"],
 });
 
@@ -40,7 +50,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${goudy.variable} ${inter.variable}`}>
+    <html
+      lang="en"
+      className={`${goudy.variable} ${inter.variable} ${geistSans.variable} ${geistMono.variable}`}
+    >
       <body>{children}</body>
     </html>
   );
