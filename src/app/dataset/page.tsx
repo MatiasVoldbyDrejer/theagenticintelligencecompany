@@ -51,7 +51,6 @@ export default function DatasetPage() {
         <ComparisonChart
           entries={dataset.comparison.datasets}
           note={dataset.comparison.note}
-          source={dataset.comparison.source}
         />
       </Section>
 

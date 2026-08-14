@@ -103,7 +103,7 @@ export type DatasetSnapshot = {
     averageDurationMinutes: number;
   };
   overview: OverviewRow[];
-  comparison: { note: string; source: string; datasets: ComparisonEntry[] };
+  comparison: { note: string; datasets: ComparisonEntry[] };
   data: {
     relationship: Distribution;
     language: Distribution;

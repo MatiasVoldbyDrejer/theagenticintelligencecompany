@@ -17,11 +17,9 @@ import { ACCENT, INK } from "./colors";
 export default function ComparisonChart({
   entries,
   note,
-  source,
 }: {
   entries: ComparisonEntry[];
   note: string;
-  source: string;
 }) {
   const [hover, setHover] = useState<number | null>(null);
 
@@ -113,9 +111,8 @@ export default function ComparisonChart({
         })}
       </div>
 
-      <div className="space-y-1.5 border-t border-zinc-100 px-5 py-3.5">
+      <div className="border-t border-zinc-100 px-5 py-3.5">
         <p className="text-[12.5px] leading-5 text-zinc-500">{note}</p>
-        <p className="text-[11.5px] leading-5 text-zinc-400">{source}</p>
       </div>
     </Card>
   );

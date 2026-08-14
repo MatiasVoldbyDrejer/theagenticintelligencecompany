@@ -122,7 +122,6 @@ const snapshot = {
   ],
   comparison: {
     note: 'English conversational speech corpora commonly used as reference points, by documented hours. Structure differs across entries — AMI is multi-party, DailyTalk is acted, SpokenWOZ is task-oriented — see the capture column. Telephone-band corpora carry roughly 3.4 kHz of usable speech regardless of the container they ship in, so hours are not directly comparable across the two groups.',
-    source: 'Compiled from fullduplex.ai/datasets and each corpus’s own documentation. Figures are as published and have not been independently verified.',
     datasets: [
       { name: 'Fisher English', hours: 2000, year: 2004, capture: 'Telephone', license: 'LDC paid', narrowband: true },
       { name: 'Open Corpus 1K', hours: HOURS, year: 2026, capture: 'Remote, per-speaker', license: 'Free, DUA', narrowband: false, ours: true },
