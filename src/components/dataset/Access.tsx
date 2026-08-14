@@ -33,9 +33,7 @@ export default function Access({ license }: { license: DatasetSnapshot["license"
       <p className={t.sectionIntro}>
         This is a public release: it is not licensed exclusively, anyone may request it, and it
         is free for both commercial and research use. It is not a public download — access is
-        granted per recipient under a data use agreement. Speakers consented on the basis that
-        their recordings go to identified, contractually bound recipients, which is what makes
-        deletion on withdrawal enforceable after delivery.
+        granted per recipient under a data use agreement.
       </p>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
