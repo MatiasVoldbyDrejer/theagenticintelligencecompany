@@ -209,11 +209,15 @@ research use.
    the disclosure to the Recipient. The Recipient is responsible for its own
    processing from the point of delivery onward.
 
-   [LEGAL REVIEW: the instrument relied on for deliveries outside the EEA and
-   the United Kingdom. The controller-to-controller roles above point to the
-   Module One standard contractual clauses where a transfer needs a mechanism,
-   but whether they are attached as an annex, and how adequacy is assessed per
-   recipient, still has to be settled.]
+   Where a delivery to the Recipient requires a transfer instrument under the
+   data protection law applying to the Company, the Company may require the
+   Recipient to enter into the European Commission's standard contractual
+   clauses for controller-to-controller transfers, or another instrument the
+   Company reasonably specifies, as a condition of delivery. Those clauses
+   prevail over this agreement to the extent of any conflict.
+   [DRAFTING POSITION: assessed per recipient at approval rather than annexed
+   here, so that recipients in adequate jurisdictions are not asked to sign an
+   instrument they do not need.]
 
 12. Retention and speaker withdrawal
    The licence granted by clause 3 over a delivery already made is perpetual.
@@ -243,10 +247,12 @@ research use.
    Models trained before the deletion event, and Derived Materials that do not
    contain or reproduce Dataset content, may be retained and used, except where
    the Model or material is itself the subject of a breach of clause 7 or 8, in
-   which case it must be destroyed. [LEGAL REVIEW: whether deletion reaches
-   Models trained before the deletion event is a commercial decision, and is
-   the first clause a recipient's counsel will turn to. The position drafted
-   here is that it does not.]
+   which case it must be destroyed. [DRAFTING POSITION: deletion does not reach
+   Models trained before the deletion event. Retraining a large model is not a
+   remedy a recipient can actually perform, so a right that demands it would be
+   negotiated out or ignored; the protection that matters is clause 8, which
+   survives deletion and forbids the Model reproducing an identifiable Speaker
+   whenever it was trained.]
 
    Within 30 days of completing a deletion the Recipient must confirm in
    writing, signed by an officer, that it has done so, and describe anything
@@ -294,9 +300,12 @@ research use.
    otherwise, and whether or not it was advised such loss was possible.
 
    The Company's total aggregate liability arising out of or relating to this
-   agreement is limited to [LEGAL REVIEW: the Dataset is supplied at no charge,
-   so there is no fee to serve as a cap. A fixed figure, or a nominal amount,
-   has to be stated here].
+   agreement is limited to one thousand United States dollars (USD 1,000).
+   [DRAFTING POSITION: the Dataset is supplied at no charge, so there are no
+   fees to cap against and a nominal figure is used. The cap is deliberately
+   one-sided - the Recipient's liability under the carve-outs below is not
+   capped - because the Company is giving something away while the Recipient
+   is taking on obligations about other people's voices.]
 
    This clause does not limit the Recipient's liability for breach of clause 5,
    7, 8 or 10, or its obligations under clause 18, and does not limit any
@@ -344,8 +353,7 @@ research use.
 21. Notices
    Notices to the Company go to The Agentic Data Company, 131 Continental Dr,
    Suite 305, Newark, New Castle County, Delaware 19713, United States, and by
-   email to legal@theagenticdatacompany.com [LEGAL REVIEW: confirm this
-   mailbox exists and is monitored before publication]. Notices to the Recipient go to the email address given in the
+   email to legal@theagenticdatacompany.com. Notices to the Recipient go to the email address given in the
    access request, or to a later address the Recipient gives the Company in
    writing. A notice sent by email is given when sent, unless the sender
    receives a delivery failure.
