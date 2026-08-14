@@ -68,7 +68,6 @@ export const LICENSE_PERMITTED = [
 
 export const LICENSE_PROHIBITED = [
   "Redistributing, resharing, sublicensing or reselling the audio",
-  "Depositing it in a public or third-party repository",
   "Attempting to identify a speaker, or link a recording to any external record",
   "Keeping identified recordings more than 30 days after a deletion notice",
 ] as const;
