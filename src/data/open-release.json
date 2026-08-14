@@ -40,7 +40,8 @@
     },
     {
       "detail": "Channels",
-      "value": "Stem-separated (one file per speaker)"
+      "value": "One file per speaker, captured independently",
+      "note": "not source-separated"
     },
     {
       "detail": "Audio format",
