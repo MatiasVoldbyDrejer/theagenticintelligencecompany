@@ -263,20 +263,6 @@ const snapshot = {
         ],
       },
       {
-        title: 'Channel separation',
-        description:
-          'Two microphones in two rooms, so each track should carry one speaker. These quantify how far that holds.',
-        metrics: [
-          metric('Inter-channel correlation', 'Pearson r', logNormal(-4.5, 0.9), 0, 0.08, {
-            decimals: 3,
-            note: 'Pearson correlation between the two tracks over frames where exactly one speaker is voiced. Higher values mean the partner is more audible in this track; this is the bound on how clean speaker labels derived from the setup can be.',
-          }),
-          metric('Echo-canceller gating', '% of partner speech', logNormal(-0.4, 1.1), 0, 10, {
-            note: 'Share of frames in which this track sits at digital silence while the partner track is voiced. Non-zero values indicate an echo canceller was active despite the capture request and suppressed the near-end microphone during partner speech.',
-          }),
-        ],
-      },
-      {
         title: 'Conversational dynamics',
         description:
           'Derived from the two independent signals rather than estimated from a mixture.',
@@ -305,7 +291,6 @@ const snapshot = {
       { check: 'Tracks with zero clipped samples', threshold: '0 samples at full scale', passRate: 0.9963 },
       { check: 'Tracks above the speech SNR floor', threshold: '≥ 30 dB', passRate: 0.9618 },
       { check: 'Tracks with full-band content', threshold: 'bandwidth ≥ 16 kHz', passRate: 0.9907 },
-      { check: 'Track pairs within cross-talk bound', threshold: 'r ≤ 0.10', passRate: 0.9781 },
       { check: 'Conversations with word-level transcripts', threshold: 'both speakers', passRate: 1 },
       { check: 'Conversations passing content screening', threshold: 'required', passRate: 1 },
     ],
