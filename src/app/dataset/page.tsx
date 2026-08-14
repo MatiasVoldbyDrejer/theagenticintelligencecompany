@@ -41,7 +41,7 @@ export default function DatasetPage() {
 
       <StatsRow stats={dataset.stats} />
 
-      <Section id="data-description" title="Data description" intro={dataset.description} />
+      <DataOverview description={dataset.description} rows={dataset.overview} />
 
       <Section
         id="comparison"
@@ -57,8 +57,6 @@ export default function DatasetPage() {
       <Section id="capture" title="Recording method" intro={dataset.captureMethod.summary}>
         <ProseGrid items={dataset.captureMethod.points} numbered />
       </Section>
-
-      <DataOverview rows={dataset.overview} />
 
       <DataCards data={dataset.data} />
 
