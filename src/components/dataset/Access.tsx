@@ -39,7 +39,7 @@ export default function Access({ license }: { license: DatasetSnapshot["license"
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         {STEPS.map((s, i) => (
-          <div key={s.title} className="rounded-sm border border-zinc-200 bg-white p-5">
+          <div key={s.title} className="rounded-lg border border-zinc-200 bg-white p-5">
             <div className="flex items-baseline gap-2.5">
               <span className="font-mono text-[11px] tabular-nums text-zinc-300">
                 {String(i + 1).padStart(2, "0")}
@@ -51,7 +51,7 @@ export default function Access({ license }: { license: DatasetSnapshot["license"
         ))}
       </div>
 
-      <div className="rounded-sm border border-zinc-200 bg-white">
+      <div className="rounded-lg border border-zinc-200 bg-white">
         <div className="border-b border-zinc-100 px-5 py-3.5">
           <h3 className={t.cardTitle}>What the form asks for</h3>
         </div>

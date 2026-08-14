@@ -90,7 +90,7 @@ export default function SamplePlayer({ samples }: { samples: Sample[] }) {
   const progress = duration > 0 ? time / duration : 0;
 
   return (
-    <div className="rounded-sm border border-zinc-200 bg-white">
+    <div className="rounded-lg border border-zinc-200 bg-white">
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-zinc-100 px-5 py-3.5">
         <h3 className={t.cardTitle}>Sample</h3>
         {samples.length > 1 && (

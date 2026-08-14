@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { SECTIONS } from "./sections";
+import { SECTIONS } from "./rail-sections";
 
 /**
  * Sticky section index. The page is long and every section is a different kind

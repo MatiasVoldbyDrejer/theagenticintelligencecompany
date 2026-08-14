@@ -3,13 +3,15 @@ import snapshot from "@/data/open-release.json";
 import type { DatasetSnapshot } from "@/lib/dataset";
 import Access from "@/components/dataset/Access";
 import AudioMetrics from "@/components/dataset/AudioMetrics";
-import Conformance from "@/components/dataset/Conformance";
+import ComparisonChart from "@/components/dataset/ComparisonChart";
+import DataCards from "@/components/dataset/DataCards";
 import DataOverview from "@/components/dataset/DataOverview";
 import DatasetFrame from "@/components/dataset/DatasetFrame";
 import FileStructure from "@/components/dataset/FileStructure";
 import Hero from "@/components/dataset/Hero";
 import MetadataSchema from "@/components/dataset/MetadataSchema";
 import Population from "@/components/dataset/Population";
+import { ProseGrid, Provenance, Section } from "@/components/dataset/Sections";
 import StatsRow from "@/components/dataset/StatsRow";
 
 const dataset = snapshot as DatasetSnapshot;
@@ -36,16 +38,61 @@ export default function DatasetPage() {
   return (
     <DatasetFrame datasetName={dataset.name} showRail>
       <Hero dataset={dataset} />
+
       <StatsRow stats={dataset.stats} />
-      <DataOverview description={dataset.description} rows={dataset.overview} />
-      <AudioMetrics groups={dataset.audio.groups} />
-      <Conformance checks={dataset.audio.conformance} />
-      <Population
-        demographics={dataset.demographics}
-        speakerMinutes={dataset.speakerMinutes}
-      />
+
+      <Section id="overview" title="What this is" intro={dataset.description} />
+
+      <Section
+        id="comparison"
+        title="Against the field"
+        intro="The corpora a speech team would otherwise reach for. Only one is larger, and it is telephone-band audio recorded in 2004."
+      >
+        <ComparisonChart
+          entries={dataset.comparison.datasets}
+          note={dataset.comparison.note}
+          source={dataset.comparison.source}
+        />
+      </Section>
+
+      <Section id="capture" title="How it was captured" intro={dataset.captureMethod.summary}>
+        <ProseGrid items={dataset.captureMethod.points} numbered />
+      </Section>
+
+      <DataOverview rows={dataset.overview} />
+
+      <DataCards data={dataset.data} />
+
+      <Population population={dataset.population} speakerMinutes={dataset.speakerMinutes} />
+
+      <Section
+        id="quality"
+        title="Quality assurance"
+        intro="Three passes stand between a recording and the archive. A conversation that fails any of them is not delivered."
+      >
+        <ProseGrid items={dataset.quality} numbered />
+      </Section>
+
+      <Section
+        id="use-cases"
+        title="Intended training use"
+        intro="What the shape of this data makes possible."
+      >
+        <ProseGrid items={dataset.useCases} />
+      </Section>
+
+      <Provenance provenance={dataset.provenance} />
+
       <MetadataSchema fields={dataset.metadataFields} />
+
       <FileStructure tree={dataset.fileStructure} />
+
+      <AudioMetrics
+        groups={dataset.audio.groups}
+        conformance={dataset.audio.conformance}
+        note={dataset.audio.note}
+      />
+
       <Access license={dataset.license} />
     </DatasetFrame>
   );

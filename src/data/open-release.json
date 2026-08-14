@@ -1,7 +1,28 @@
 {
   "name": "Open Corpus 1K",
-  "tagline": "One thousand hours of unscripted two-person conversation, each speaker on a separate uncompressed 48 kHz track.",
-  "description": "Real people talking to each other, recorded from two locations at once. Each side is captured locally as uncompressed PCM at the microphone’s native rate and never passed through the call codec, so the delivered audio carries the full bandwidth and dynamics of the original capture rather than what survived transmission. Both tracks share one timeline and one sample count, which makes the corpus usable for turn-taking, overlap, and full-duplex work that mixed-down recordings cannot support.",
+  "tagline": "One thousand hours of unscripted conversation between people who already know each other, each speaker on a separate uncompressed track.",
+  "description": "Unscripted conversations between two speakers. Every speaker chooses their own partner — a friend, a family member, someone they already know — so the talk carries the shorthand, interruption and ease of a real relationship rather than the politeness of two strangers assigned to each other. No topics are given and no script is followed. Both people record from home, on their own devices, in their own rooms.",
+  "captureMethod": {
+    "summary": "Speakers connect over WebRTC so they can hear each other, but the call audio is never the dataset. Each side is captured locally as uncompressed PCM at the microphone’s native rate and uploaded whole, so what ships is the original capture rather than what survived transmission.",
+    "points": [
+      {
+        "title": "The call is not the recording",
+        "body": "WebRTC carries Opus-compressed audio so the two people can hold a conversation. The delivered files come from a separate local pipeline on each machine and never pass through that codec."
+      },
+      {
+        "title": "Captured at the microphone’s native rate",
+        "body": "Audio is written as 16-bit PCM at whatever rate the device captured, then resampled once, on our side, to the release rate. Nothing is upsampled to make a header look better than the signal."
+      },
+      {
+        "title": "One file per speaker, never mixed",
+        "body": "Each side is a separate mono track. The two are aligned to a shared timeline and equalised to an identical sample count, so overlap and turn-taking are measurable rather than inferred."
+      },
+      {
+        "title": "Processing kept off",
+        "body": "Noise suppression and automatic gain control are disabled at capture, and echo cancellation is off by default so simultaneous speech survives instead of being gated away."
+      }
+    ]
+  },
   "license": {
     "name": "Placeholder Data Use Agreement v0",
     "summary": "Free for commercial and research use under a signed data use agreement. No redistribution, no re-identification, deletion on notice."
@@ -14,15 +35,23 @@
   },
   "overview": [
     {
-      "detail": "Language",
-      "value": "English",
-      "note": "all varieties, unscripted"
+      "detail": "Speakers per recording",
+      "value": "2"
+    },
+    {
+      "detail": "Channels",
+      "value": "Stem-separated (one file per speaker)"
+    },
+    {
+      "detail": "Audio format",
+      "value": ".flac / .wav",
+      "chip": true
     },
     {
       "detail": "Sample rate",
       "value": "48 kHz",
       "chip": true,
-      "note": "native capture, never resampled"
+      "note": "native capture"
     },
     {
       "detail": "Bit depth",
@@ -30,26 +59,31 @@
       "chip": true
     },
     {
-      "detail": "Channels",
-      "value": "One mono track per speaker",
-      "note": "never mixed down"
+      "detail": "Languages",
+      "value": "English (en)"
     },
     {
-      "detail": "Container",
-      "value": "WAV",
-      "valueExtra": "FLAC",
+      "detail": "Metadata format",
+      "value": ".json",
       "chip": true,
-      "note": "both shipped"
+      "note": "UTF-8"
     },
     {
-      "detail": "Conversation length",
-      "value": "1.2",
-      "valueExtra": "48.6",
-      "suffix": "min"
+      "detail": "Transcription type",
+      "value": "ASR, word-level with timings"
     },
     {
-      "detail": "Speakers per conversation",
-      "value": "2"
+      "detail": "Transcription engine",
+      "value": "Deepgram Nova-3",
+      "chip": true
+    },
+    {
+      "detail": "Conversation topics",
+      "value": "None assigned"
+    },
+    {
+      "detail": "Recording environment",
+      "value": "Home, speaker’s own device"
     },
     {
       "detail": "Per-speaker cap",
@@ -58,576 +92,189 @@
       "note": "no single voice dominates"
     },
     {
-      "detail": "Transcripts",
-      "value": "Word-level, per speaker",
-      "note": "timestamps + confidence"
-    },
-    {
-      "detail": "Consent",
-      "value": "Per speaker, recorded at source"
-    },
-    {
-      "detail": "Compensation",
-      "value": "Every hour paid for"
+      "detail": "Licensing",
+      "value": "Free, under a data use agreement"
     }
   ],
-  "audio": {
-    "groups": [
+  "comparison": {
+    "note": "English two-speaker conversational corpora, by delivered hours. Telephone-band corpora are band-limited to roughly 3.4 kHz of usable speech regardless of their container.",
+    "source": "Hours as catalogued by fullduplex.ai/datasets and the corpora’s own documentation.",
+    "datasets": [
       {
-        "title": "Signal fidelity",
-        "description": "Measured from the delivered bytes, not from the capture settings we asked for. Every figure below is recomputed per track on the exact files an approved recipient receives.",
-        "metrics": [
-          {
-            "label": "Spectral rolloff (99% energy)",
-            "unit": "kHz",
-            "p5": 18,
-            "p50": 21.1,
-            "p95": 24,
-            "bins": [
-              0,
-              0,
-              0,
-              0,
-              4,
-              7,
-              24,
-              52,
-              79,
-              178,
-              262,
-              356,
-              439,
-              477,
-              471,
-              400,
-              270,
-              381
-            ],
-            "binMin": 12,
-            "binMax": 24,
-            "decimals": 1,
-            "note": "The check that separates real 48 kHz from a 48 kHz header written over an upsampled source. A resampled corpus collapses below 12 kHz here."
-          },
-          {
-            "label": "Speech SNR (VAD-gated)",
-            "unit": "dB",
-            "p5": 31.7,
-            "p50": 47.4,
-            "p95": 62.7,
-            "bins": [
-              6,
-              7,
-              17,
-              28,
-              57,
-              110,
-              191,
-              252,
-              343,
-              398,
-              447,
-              439,
-              361,
-              293,
-              200,
-              118,
-              68,
-              65
-            ],
-            "binMin": 15,
-            "binMax": 70,
-            "decimals": 1
-          },
-          {
-            "label": "Noise floor",
-            "unit": "dBFS",
-            "p5": -79.8,
-            "p50": -67,
-            "p95": -54.1,
-            "bins": [
-              11,
-              25,
-              42,
-              80,
-              145,
-              228,
-              285,
-              372,
-              430,
-              418,
-              432,
-              308,
-              264,
-              153,
-              101,
-              53,
-              30,
-              23
-            ],
-            "binMin": -90,
-            "binMax": -45,
-            "decimals": 1
-          },
-          {
-            "label": "Integrated loudness",
-            "unit": "LUFS",
-            "p5": -29,
-            "p50": -23.4,
-            "p95": -17.8,
-            "bins": [
-              14,
-              12,
-              28,
-              70,
-              121,
-              193,
-              270,
-              353,
-              412,
-              452,
-              434,
-              353,
-              255,
-              180,
-              129,
-              68,
-              37,
-              19
-            ],
-            "binMin": -34,
-            "binMax": -14,
-            "decimals": 1
-          },
-          {
-            "label": "True peak",
-            "unit": "dBFS",
-            "p5": -10.3,
-            "p50": -5.1,
-            "p95": -0.1,
-            "bins": [
-              0,
-              0,
-              2,
-              0,
-              1,
-              12,
-              26,
-              45,
-              123,
-              173,
-              273,
-              389,
-              454,
-              480,
-              467,
-              359,
-              278,
-              318
-            ],
-            "binMin": -20,
-            "binMax": 0,
-            "decimals": 1,
-            "note": "Headroom preserved: no limiting, no automatic gain control."
-          }
-        ]
+        "name": "Fisher English",
+        "hours": 2000,
+        "year": 2004,
+        "capture": "Telephone",
+        "license": "LDC paid",
+        "narrowband": true
       },
       {
-        "title": "Channel isolation",
-        "description": "Two microphones in two rooms, so a speaker’s track should contain that speaker alone. These measure how much of the partner survives in it — the property that makes per-speaker training targets and clean diarisation labels possible.",
-        "metrics": [
-          {
-            "label": "Inter-channel correlation",
-            "unit": "Pearson r",
-            "p5": 0.003,
-            "p50": 0.011,
-            "p95": 0.049,
-            "bins": [
-              1262,
-              1012,
-              463,
-              271,
-              147,
-              79,
-              46,
-              24,
-              23,
-              14,
-              12,
-              15,
-              4,
-              8,
-              3,
-              2,
-              0,
-              15
-            ],
-            "binMin": 0,
-            "binMax": 0.15,
-            "decimals": 3,
-            "note": "Computed over aligned speech regions. A mixed-down or same-room recording sits an order of magnitude higher."
-          },
-          {
-            "label": "Cross-talk suppression",
-            "unit": "dB",
-            "p5": 21.8,
-            "p50": 39.3,
-            "p95": 55.7,
-            "bins": [
-              18,
-              29,
-              65,
-              117,
-              172,
-              262,
-              300,
-              417,
-              412,
-              440,
-              386,
-              300,
-              208,
-              141,
-              75,
-              38,
-              9,
-              11
-            ],
-            "binMin": 10,
-            "binMax": 70,
-            "decimals": 1
-          },
-          {
-            "label": "Bleed-affected speech",
-            "unit": "% of track",
-            "p5": 0.2,
-            "p50": 1.1,
-            "p95": 5.5,
-            "bins": [
-              1082,
-              849,
-              527,
-              298,
-              186,
-              129,
-              81,
-              62,
-              49,
-              36,
-              22,
-              20,
-              11,
-              10,
-              5,
-              4,
-              8,
-              21
-            ],
-            "binMin": 0,
-            "binMax": 12,
-            "decimals": 1,
-            "note": "Share of a track’s speech frames where the partner is measurably present above the noise floor."
-          }
-        ]
+        "name": "Open Corpus 1K",
+        "hours": 1020,
+        "year": 2026,
+        "capture": "Remote, per-speaker",
+        "license": "Free, DUA",
+        "narrowband": false,
+        "ours": true
       },
       {
-        "title": "Acoustic environment",
-        "description": "Home and office rooms, unmanaged. The spread is the point — a model trained only on treated rooms degrades on the rooms people actually speak in.",
-        "metrics": [
-          {
-            "label": "Estimated RT60",
-            "unit": "s",
-            "p5": 0.15,
-            "p50": 0.3,
-            "p95": 0.59,
-            "bins": [
-              16,
-              150,
-              386,
-              588,
-              573,
-              475,
-              394,
-              268,
-              183,
-              110,
-              93,
-              52,
-              41,
-              24,
-              16,
-              12,
-              6,
-              13
-            ],
-            "binMin": 0.05,
-            "binMax": 0.95,
-            "decimals": 2
-          },
-          {
-            "label": "Direct-to-reverberant ratio",
-            "unit": "dB",
-            "p5": 5,
-            "p50": 14.6,
-            "p95": 23.5,
-            "bins": [
-              40,
-              41,
-              88,
-              123,
-              175,
-              217,
-              338,
-              371,
-              388,
-              414,
-              368,
-              302,
-              203,
-              145,
-              91,
-              49,
-              22,
-              25
-            ],
-            "binMin": 0,
-            "binMax": 30,
-            "decimals": 1
-          },
-          {
-            "label": "Speech activity ratio",
-            "unit": "% of track",
-            "p5": 59.6,
-            "p50": 77.4,
-            "p95": 94.9,
-            "bins": [
-              3,
-              4,
-              6,
-              33,
-              36,
-              99,
-              153,
-              229,
-              309,
-              325,
-              409,
-              411,
-              365,
-              345,
-              270,
-              164,
-              134,
-              105
-            ],
-            "binMin": 40,
-            "binMax": 100,
-            "decimals": 1
-          }
-        ]
+        "name": "CANDOR",
+        "hours": 850,
+        "year": 2023,
+        "capture": "Video chat",
+        "license": "CC-BY-NC-4.0",
+        "narrowband": false
       },
       {
-        "title": "Conversational dynamics",
-        "description": "What distinguishes conversation from read or performed speech. These are derived from the two independent tracks, so overlap is measured rather than inferred from a single mixed channel.",
-        "metrics": [
-          {
-            "label": "Overlap",
-            "unit": "% of speech time",
-            "p5": 1.8,
-            "p50": 5.5,
-            "p95": 19.1,
-            "bins": [
-              86,
-              488,
-              595,
-              536,
-              420,
-              332,
-              226,
-              163,
-              117,
-              98,
-              84,
-              31,
-              34,
-              30,
-              35,
-              26,
-              15,
-              84
-            ],
-            "binMin": 0,
-            "binMax": 25,
-            "decimals": 1,
-            "note": "Time both speakers are simultaneously active. Echo cancellation is off during capture, so genuine simultaneous speech survives instead of being gated away."
-          },
-          {
-            "label": "Floor-transfer offset",
-            "unit": "ms",
-            "p5": -508,
-            "p50": 177,
-            "p95": 936,
-            "bins": [
-              64,
-              86,
-              128,
-              195,
-              295,
-              381,
-              399,
-              415,
-              376,
-              324,
-              257,
-              188,
-              119,
-              89,
-              38,
-              32,
-              9,
-              5
-            ],
-            "binMin": -800,
-            "binMax": 1600,
-            "decimals": 0,
-            "note": "Gap between one speaker finishing and the next starting. Negative values are overlapping turn transitions."
-          },
-          {
-            "label": "Turn-taking rate",
-            "unit": "turns/min",
-            "p5": 4.9,
-            "p50": 11.3,
-            "p95": 18,
-            "bins": [
-              71,
-              67,
-              161,
-              229,
-              320,
-              389,
-              476,
-              425,
-              400,
-              322,
-              202,
-              172,
-              80,
-              42,
-              21,
-              11,
-              8,
-              4
-            ],
-            "binMin": 2,
-            "binMax": 26,
-            "decimals": 1
-          },
-          {
-            "label": "Turn duration",
-            "unit": "s",
-            "p5": 0.7,
-            "p50": 2.8,
-            "p95": 11.2,
-            "bins": [
-              478,
-              860,
-              627,
-              446,
-              309,
-              184,
-              146,
-              71,
-              60,
-              42,
-              40,
-              26,
-              24,
-              21,
-              9,
-              12,
-              9,
-              36
-            ],
-            "binMin": 0,
-            "binMax": 20,
-            "decimals": 1
-          },
-          {
-            "label": "Talk-time imbalance",
-            "unit": "pp",
-            "p5": 2,
-            "p50": 8,
-            "p95": 29,
-            "bins": [
-              333,
-              820,
-              676,
-              437,
-              330,
-              210,
-              148,
-              120,
-              77,
-              56,
-              49,
-              32,
-              24,
-              15,
-              18,
-              6,
-              9,
-              40
-            ],
-            "binMin": 0,
-            "binMax": 50,
-            "decimals": 0,
-            "note": "Absolute difference between the two speakers’ shares of talk time."
-          }
-        ]
-      }
-    ],
-    "conformance": [
-      {
-        "check": "Track pairs with identical sample counts",
-        "threshold": "exact",
-        "passRate": 1
+        "name": "otoSpeech full-duplex",
+        "hours": 280,
+        "year": 2026,
+        "capture": "Two-speaker",
+        "license": "CC-BY-4.0",
+        "narrowband": false
       },
       {
-        "check": "Track pairs sharing a common timeline anchor",
-        "threshold": "required",
-        "passRate": 1
+        "name": "Switchboard-1",
+        "hours": 260,
+        "year": 1993,
+        "capture": "Telephone",
+        "license": "LDC paid",
+        "narrowband": true
       },
       {
-        "check": "Tracks with zero clipped samples",
-        "threshold": "0 samples at full scale",
-        "passRate": 0.9963
+        "name": "SpokenWOZ",
+        "hours": 249,
+        "year": 2023,
+        "capture": "Task-oriented",
+        "license": "CC-BY-NC-4.0",
+        "narrowband": true
       },
       {
-        "check": "Tracks above speech SNR floor",
-        "threshold": "≥ 30 dB",
-        "passRate": 0.9618
+        "name": "CALLHOME",
+        "hours": 120,
+        "year": 1996,
+        "capture": "Telephone",
+        "license": "LDC paid",
+        "narrowband": true
       },
       {
-        "check": "Tracks with full-band content",
-        "threshold": "rolloff ≥ 16 kHz",
-        "passRate": 0.9907
+        "name": "AMI Meeting Corpus",
+        "hours": 100,
+        "year": 2006,
+        "capture": "In-person meetings",
+        "license": "CC-BY-4.0",
+        "narrowband": false
       },
       {
-        "check": "Track pairs within cross-talk bound",
-        "threshold": "r ≤ 0.10",
-        "passRate": 0.9781
+        "name": "CALLFRIEND",
+        "hours": 60,
+        "year": 1996,
+        "capture": "Telephone",
+        "license": "LDC paid",
+        "narrowband": true
       },
       {
-        "check": "Conversations with word-level transcripts",
-        "threshold": "both speakers",
-        "passRate": 1
+        "name": "DailyTalk",
+        "hours": 20,
+        "year": 2022,
+        "capture": "Acted dialogue",
+        "license": "CC-BY-NC-SA-4.0",
+        "narrowband": false
       }
     ]
   },
-  "demographics": {
+  "data": {
+    "relationship": {
+      "Friends": 5218,
+      "Partner": 3106,
+      "Family": 2744,
+      "Colleagues": 1612,
+      "Acquaintances": 1093,
+      "Other": 513
+    },
+    "language": {
+      "en-US": 7412,
+      "en-GB": 3086,
+      "en-AU": 1174,
+      "en-CA": 968,
+      "en-IN": 811,
+      "en-IE": 431,
+      "en-NZ": 246,
+      "en-ZA": 158
+    },
+    "conversationLength": {
+      "label": "Conversation length",
+      "unit": "min",
+      "p5": 1.3,
+      "p50": 3.6,
+      "p95": 9.9,
+      "bins": [
+        896,
+        3905,
+        3702,
+        2381,
+        1390,
+        779,
+        477,
+        275,
+        160,
+        115,
+        63,
+        52,
+        20,
+        25,
+        10,
+        13,
+        8,
+        15
+      ],
+      "binMin": 0,
+      "binMax": 25,
+      "decimals": 1,
+      "note": "Speakers end the call when the conversation ends; nothing is padded to a target length."
+    },
+    "wordsPerConversation": {
+      "label": "Words per conversation",
+      "unit": "words",
+      "p5": 215,
+      "p50": 607,
+      "p95": 1655,
+      "bins": [
+        470,
+        3014,
+        3286,
+        2608,
+        1747,
+        1123,
+        717,
+        441,
+        287,
+        183,
+        131,
+        74,
+        61,
+        42,
+        20,
+        19,
+        14,
+        49
+      ],
+      "binMin": 0,
+      "binMax": 3500,
+      "decimals": 0
+    },
+    "vocabulary": {
+      "totalWords": 9220800,
+      "uniqueWords": 118420,
+      "typeTokenRatio": 0.01284,
+      "wordsPerMinute": 151
+    }
+  },
+  "population": {
     "gender": {
-      "female": 132,
-      "male": 118,
-      "non-binary": 7
+      "Female": 132,
+      "Male": 118,
+      "Non-binary": 7
     },
     "age": {
       "Under 25": 61,
@@ -637,16 +284,37 @@
       "55+": 21
     },
     "education": {
-      "primary": 9,
-      "secondary": 47,
-      "vocational": 38,
-      "bachelor": 92,
-      "master": 58,
-      "phd": 13
+      "Primary": 9,
+      "Secondary": 47,
+      "Vocational": 38,
+      "Bachelor": 92,
+      "Master": 58,
+      "PhD": 13
     },
-    "nativeEnglish": {
-      "Native English": 171,
-      "Non-native English": 86
+    "nativeLanguage": {
+      "English": 171,
+      "Spanish": 21,
+      "German": 13,
+      "French": 11,
+      "Hindi": 9,
+      "Portuguese": 8,
+      "Tagalog": 6,
+      "Polish": 5,
+      "Danish": 5,
+      "Other": 8
+    },
+    "birthCountry": {
+      "United States": 96,
+      "United Kingdom": 44,
+      "Canada": 21,
+      "Australia": 18,
+      "India": 14,
+      "Ireland": 11,
+      "Nigeria": 9,
+      "South Africa": 8,
+      "Philippines": 7,
+      "Germany": 6,
+      "Other": 23
     }
   },
   "speakerMinutes": [
@@ -908,133 +576,581 @@
     4,
     4
   ],
+  "provenance": {
+    "summary": "Every hour is recorded on our own platform. Nothing is scraped, licensed in from a third party, or synthesised.",
+    "points": [
+      "Speakers sign up, consent explicitly before their first recording, and are paid for their time.",
+      "Consent is tracked per speaker and can be withdrawn, which stops all further use of that speaker’s data.",
+      "Demographics are self-reported at sign-up, before any recording, and never inferred from the audio.",
+      "Speaker and conversation identifiers in the archive are pseudonymous and stable across the release."
+    ]
+  },
+  "quality": [
+    {
+      "title": "Human linguistic review",
+      "body": "A reviewer listens to each conversation and rates language proficiency, classifies accent, and judges how natural and expressive the exchange is. Recordings that read as performed rather than spoken do not ship."
+    },
+    {
+      "title": "Technical alignment",
+      "body": "The two tracks are trimmed against each other and equalised to an identical sample count, so both sides of a conversation sit on one timeline and stay sample-accurate end to end."
+    },
+    {
+      "title": "Content and safety screening",
+      "body": "An LLM pass over every transcript flags personally identifying information and screens content against moderation policy before a conversation becomes eligible for delivery."
+    }
+  ],
+  "useCases": [
+    {
+      "title": "Conversational and speech-to-speech models",
+      "body": "Separate tracks on a shared timeline give a full-duplex target: what each speaker said, when, and what the other was doing at that moment."
+    },
+    {
+      "title": "Diarization and turn segmentation",
+      "body": "Speaker labels are ground truth rather than an estimate, because each speaker was recorded on their own microphone in their own room."
+    },
+    {
+      "title": "Audio understanding",
+      "body": "Unprompted conversation between people who know each other, with word-level transcripts, relationship labels and self-reported speaker demographics."
+    }
+  ],
+  "audio": {
+    "note": "Every figure is measured per track on the delivered files and ships inside the archive, so each one can be recomputed from the bytes you receive.",
+    "groups": [
+      {
+        "title": "Signal",
+        "description": "Measured from the delivered bytes rather than the capture settings we asked for.",
+        "metrics": [
+          {
+            "label": "Effective bandwidth",
+            "unit": "kHz",
+            "p5": 18,
+            "p50": 21.1,
+            "p95": 24,
+            "bins": [
+              0,
+              1,
+              0,
+              2,
+              2,
+              7,
+              26,
+              48,
+              91,
+              152,
+              255,
+              369,
+              457,
+              473,
+              447,
+              404,
+              287,
+              379
+            ],
+            "binMin": 12,
+            "binMax": 24,
+            "decimals": 1,
+            "note": "Highest frequency carrying real energy. The check that separates a genuine 48 kHz capture from a 48 kHz header written over an upsampled source."
+          },
+          {
+            "label": "Noise floor",
+            "unit": "dBFS",
+            "p5": -80.1,
+            "p50": -66.8,
+            "p95": -54,
+            "bins": [
+              12,
+              29,
+              47,
+              86,
+              143,
+              199,
+              304,
+              350,
+              414,
+              436,
+              442,
+              321,
+              238,
+              162,
+              115,
+              54,
+              25,
+              23
+            ],
+            "binMin": -90,
+            "binMax": -45,
+            "decimals": 1
+          },
+          {
+            "label": "Integrated loudness",
+            "unit": "LUFS",
+            "p5": -28.9,
+            "p50": -23.4,
+            "p95": -17.7,
+            "bins": [
+              6,
+              8,
+              39,
+              54,
+              124,
+              195,
+              284,
+              339,
+              423,
+              436,
+              392,
+              368,
+              278,
+              202,
+              122,
+              75,
+              36,
+              19
+            ],
+            "binMin": -34,
+            "binMax": -14,
+            "decimals": 1,
+            "note": "Audio ships un-normalised. Loudness is measured and reported so you can normalise to your own target without probing every file."
+          },
+          {
+            "label": "True peak",
+            "unit": "dBTP",
+            "p5": -10.1,
+            "p50": -5.2,
+            "p95": 0,
+            "bins": [
+              0,
+              0,
+              0,
+              1,
+              2,
+              5,
+              27,
+              42,
+              103,
+              196,
+              319,
+              376,
+              474,
+              488,
+              443,
+              361,
+              251,
+              312
+            ],
+            "binMin": -20,
+            "binMax": 0,
+            "decimals": 1
+          }
+        ]
+      },
+      {
+        "title": "Channel separation",
+        "description": "Two microphones in two rooms, so a speaker’s track should carry that speaker alone.",
+        "metrics": [
+          {
+            "label": "Echo-canceller gating",
+            "unit": "% of partner speech",
+            "p5": 0.1,
+            "p50": 0.6,
+            "p95": 4.2,
+            "bins": [
+              1564,
+              801,
+              385,
+              196,
+              127,
+              75,
+              56,
+              41,
+              26,
+              22,
+              26,
+              13,
+              13,
+              8,
+              9,
+              3,
+              6,
+              29
+            ],
+            "binMin": 0,
+            "binMax": 10,
+            "decimals": 1,
+            "note": "Share of the partner’s speech during which this microphone went to digital silence. Low values mean simultaneous speech survived capture."
+          },
+          {
+            "label": "Inter-channel correlation",
+            "unit": "Pearson r",
+            "p5": 0.003,
+            "p50": 0.011,
+            "p95": 0.047,
+            "bins": [
+              520,
+              832,
+              612,
+              437,
+              285,
+              175,
+              120,
+              81,
+              71,
+              66,
+              45,
+              32,
+              20,
+              18,
+              19,
+              7,
+              10,
+              50
+            ],
+            "binMin": 0,
+            "binMax": 0.08,
+            "decimals": 3,
+            "note": "Residual bleed of the partner into this track, over aligned speech regions."
+          }
+        ]
+      },
+      {
+        "title": "Conversational dynamics",
+        "description": "Derived from the two independent tracks, so overlap is measured rather than inferred from one mixed channel.",
+        "metrics": [
+          {
+            "label": "Turn-taking gap",
+            "unit": "ms",
+            "p5": -505,
+            "p50": 206,
+            "p95": 895,
+            "bins": [
+              78,
+              72,
+              119,
+              179,
+              283,
+              333,
+              409,
+              413,
+              421,
+              379,
+              253,
+              195,
+              122,
+              77,
+              33,
+              22,
+              7,
+              5
+            ],
+            "binMin": -800,
+            "binMax": 1600,
+            "decimals": 0,
+            "note": "Median gap between one speaker stopping and the other starting. Negative values are overlapping turn transitions."
+          },
+          {
+            "label": "Speech dominance",
+            "unit": "share to speaker A",
+            "p5": 0.33,
+            "p50": 0.5,
+            "p95": 0.68,
+            "bins": [
+              1,
+              11,
+              11,
+              33,
+              94,
+              194,
+              346,
+              436,
+              543,
+              522,
+              497,
+              320,
+              210,
+              115,
+              45,
+              13,
+              6,
+              3
+            ],
+            "binMin": 0.1,
+            "binMax": 0.9,
+            "decimals": 2,
+            "note": "0.5 is an even split of spoken words between the two speakers."
+          },
+          {
+            "label": "Speaking rate",
+            "unit": "words/min",
+            "p5": 108,
+            "p50": 151,
+            "p95": 195,
+            "bins": [
+              6,
+              18,
+              49,
+              98,
+              166,
+              282,
+              345,
+              446,
+              493,
+              431,
+              404,
+              291,
+              173,
+              116,
+              54,
+              19,
+              4,
+              5
+            ],
+            "binMin": 70,
+            "binMax": 240,
+            "decimals": 0
+          }
+        ]
+      }
+    ],
+    "conformance": [
+      {
+        "check": "Track pairs with identical sample counts",
+        "threshold": "exact",
+        "passRate": 1
+      },
+      {
+        "check": "Track pairs sharing a common timeline anchor",
+        "threshold": "required",
+        "passRate": 1
+      },
+      {
+        "check": "Tracks with zero clipped samples",
+        "threshold": "0 samples at full scale",
+        "passRate": 0.9963
+      },
+      {
+        "check": "Tracks with full-band content",
+        "threshold": "bandwidth ≥ 16 kHz",
+        "passRate": 0.9907
+      },
+      {
+        "check": "Track pairs within cross-talk bound",
+        "threshold": "r ≤ 0.10",
+        "passRate": 0.9781
+      },
+      {
+        "check": "Conversations with word-level transcripts",
+        "threshold": "both speakers",
+        "passRate": 1
+      },
+      {
+        "check": "Conversations passing content screening",
+        "threshold": "required",
+        "passRate": 1
+      }
+    ]
+  },
   "samples": [],
   "metadataFields": [
     {
-      "file": "manifest.json",
-      "field": "dataset",
-      "description": "Release name and build identifier"
+      "field": "dataset_version",
+      "description": "dataset schema version",
+      "file": "manifest.json"
     },
     {
-      "file": "manifest.json",
-      "field": "sample_rate",
-      "description": "Delivered rate in Hz (48000)"
+      "field": "generated_at",
+      "description": "ISO 8601 timestamp",
+      "file": "manifest.json"
     },
     {
-      "file": "manifest.json",
-      "field": "conversation_count",
-      "description": "Number of conversation directories"
+      "field": "archive_contents",
+      "description": "\"full\" or \"incremental\"",
+      "file": "manifest.json"
     },
     {
-      "file": "manifest.json",
+      "field": "audio_format",
+      "description": "audio codec (wav or flac)",
+      "file": "manifest.json"
+    },
+    {
+      "field": "total_conversations",
+      "description": "number of conversations",
+      "file": "manifest.json"
+    },
+    {
       "field": "total_duration_seconds",
-      "description": "Summed conversation duration"
+      "description": "total duration in seconds",
+      "file": "manifest.json"
     },
     {
-      "file": "conv_<id>/meta.json",
+      "field": "languages",
+      "description": "BCP-47 language codes",
+      "file": "manifest.json"
+    },
+    {
+      "field": "conversation_ids",
+      "description": "stable pseudonymous conversation IDs",
+      "file": "manifest.json"
+    },
+    {
+      "field": "transcript_schema_version",
+      "description": "transcript schema version",
+      "file": "manifest.json"
+    },
+    {
       "field": "conversation_id",
-      "description": "Stable identifier, also the directory name"
+      "description": "stable pseudonymous conversation ID",
+      "file": "conv_<id>/meta.json"
     },
     {
-      "file": "conv_<id>/meta.json",
-      "field": "duration_seconds",
-      "description": "Length of both tracks (identical)"
+      "field": "language",
+      "description": "BCP-47 language tag",
+      "file": "conv_<id>/meta.json"
     },
     {
-      "file": "conv_<id>/meta.json",
-      "field": "recorded_at",
-      "description": "UTC timestamp of the recording"
-    },
-    {
-      "file": "conv_<id>/meta.json",
       "field": "relationship",
-      "description": "How the two speakers know each other"
+      "description": "self-reported relationship between speakers",
+      "file": "conv_<id>/meta.json"
     },
     {
-      "file": "conv_<id>/meta.json",
-      "field": "speakers[].speaker_id",
-      "description": "Pseudonymous, stable across the release"
+      "field": "duration_seconds",
+      "description": "conversation length in seconds",
+      "file": "conv_<id>/meta.json"
     },
     {
-      "file": "conv_<id>/meta.json",
-      "field": "speakers[].track",
-      "description": "Filename of that speaker’s audio"
+      "field": "recorded_at",
+      "description": "recording date (YYYY-MM-DD)",
+      "file": "conv_<id>/meta.json"
     },
     {
-      "file": "conv_<id>/meta.json",
-      "field": "speakers[].age_band",
-      "description": "Five-way band, self-reported"
+      "field": "speaker_a_id",
+      "description": "pseudonymous ID for speaker A",
+      "file": "conv_<id>/meta.json"
     },
     {
-      "file": "conv_<id>/meta.json",
-      "field": "speakers[].gender",
-      "description": "Self-reported"
+      "field": "speaker_b_id",
+      "description": "pseudonymous ID for speaker B",
+      "file": "conv_<id>/meta.json"
     },
     {
-      "file": "conv_<id>/meta.json",
-      "field": "speakers[].education",
-      "description": "Highest level completed, self-reported"
+      "field": "conversation_summary",
+      "description": "LLM summary of the conversation (2-3 sentences)",
+      "file": "conv_<id>/meta.json"
     },
     {
-      "file": "conv_<id>/meta.json",
-      "field": "speakers[].native_english",
-      "description": "Boolean, self-reported"
+      "field": "topics[]",
+      "description": "topic tags discussed in the conversation",
+      "file": "conv_<id>/meta.json"
     },
     {
-      "file": "conv_<id>/meta.json",
-      "field": "speakers[].accent_region",
-      "description": "Coarse region, self-reported"
+      "field": "speech_dominance",
+      "description": "speaker A's share of spoken words, 0..1 (0.5 = equal)",
+      "file": "conv_<id>/meta.json"
     },
     {
-      "file": "conv_<id>/metrics.json",
-      "field": "snr_db",
-      "description": "VAD-gated speech SNR, per track"
+      "field": "turn_taking_gap_ms",
+      "description": "median turn-taking gap in milliseconds (conversational latency)",
+      "file": "conv_<id>/meta.json"
     },
     {
-      "file": "conv_<id>/metrics.json",
-      "field": "spectral_rolloff_hz",
-      "description": "99% energy rolloff, per track"
+      "field": "speaker_id",
+      "description": "pseudonymous speaker ID",
+      "file": "conv_<id>/speaker_<a|b>_meta.json"
     },
     {
-      "file": "conv_<id>/metrics.json",
-      "field": "interchannel_r",
-      "description": "Pearson correlation between the two tracks"
+      "field": "age_range",
+      "description": "bucketed age range",
+      "file": "conv_<id>/speaker_<a|b>_meta.json"
     },
     {
-      "file": "conv_<id>/metrics.json",
-      "field": "rt60_s",
-      "description": "Estimated reverberation time, per track"
+      "field": "gender",
+      "description": "self-reported gender",
+      "file": "conv_<id>/speaker_<a|b>_meta.json"
     },
     {
-      "file": "conv_<id>/metrics.json",
-      "field": "overlap_ratio",
-      "description": "Share of speech time with both speakers active"
+      "field": "country",
+      "description": "self-reported country (ISO-3166 alpha-2)",
+      "file": "conv_<id>/speaker_<a|b>_meta.json"
     },
     {
-      "file": "conv_<id>/transcript.json",
-      "field": "words[].word",
-      "description": "Token as spoken"
+      "field": "education_level",
+      "description": "self-reported education level",
+      "file": "conv_<id>/speaker_<a|b>_meta.json"
     },
     {
-      "file": "conv_<id>/transcript.json",
-      "field": "words[].start",
-      "description": "Seconds from track start"
+      "field": "native_language",
+      "description": "self-reported native language (BCP-47)",
+      "file": "conv_<id>/speaker_<a|b>_meta.json"
     },
     {
-      "file": "conv_<id>/transcript.json",
-      "field": "words[].end",
-      "description": "Seconds from track start"
+      "field": "accent",
+      "description": "provenance-derived accent from self-reported demographics (not measured from audio): { origin_country (ISO-3166 childhood country where the accent forms), english_native (true if English is the first language, else false; null if unknown) }",
+      "file": "conv_<id>/speaker_<a|b>_meta.json"
     },
     {
-      "file": "conv_<id>/transcript.json",
-      "field": "words[].confidence",
-      "description": "ASR confidence, 0–1"
+      "field": "recording",
+      "description": "{ sample_rate: 24000, duration_seconds, bit_depth: 16, channels: 1, integrated_lufs (measured LUFS, nullable), true_peak_dbtp (measured dBTP, nullable) } — audio is delivered un-normalized; loudness + true-peak are measured and reported so you can normalize to your own target",
+      "file": "conv_<id>/speaker_<a|b>_meta.json"
     },
     {
-      "file": "conv_<id>/transcript.json",
-      "field": "words[].speaker",
-      "description": "Which of the two tracks the word came from"
+      "field": "transcript",
+      "description": "transcript JSON filename",
+      "file": "conv_<id>/speaker_<a|b>_meta.json"
+    },
+    {
+      "field": "avg_wpm",
+      "description": "average spoken words per minute",
+      "file": "conv_<id>/speaker_<a|b>_meta.json"
+    },
+    {
+      "field": "echo_cancellation",
+      "description": "whether echo cancellation was applied at capture",
+      "file": "conv_<id>/speaker_<a|b>_meta.json"
+    },
+    {
+      "field": "headphones",
+      "description": "whether the speaker used headphones (authoritative on mobile, heuristic on web)",
+      "file": "conv_<id>/speaker_<a|b>_meta.json"
+    },
+    {
+      "field": "device",
+      "description": "capture device / audio-route label",
+      "file": "conv_<id>/speaker_<a|b>_meta.json"
+    },
+    {
+      "field": "audio_quality",
+      "description": "{ noise_floor_dbfs, effective_bandwidth_hz, aec_gating_pct } measured from the audio",
+      "file": "conv_<id>/speaker_<a|b>_meta.json"
+    },
+    {
+      "field": "conversation_id",
+      "description": "stable pseudonymous conversation ID",
+      "file": "conv_<id>/speaker_<a|b>_transcript.json"
+    },
+    {
+      "field": "speaker_index",
+      "description": "which speaker stem (\"a\"/\"b\"; the role \"agent\"/\"caller\" for scripted takes)",
+      "file": "conv_<id>/speaker_<a|b>_transcript.json"
+    },
+    {
+      "field": "language",
+      "description": "BCP-47 language tag",
+      "file": "conv_<id>/speaker_<a|b>_transcript.json"
+    },
+    {
+      "field": "text",
+      "description": "full transcript text",
+      "file": "conv_<id>/speaker_<a|b>_transcript.json"
+    },
+    {
+      "field": "words[]",
+      "description": "array of { word, start, end, type }",
+      "file": "conv_<id>/speaker_<a|b>_transcript.json"
+    },
+    {
+      "field": "corrections_applied",
+      "description": "true if a reviewer corrected the ASR output",
+      "file": "conv_<id>/speaker_<a|b>_transcript.json"
     }
   ],
-  "fileStructure": "open-corpus-1k/\n├── manifest.json\n├── LICENSE.txt\n├── conv_0a3f81c2/\n│   ├── speaker_a.wav          48 kHz · 16-bit · mono\n│   ├── speaker_b.wav          48 kHz · 16-bit · mono\n│   ├── speaker_a.flac         lossless repack\n│   ├── speaker_b.flac         lossless repack\n│   ├── meta.json              speakers, demographics, relationship\n│   ├── metrics.json           per-conversation audio measurements\n│   └── transcript.json        word-level, per speaker\n├── conv_1b7d40e9/\n│   └── …\n└── …"
+  "fileStructure": "open-corpus-1k/\n  manifest.json\n  LICENSE.txt\n  conv_a1b2c3d4e5f6/\n    meta.json\n    speaker_a.flac   (or .wav)\n    speaker_b.flac   (or .wav)\n    speaker_a_meta.json\n    speaker_b_meta.json\n    speaker_a_transcript.json\n    speaker_b_transcript.json\n  conv_7f3e9d014a6c/\n    ..."
 }

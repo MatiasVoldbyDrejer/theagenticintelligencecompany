@@ -6,6 +6,10 @@
  * something to query at request time. The file is generated upstream and
  * committed, which is what keeps this page static and independent of any
  * running service.
+ *
+ * `metadataFields` and `fileStructure` are copied from the delivery pipeline's
+ * own definitions, not re-described here — what the page documents and what the
+ * archive contains have to be the same thing.
  */
 
 export type OverviewRow = {
@@ -70,11 +74,25 @@ export type Sample = {
   peaks: [number[], number[]];
 };
 
+export type Prose = { title: string; body: string };
+
+export type ComparisonEntry = {
+  name: string;
+  hours: number;
+  year: number;
+  capture: string;
+  license: string;
+  /** Telephone-band, so band-limited to roughly 3.4 kHz of usable speech. */
+  narrowband: boolean;
+  ours?: boolean;
+};
+
 export type DatasetSnapshot = {
   /** Placeholder until the release is named — swap here and in the page route. */
   name: string;
   tagline: string;
   description: string;
+  captureMethod: { summary: string; points: Prose[] };
   license: { name: string; summary: string };
   stats: {
     conversations: number;
@@ -83,18 +101,36 @@ export type DatasetSnapshot = {
     averageDurationMinutes: number;
   };
   overview: OverviewRow[];
-  audio: {
-    groups: MetricGroup[];
-    conformance: ConformanceCheck[];
+  comparison: { note: string; source: string; datasets: ComparisonEntry[] };
+  data: {
+    relationship: Distribution;
+    language: Distribution;
+    conversationLength: Metric;
+    wordsPerConversation: Metric;
+    vocabulary: {
+      totalWords: number;
+      uniqueWords: number;
+      typeTokenRatio: number;
+      wordsPerMinute: number;
+    };
   };
-  demographics: {
+  population: {
     gender: Distribution;
     age: Distribution;
     education: Distribution;
-    nativeEnglish: Distribution;
+    nativeLanguage: Distribution;
+    birthCountry: Distribution;
   };
   /** Per-speaker delivered minutes, unsorted. Drives the contribution chart. */
   speakerMinutes: number[];
+  provenance: { summary: string; points: string[] };
+  quality: Prose[];
+  useCases: Prose[];
+  audio: {
+    note: string;
+    groups: MetricGroup[];
+    conformance: ConformanceCheck[];
+  };
   samples: Sample[];
   metadataFields: MetadataField[];
   fileStructure: string;

@@ -36,7 +36,7 @@ export default function MetadataSchema({ fields }: { fields: MetadataField[] }) 
         What ships alongside the audio, and which file each field lives in.
       </p>
 
-      <div className="overflow-hidden rounded-sm border border-zinc-800 bg-zinc-900 text-zinc-100">
+      <div className="overflow-hidden rounded-lg border border-zinc-800 bg-zinc-900 text-zinc-100">
         <div className="flex items-center justify-between border-b border-zinc-800 px-4 py-2">
           <span className="font-mono text-[10px] font-medium uppercase tracking-[0.12em] text-zinc-500">
             Schema
