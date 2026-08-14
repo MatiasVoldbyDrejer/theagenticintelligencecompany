@@ -76,6 +76,16 @@
   background-color: var(--color-card);
 }
 
+/* Painterly hero surface. Applied to the hero's image half ONLY — never the
+   whole card — so it never sits behind the solid top panel. Cropped to fill. */
+.ds-hero {
+  background-color: #bfcbd0; /* misty-blue tint before the image paints */
+  background-image: url("/images/dataset-hero.webp");
+  background-size: cover;
+  background-position: center 28%;
+  background-repeat: no-repeat;
+}
+
 /* Table headers sit a notch fainter and larger than the shared default, matching
    the eyebrow labels on the stats strip. */
 .dataset thead th {
