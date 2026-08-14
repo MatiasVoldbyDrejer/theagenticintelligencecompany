@@ -11,7 +11,7 @@ import FileStructure from "@/components/dataset/FileStructure";
 import Hero from "@/components/dataset/Hero";
 import MetadataSchema from "@/components/dataset/MetadataSchema";
 import Population from "@/components/dataset/Population";
-import { ProseGrid, Provenance, RuledColumns, Section } from "@/components/dataset/Sections";
+import { ProseGrid, Provenance, IconColumns, Section } from "@/components/dataset/Sections";
 import StatsRow from "@/components/dataset/StatsRow";
 
 const dataset = snapshot as DatasetSnapshot;
@@ -56,7 +56,7 @@ export default function DatasetPage() {
       </Section>
 
       <Section id="intended-use" title="Intended use">
-        <RuledColumns items={dataset.useCases} />
+        <IconColumns items={dataset.useCases} />
       </Section>
 
       <Section

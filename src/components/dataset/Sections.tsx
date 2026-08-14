@@ -1,5 +1,6 @@
 import type { DatasetSnapshot, Prose } from "@/lib/dataset";
 import { Card } from "./Card";
+import UseIconMark from "./UseIcons";
 import { t } from "./type";
 
 /** Section wrapper: anchor, heading, optional intro. */
@@ -103,17 +104,17 @@ export function VocabularyCard({
 /**
  * Prose as columns on the canvas, ruled at the top.
  *
- * Deliberately not the card grid: this sits two sections below one, and a
- * second grid of filled cards would read as more of the same list rather than a
- * different kind of statement. No fill, no border box, no ordinals — the rule
- * and the column do the work.
+ * Deliberately not the card grid: this sits below one, and a second grid of
+ * filled cards would read as more of the same list rather than a different kind
+ * of statement. No fill, no border box, no ordinals — a glyph opens each column.
  */
-export function RuledColumns({ items }: { items: Prose[] }) {
+export function IconColumns({ items }: { items: Prose[] }) {
   return (
-    <div className="grid grid-cols-1 gap-x-10 gap-y-6 md:grid-cols-3">
+    <div className="grid grid-cols-1 gap-x-10 gap-y-8 md:grid-cols-3">
       {items.map((p) => (
-        <div key={p.title} className="border-t border-zinc-900 pt-3.5">
-          <h3 className="text-[15px] font-medium leading-snug text-zinc-900">{p.title}</h3>
+        <div key={p.title}>
+          {p.icon && <UseIconMark name={p.icon} />}
+          <h3 className="mt-3.5 text-[15px] font-medium leading-snug text-zinc-900">{p.title}</h3>
           <p className="mt-1.5 text-[13px] leading-6 text-zinc-700">{p.body}</p>
         </div>
       ))}

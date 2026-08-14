@@ -76,7 +76,9 @@ export type PairedSample = {
   peaks: { a: PeaksData; b: PeaksData };
 };
 
-export type Prose = { title: string; body: string };
+export type UseIcon = "duplex" | "diarization" | "understanding";
+
+export type Prose = { title: string; body: string; icon?: UseIcon };
 
 export type ComparisonEntry = {
   name: string;

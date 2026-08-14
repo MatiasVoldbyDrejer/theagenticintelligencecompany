@@ -219,14 +219,17 @@ const snapshot = {
   useCases: [
     {
       title: 'Conversational and speech-to-speech',
+      icon: 'duplex',
       body: 'Both sides as independent signals on one timeline.',
     },
     {
       title: 'Diarization',
+      icon: 'diarization',
       body: 'Speaker labels by construction, not annotation.',
     },
     {
       title: 'Audio understanding',
+      icon: 'understanding',
       body: 'Unprompted speech with word-level transcripts and speaker metadata.',
     },
   ],
