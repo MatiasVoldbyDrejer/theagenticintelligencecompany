@@ -50,8 +50,7 @@
     {
       "detail": "Sample rate",
       "value": "48 kHz",
-      "chip": true,
-      "note": "native capture"
+      "chip": true
     },
     {
       "detail": "Bit depth",
@@ -76,20 +75,6 @@
       "detail": "Transcription engine",
       "value": "Deepgram Nova-3",
       "chip": true
-    },
-    {
-      "detail": "Conversation topics",
-      "value": "None assigned"
-    },
-    {
-      "detail": "Recording environment",
-      "value": "Home, speaker’s own device"
-    },
-    {
-      "detail": "Per-speaker cap",
-      "value": "30 h",
-      "chip": true,
-      "note": "no single voice dominates"
     },
     {
       "detail": "Licensing",
