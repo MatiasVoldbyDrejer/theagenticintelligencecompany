@@ -29,12 +29,6 @@ export default function LicensePage() {
           </h1>
         </div>
 
-        <div className="rounded-md border border-amber-200 bg-amber-50 px-4 py-3 text-[13px] leading-6 text-amber-900">
-          Draft, pending legal review. These are not the final terms. Clauses marked
-          [DRAFTING POSITION] record a choice made in drafting and the reason for it, for a
-          lawyer to confirm or move.
-        </div>
-
         <div className="overflow-hidden rounded-sm border border-zinc-200 bg-white">
           <pre className="whitespace-pre-wrap px-6 py-6 font-mono text-[13px] leading-6 text-zinc-700">
             {LICENSE_TEXT}

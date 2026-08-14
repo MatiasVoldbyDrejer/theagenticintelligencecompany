@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { DatasetSnapshot } from "@/lib/dataset";
+import { LICENSE_NAME } from "@/lib/license";
 import SampleClips from "./SampleClips";
 
 /**
@@ -42,7 +43,7 @@ export default function Hero({ dataset }: { dataset: DatasetSnapshot }) {
               href="/open-yap-1k/license"
               className="text-zinc-700 underline decoration-zinc-300 underline-offset-4 transition-colors hover:text-zinc-900"
             >
-              {dataset.license.name}
+              {LICENSE_NAME}
             </Link>
             <span className="text-zinc-400">Free for commercial and research use</span>
           </div>

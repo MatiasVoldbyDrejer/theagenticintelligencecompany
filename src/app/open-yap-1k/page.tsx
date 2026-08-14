@@ -85,7 +85,7 @@ export default function DatasetPage() {
 
       <Citation citation={dataset.citation} />
 
-      <Access license={dataset.license} />
+      <Access />
     </DatasetFrame>
   );
 }

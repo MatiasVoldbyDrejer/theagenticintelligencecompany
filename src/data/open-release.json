@@ -2,10 +2,6 @@
   "name": "Open Yap 1K",
   "tagline": "Channel-separated English natural two-speaker conversations",
   "description": "Open Yap 1K is a dataset of channel-separated English natural two-speaker conversations collected through The Agentic Data Company’s platform. Conversations are between friends, family, partners, and colleagues. The conversations were recorded in diverse, real-world conditions, and microphones and environments vary across sessions. Each speaker’s microphone is captured locally as uncompressed 16-bit PCM at 48 kHz.\n\nThe dataset is intended for conversational/S2S, diarization, and audio understanding. It is released publicly to support research and the products its recipients build on it.",
-  "license": {
-    "name": "Placeholder Data Use Agreement v0",
-    "summary": "Free for commercial and research use under a data use agreement. No redistribution, no re-identification; delivered recordings are licensed perpetually."
-  },
   "stats": {
     "conversations": 14286,
     "hours": 1020,

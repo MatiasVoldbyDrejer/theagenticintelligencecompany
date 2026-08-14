@@ -1,6 +1,5 @@
 import Link from "next/link";
-import type { DatasetSnapshot } from "@/lib/dataset";
-import { LICENSE_PERMITTED, LICENSE_PROHIBITED } from "@/lib/license";
+import { LICENSE_NAME, LICENSE_PERMITTED, LICENSE_PROHIBITED } from "@/lib/license";
 import { t } from "./type";
 
 const STEPS = [
@@ -18,7 +17,7 @@ const STEPS = [
   },
 ];
 
-export default function Access({ license }: { license: DatasetSnapshot["license"] }) {
+export default function Access() {
   return (
     <section id="access" className="scroll-mt-24 space-y-4">
       <h2 className={t.sectionTitle}>Access</h2>
@@ -65,7 +64,7 @@ export default function Access({ license }: { license: DatasetSnapshot["license"
           href="/open-yap-1k/license"
           className="text-sm text-zinc-500 underline decoration-zinc-300 underline-offset-4 transition-colors hover:text-zinc-900"
         >
-          Read the {license.name}
+          Read the {LICENSE_NAME}
         </Link>
       </div>
     </section>

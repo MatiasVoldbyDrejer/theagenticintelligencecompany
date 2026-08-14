@@ -88,11 +88,6 @@ const snapshot = {
 
     'The dataset is intended for conversational/S2S, diarization, and audio understanding. It is released publicly to support research and the products its recipients build on it.',
   ].join('\n\n'),
-  license: {
-    name: 'Placeholder Data Use Agreement v0',
-    summary:
-      'Free for commercial and research use under a data use agreement. No redistribution, no re-identification; delivered recordings are licensed perpetually.',
-  },
   stats: {
     conversations: CONVERSATIONS,
     hours: HOURS,

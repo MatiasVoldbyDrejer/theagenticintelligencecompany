@@ -1,9 +1,8 @@
 /**
  * The data use agreement, as one exported constant.
  *
- * DRAFT FOR LEGAL REVIEW. Written to be reviewed by a lawyer before anyone is
- * asked to rely on it; it is not legal advice and is not settled terms. Every
- * open question is marked [LEGAL REVIEW] inline.
+ * NOT REVIEWED BY COUNSEL as of v1. Drafted in-house against decisions taken by
+ * the business; have a lawyer read it before relying on it in a dispute.
  *
  * Never edit a published version in place, because an acceptance record points
  * at a version and a hash and both have to keep resolving to what the person
@@ -14,13 +13,12 @@
  * recipient needs that before they build on the corpus. Breach, or a written
  * request from us, does reach them.
  */
-export const LICENSE_VERSION = "draft-v1";
+export const LICENSE_VERSION = "v1";
 
-export const LICENSE_NAME = "Open Yap 1K Data Use Agreement (draft v1)";
+export const LICENSE_NAME = "Open Yap 1K Data Use Agreement";
 
-export const LICENSE_TEXT = `OPEN YAP 1K DATA USE AGREEMENT (draft v1)
-
-Draft, pending legal review. Not legal advice, and not final terms.
+export const LICENSE_TEXT = `OPEN YAP 1K DATA USE AGREEMENT
+Version 1
 
 This agreement governs access to Open Yap 1K, a corpus of English two-speaker
 conversational speech published by The Agentic Data Company. It is offered on
@@ -215,9 +213,6 @@ research use.
    clauses for controller-to-controller transfers, or another instrument the
    Company reasonably specifies, as a condition of delivery. Those clauses
    prevail over this agreement to the extent of any conflict.
-   [DRAFTING POSITION: assessed per recipient at approval rather than annexed
-   here, so that recipients in adequate jurisdictions are not asked to sign an
-   instrument they do not need.]
 
 12. Retention and speaker withdrawal
    The licence granted by clause 3 over a delivery already made is perpetual.
@@ -247,12 +242,8 @@ research use.
    Models trained before the deletion event, and Derived Materials that do not
    contain or reproduce Dataset content, may be retained and used, except where
    the Model or material is itself the subject of a breach of clause 7 or 8, in
-   which case it must be destroyed. [DRAFTING POSITION: deletion does not reach
-   Models trained before the deletion event. Retraining a large model is not a
-   remedy a recipient can actually perform, so a right that demands it would be
-   negotiated out or ignored; the protection that matters is clause 8, which
-   survives deletion and forbids the Model reproducing an identifiable Speaker
-   whenever it was trained.]
+   which case it must be destroyed. Clause 8 continues to apply to a Model
+   retained under this paragraph, whenever it was trained.
 
    Within 30 days of completing a deletion the Recipient must confirm in
    writing, signed by an officer, that it has done so, and describe anything
@@ -300,12 +291,8 @@ research use.
    otherwise, and whether or not it was advised such loss was possible.
 
    The Company's total aggregate liability arising out of or relating to this
-   agreement is limited to one hundred United States dollars (USD 100).
-   [DRAFTING POSITION: the Dataset is supplied at no charge, so there are no
-   fees to cap against and a nominal figure is used. The cap is deliberately
-   one-sided - the Recipient's liability under the carve-outs below is not
-   capped - because the Company is giving something away while the Recipient
-   is taking on obligations about other people's voices.]
+   agreement is limited to one hundred United States dollars (USD 100). The
+   Dataset is supplied at no charge, and this figure reflects that.
 
    This clause does not limit the Recipient's liability for breach of clause 5,
    7, 8 or 10, or its obligations under clause 18, and does not limit any
