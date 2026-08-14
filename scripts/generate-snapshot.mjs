@@ -81,15 +81,15 @@ const snapshot = {
   name: 'Yap 1K',
   tagline: 'Channel-separated English natural two-speaker conversations',
   description: [
-    `Yap 1K comprises ${CONVERSATIONS.toLocaleString()} conversations between two speakers, ${HOURS.toLocaleString()} hours of audio drawn from ${SPEAKERS} speakers. A conversation runs a median of ${conversationLength.p50} minutes, with 90% falling between ${conversationLength.p5} and ${conversationLength.p95} minutes. Every recording has exactly two participants; there are no multi-party sessions.`,
+    'Yap 1K is a corpus of channel-separated English natural two-speaker conversations.',
 
-    `The conversations are natural in that nothing about their content was directed. No topic was assigned, no script or prompt was used, and speakers were given no task to complete or outcome to reach. Each speaker chose their own partner rather than being paired with a stranger, so the corpus is weighted toward people with an existing relationship — the distribution across friends, partners, family and colleagues is reported under Conversations.`,
+    'Speakers talk freely. No topic is assigned, no script or prompt is used, and a conversation runs for as long as the two speakers want it to. Speakers are not paired with strangers: each one invites somebody they already know.',
 
-    `Channel separation is a property of the recording rather than of post-processing. The two speakers were in separate physical locations, each recording at home on their own device, and each client captured its own microphone locally and uploaded that file whole. Every conversation therefore ships as two mono files, one speaker each, aligned to a common start reference and equalised to an identical sample count. Nothing was mixed and nothing was split apart by an algorithm; the residual presence of one speaker in the other's track is measured per conversation and reported under Audio metrics rather than assumed to be absent.`,
+    'Recordings are made in the speakers\u2019 own homes, on their own devices, with speakers instructed to wear headphones. The two speakers are in separate locations, connected over WebRTC so they can hear each other. Each speaker\u2019s microphone is captured locally as uncompressed 16-bit PCM at 48 kHz and delivered as its own mono file \u2014 the call stream is never the source.',
 
-    `The language is English throughout, spanning regional varieties rather than a single standard. Conversation language carries a BCP-47 tag and the distribution is reported under Conversations. Speakers report native language and country of birth at registration, and both native and non-native English speakers are present.`,
+    'Recording happens on our own platform, which is what makes screening possible at both levels: speakers are screened before they record, and every conversation is screened after it. Consent is recorded for every speaker and for every conversation; no audio enters the corpus without both.',
 
-    `Alongside the audio, each conversation ships word-level transcripts for both speakers with per-word timings and confidence, self-reported speaker demographics, the capture configuration each track was recorded under, and the per-conversation measurements this page reports. The complete field list is under Metadata.`,
+    'The corpus is intended for conversational and speech-to-speech modelling, diarization, and audio understanding.',
   ].join('\n\n'),
   captureMethod: {
     summary:
