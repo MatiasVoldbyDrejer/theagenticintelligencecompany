@@ -205,7 +205,7 @@ const snapshot = {
   quality: [
     {
       title: 'Human linguistic QA',
-      body: 'A human reviews each conversation for language proficiency, accent classification, and ratings for naturalness and expressivity.',
+      body: 'A human reviews each conversation for language proficiency, accent classification, and ratings for naturalness and expressivity. Conversations judged to be read or performed rather than spontaneous are rejected and not delivered.',
     },
     {
       title: 'Track alignment',
