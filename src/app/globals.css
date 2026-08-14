@@ -93,6 +93,25 @@
   font-size: 12px;
 }
 
+/*
+  Tailwind v4 removed the default cursor: pointer on buttons and interactive
+  roles. Restore it globally so every native <button> and role="button" reads
+  as clickable. Disabled buttons keep the not-allowed cursor they already have
+  via utility classes.
+*/
+button:not(:disabled),
+[role="button"]:not([aria-disabled="true"]) {
+  cursor: pointer;
+}
+
+/* Checkboxes and radios are clickable targets too, and their wrapping labels
+   already read as pointer — without this the control itself feels dead while
+   the card around it does not. */
+input[type="checkbox"]:not(:disabled),
+input[type="radio"]:not(:disabled) {
+  cursor: pointer;
+}
+
 html,
 body {
   background: var(--color-paper);
