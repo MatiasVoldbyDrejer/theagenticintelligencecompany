@@ -11,7 +11,7 @@ import FileStructure from "@/components/dataset/FileStructure";
 import Hero from "@/components/dataset/Hero";
 import MetadataSchema from "@/components/dataset/MetadataSchema";
 import Population from "@/components/dataset/Population";
-import { ProseGrid, Provenance, Section } from "@/components/dataset/Sections";
+import { Limitations, ProseGrid, Provenance, Section } from "@/components/dataset/Sections";
 import StatsRow from "@/components/dataset/StatsRow";
 
 const dataset = snapshot as DatasetSnapshot;
@@ -41,12 +41,12 @@ export default function DatasetPage() {
 
       <StatsRow stats={dataset.stats} />
 
-      <Section id="overview" title="What this is" intro={dataset.description} />
+      <Section id="corpus" title="Corpus" intro={dataset.description} />
 
       <Section
         id="comparison"
-        title="Against the field"
-        intro="The corpora a speech team would otherwise reach for. Only one is larger, and it is telephone-band audio recorded in 2004."
+        title="Comparable corpora"
+        intro="Where this release sits among English conversational speech corpora by documented hours. Entries differ in recording structure and licence; both are given per row."
       >
         <ComparisonChart
           entries={dataset.comparison.datasets}
@@ -55,7 +55,7 @@ export default function DatasetPage() {
         />
       </Section>
 
-      <Section id="capture" title="How it was captured" intro={dataset.captureMethod.summary}>
+      <Section id="capture" title="Recording method" intro={dataset.captureMethod.summary}>
         <ProseGrid items={dataset.captureMethod.points} numbered />
       </Section>
 
@@ -67,16 +67,18 @@ export default function DatasetPage() {
 
       <Section
         id="quality"
-        title="Quality assurance"
-        intro="Three passes stand between a recording and the archive. A conversation that fails any of them is not delivered."
+        title="Validation"
+        intro="Three checks run before a conversation is eligible for delivery. A conversation that fails any of them is excluded from the release rather than shipped flagged."
       >
         <ProseGrid items={dataset.quality} numbered />
       </Section>
 
+      <Limitations limitations={dataset.limitations} />
+
       <Section
         id="use-cases"
-        title="Intended training use"
-        intro="What the shape of this data makes possible."
+        title="Supported tasks"
+        intro="Tasks the structure of this data supports, and the property of the recording that makes each one possible."
       >
         <ProseGrid items={dataset.useCases} />
       </Section>

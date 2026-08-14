@@ -33,7 +33,7 @@ export default function MetadataSchema({ fields }: { fields: MetadataField[] }) 
     <section id="metadata" className="scroll-mt-24 space-y-4">
       <h2 className={t.sectionTitle}>Metadata</h2>
       <p className={t.sectionIntro}>
-        What ships alongside the audio, and which file each field lives in.
+        Every field delivered alongside the audio, grouped by the archive file it ships in. Read from the packaging definitions, so this is the schema the archive is written against rather than a description of it.
       </p>
 
       <div className="overflow-hidden rounded-sm border border-zinc-800 bg-zinc-900 text-zinc-100">

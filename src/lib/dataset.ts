@@ -126,6 +126,8 @@ export type DatasetSnapshot = {
   /** Per-speaker delivered minutes, unsorted. Drives the contribution chart. */
   speakerMinutes: number[];
   provenance: { summary: string; points: string[] };
+  /** What the corpus does not do. Stated so a reader does not have to find out. */
+  limitations: string[];
   quality: Prose[];
   useCases: Prose[];
   audio: {

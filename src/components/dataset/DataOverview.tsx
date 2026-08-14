@@ -6,8 +6,8 @@ export default function DataOverview({ rows }: { rows: OverviewRow[] }) {
   return (
     <Section
       id="detail"
-      title="Dataset detail"
-      intro="What ships, in the form it ships in."
+      title="Specification"
+      intro="Delivered format and the parameters it was produced under."
     >
       <Card className="overflow-hidden">
         <table className="w-full border-collapse text-sm">

@@ -6,8 +6,7 @@ export default function FileStructure({ tree }: { tree: string }) {
     <section id="files" className="scroll-mt-24 space-y-4">
       <h2 className={t.sectionTitle}>File structure</h2>
       <p className={t.sectionIntro}>
-        The tree every archive follows. Conversation directories are flat and self-contained, so a
-        shard can be pulled and used on its own.
+        The layout every archive follows. Conversation directories are flat and self-contained: each holds both audio tracks, both transcripts, per-speaker metadata and per-conversation metrics, so any subset can be taken and used without the rest.
       </p>
 
       <div className="overflow-hidden rounded-sm border border-zinc-800 bg-zinc-950 text-zinc-100">

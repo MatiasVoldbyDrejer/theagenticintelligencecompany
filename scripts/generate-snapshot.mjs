@@ -69,28 +69,28 @@ const TOTAL_WORDS = Math.round(HOURS * 9040);
 const snapshot = {
   name: 'Open Corpus 1K',
   tagline:
-    'One thousand hours of unscripted conversation between people who already know each other, each speaker on a separate uncompressed track.',
+    `${HOURS.toLocaleString()} hours of unscripted English dyadic conversation. Each speaker on a separate uncompressed 48 kHz track, aligned to a shared timeline.`,
   description:
-    'Unscripted conversations between two speakers. Every speaker chooses their own partner — a friend, a family member, someone they already know — so the talk carries the shorthand, interruption and ease of a real relationship rather than the politeness of two strangers assigned to each other. No topics are given and no script is followed. Both people record from home, on their own devices, in their own rooms.',
+    `${CONVERSATIONS.toLocaleString()} unscripted conversations between two speakers, ${HOURS.toLocaleString()} hours in total. Speakers recruited on our own platform selected their own conversation partner rather than being paired with a stranger; the resulting relationship distribution is reported below. No topic was assigned and no script was used. The two speakers were in separate physical locations, each recording at home on their own device.\n\nEach speaker's microphone is captured locally and delivered as a separate mono track. The two tracks of a conversation share a start reference and an identical sample count, so sample index n denotes the same instant on both, and simultaneous speech is preserved rather than summed into one channel.`,
   captureMethod: {
     summary:
-      'Speakers connect over WebRTC so they can hear each other, but the call audio is never the dataset. Each side is captured locally as uncompressed PCM at the microphone’s native rate and uploaded whole, so what ships is the original capture rather than what survived transmission.',
+      'Speakers hear each other over a WebRTC connection. The delivered audio does not come from that connection: each client captures its own microphone locally as 16-bit PCM at the sample rate the device reports, and uploads that file whole.',
     points: [
       {
-        title: 'The call is not the recording',
-        body: 'WebRTC carries Opus-compressed audio so the two people can hold a conversation. The delivered files come from a separate local pipeline on each machine and never pass through that codec.',
+        title: 'The call stream is not the source',
+        body: 'The WebRTC stream is Opus-compressed and exists only so the two speakers can hear each other. Delivered files come from a separate local capture path on each client and never pass through that codec.',
       },
       {
-        title: 'Captured at the microphone’s native rate',
-        body: 'Audio is written as 16-bit PCM at whatever rate the device captured, then resampled once, on our side, to the release rate. Nothing is upsampled to make a header look better than the signal.',
+        title: 'Native-rate capture, no upsampling',
+        body: 'Each client writes 16-bit PCM at the rate the device reports. This release is delivered at 48 kHz; conversations captured below 48 kHz are excluded rather than resampled upward. Effective bandwidth is reported per track under Audio metrics so the claim is checkable against the files.',
       },
       {
-        title: 'One file per speaker, never mixed',
-        body: 'Each side is a separate mono track. The two are aligned to a shared timeline and equalised to an identical sample count, so overlap and turn-taking are measurable rather than inferred.',
+        title: 'One mono file per speaker',
+        body: 'Each speaker is a separate mono file. The pair is aligned to a common start reference and truncated to an identical sample count. Overlap and turn transitions are therefore measured from two independent signals, not estimated from a mixture.',
       },
       {
-        title: 'Processing kept off',
-        body: 'Noise suppression and automatic gain control are disabled at capture, and echo cancellation is off by default so simultaneous speech survives instead of being gated away.',
+        title: 'Capture-side processing disabled',
+        body: 'getUserMedia is requested with noiseSuppression and autoGainControl off. Echo cancellation is off by default; where the browser or OS applied it anyway, the per-track echo_cancellation field records that, and the resulting gating is quantified under Audio metrics.',
       },
     ],
   },
@@ -121,8 +121,8 @@ const snapshot = {
     { detail: 'Licensing', value: 'Free, under a data use agreement' },
   ],
   comparison: {
-    note: 'English two-speaker conversational corpora, by delivered hours. Telephone-band corpora are band-limited to roughly 3.4 kHz of usable speech regardless of their container.',
-    source: 'Hours as catalogued by fullduplex.ai/datasets and the corpora’s own documentation.',
+    note: 'English conversational speech corpora commonly used as reference points, by documented hours. Structure differs across entries — AMI is multi-party, DailyTalk is acted, SpokenWOZ is task-oriented — see the capture column. Telephone-band corpora carry roughly 3.4 kHz of usable speech regardless of the container they ship in, so hours are not directly comparable across the two groups.',
+    source: 'Compiled from fullduplex.ai/datasets and each corpus’s own documentation. Figures are as published and have not been independently verified.',
     datasets: [
       { name: 'Fisher English', hours: 2000, year: 2004, capture: 'Telephone', license: 'LDC paid', narrowband: true },
       { name: 'Open Corpus 1K', hours: HOURS, year: 2026, capture: 'Remote, per-speaker', license: 'Free, DUA', narrowband: false, ours: true },
@@ -211,88 +211,108 @@ const snapshot = {
   speakerMinutes,
   provenance: {
     summary:
-      'Every hour is recorded on our own platform. Nothing is scraped, licensed in from a third party, or synthesised.',
+      'All audio was recorded on our own platform. No part of the corpus is scraped, licensed from a third party, or synthesised.',
     points: [
-      'Speakers sign up, consent explicitly before their first recording, and are paid for their time.',
-      'Consent is tracked per speaker and can be withdrawn, which stops all further use of that speaker’s data.',
-      'Demographics are self-reported at sign-up, before any recording, and never inferred from the audio.',
-      'Speaker and conversation identifiers in the archive are pseudonymous and stable across the release.',
+      'Speakers register, give explicit consent before their first recording, and are paid for their time.',
+      'Consent is recorded per speaker and can be withdrawn; withdrawal ends further use of that speaker’s data.',
+      'Demographics are self-reported at registration, before any recording, and are never inferred from audio.',
+      'Speaker and conversation identifiers are pseudonymous and stable within the release. Names, contact details and account identifiers are not included.',
     ],
   },
+  limitations: [
+    'Transcripts are ASR output (Deepgram Nova-3) and are not human-corrected in this release. No word error rate has been measured against a reference transcription. The transcript field corrections_applied records whether a reviewer edited a given transcript.',
+    'Transcripts carry no reliable paralinguistic layer. words[].type exists in the schema, but fillers, laughter and non-speech events are substantially under-labelled — the absence of a filler token is not evidence that none occurred. Treat paralinguistic labelling as work still to be done, not as a property of the corpus.',
+    'Speaker demographics, relationship labels and native language are self-reported at registration and unverified. Accent is derived from the self-reported childhood country and native-language answers, not measured from audio.',
+    'The speaker population is not balanced. It skews toward the United States and the United Kingdom and toward native English speakers. Distributions are reported above as they are; no reweighting has been applied.',
+    'Selection is not random. A 30 h per-speaker cap and a fairness-ordered greedy selection were applied to keep any one voice from dominating, so the corpus is not a uniform sample of the platform’s recordings.',
+    'Recording conditions are uncontrolled. Rooms, microphones and headphone use vary between speakers and between sessions. Per-track device and headphones fields are included where the client reported them, and are null otherwise.',
+    'No predefined train/validation/test split ships. Speaker identifiers are pseudonymous and stable across the release, so speaker-disjoint splits can be constructed from speaker_a_id and speaker_b_id.',
+    'Every conversation is English. Regional variety is recorded as a BCP-47 tag and reported above, but the corpus supports no cross-lingual claim.',
+  ],
   quality: [
     {
-      title: 'Human linguistic review',
-      body: 'A reviewer listens to each conversation and rates language proficiency, classifies accent, and judges how natural and expressive the exchange is. Recordings that read as performed rather than spoken do not ship.',
+      title: 'Human review',
+      body: 'A reviewer listens to each conversation and records language proficiency, an accent classification, and ratings for naturalness and expressivity. Conversations judged to be read or performed rather than spontaneous are rejected and not delivered.',
     },
     {
-      title: 'Technical alignment',
-      body: 'The two tracks are trimmed against each other and equalised to an identical sample count, so both sides of a conversation sit on one timeline and stay sample-accurate end to end.',
+      title: 'Track alignment',
+      body: 'Both tracks are trimmed to a common start reference and equalised to an identical sample count. Pairs that cannot be aligned — either track missing a recorder-start anchor — are excluded from the release rather than shipped approximately aligned.',
     },
     {
-      title: 'Content and safety screening',
-      body: 'An LLM pass over every transcript flags personally identifying information and screens content against moderation policy before a conversation becomes eligible for delivery.',
+      title: 'Transcript screening',
+      body: 'Every transcript is passed through an LLM screen for personally identifying information and for content-policy violations. Flagged conversations are withheld pending human adjudication and are not delivered until cleared.',
     },
   ],
   useCases: [
     {
-      title: 'Conversational and speech-to-speech models',
-      body: 'Separate tracks on a shared timeline give a full-duplex target: what each speaker said, when, and what the other was doing at that moment.',
+      title: 'Full-duplex and speech-to-speech',
+      body: 'Both sides exist as independent signals on one timeline, so at any sample index the model has what one speaker produced and what they were hearing at that instant. Half-duplex targets can be derived from this; the reverse is not possible from a mixed recording.',
     },
     {
       title: 'Diarization and turn segmentation',
-      body: 'Speaker labels are ground truth rather than an estimate, because each speaker was recorded on their own microphone in their own room.',
+      body: 'Speaker attribution follows from the recording setup rather than from annotation: each speaker was captured on a separate microphone in a separate room. Residual cross-talk is quantified under Audio metrics, and is the limit on how clean those labels are.',
     },
     {
       title: 'Audio understanding',
-      body: 'Unprompted conversation between people who know each other, with word-level transcripts, relationship labels and self-reported speaker demographics.',
+      body: 'Unprompted conversation with word-level transcripts and timings, a self-reported relationship label per conversation, and self-reported speaker demographics. Topic tags and a generated summary ship per conversation in meta.json.',
     },
   ],
   audio: {
-    note: 'Every figure is measured per track on the delivered files and ships inside the archive, so each one can be recomputed from the bytes you receive.',
+    note: 'Each figure is computed per track on the delivered files and ships in conv_<id>/metrics.json, so every distribution below can be recomputed from the archive. Percentiles are over conversations and unweighted by duration.',
     groups: [
       {
         title: 'Signal',
         description:
-          'Measured from the delivered bytes rather than the capture settings we asked for.',
+          'Computed from the delivered bytes, not from the capture settings requested at record time.',
         metrics: [
           metric('Effective bandwidth', 'kHz', normal(21.1, 1.9), 12, 24, {
-            note: 'Highest frequency carrying real energy. The check that separates a genuine 48 kHz capture from a 48 kHz header written over an upsampled source.',
+            note: 'Frequency below which 99% of spectral energy falls, over voiced frames. Separates a native 48 kHz capture from a lower-rate source carrying a 48 kHz header: an upsampled track collapses toward its original Nyquist limit.',
           }),
-          metric('Noise floor', 'dBFS', normal(-67.1, 7.8), -90, -45),
+          metric('Noise floor', 'dBFS', normal(-67.1, 7.8), -90, -45, {
+            note: '10th-percentile short-term RMS over non-voiced frames.',
+          }),
           metric('Integrated loudness', 'LUFS', normal(-23.3, 3.4), -34, -14, {
-            note: 'Audio ships un-normalised. Loudness is measured and reported so you can normalise to your own target without probing every file.',
+            note: 'ITU-R BS.1770 integrated loudness over the whole track. Audio is delivered un-normalised; this is reported so a target level can be applied without probing every file.',
           }),
-          metric('True peak', 'dBTP', normal(-5.2, 3.1), -20, 0),
+          metric('True peak', 'dBTP', normal(-5.2, 3.1), -20, 0, {
+            note: 'Maximum inter-sample peak, 4x oversampled. Values at 0 dBTP indicate a track at clipping risk.',
+          }),
         ],
       },
       {
         title: 'Channel separation',
         description:
-          'Two microphones in two rooms, so a speaker’s track should carry that speaker alone.',
+          'Two microphones in two rooms, so each track should carry one speaker. These quantify how far that holds.',
         metrics: [
-          metric('Echo-canceller gating', '% of partner speech', logNormal(-0.4, 1.1), 0, 10, {
-            note: 'Share of the partner’s speech during which this microphone went to digital silence. Low values mean simultaneous speech survived capture.',
-          }),
           metric('Inter-channel correlation', 'Pearson r', logNormal(-4.5, 0.9), 0, 0.08, {
             decimals: 3,
-            note: 'Residual bleed of the partner into this track, over aligned speech regions.',
+            note: 'Pearson correlation between the two tracks over frames where exactly one speaker is voiced. Higher values mean the partner is more audible in this track; this is the bound on how clean speaker labels derived from the setup can be.',
+          }),
+          metric('Echo-canceller gating', '% of partner speech', logNormal(-0.4, 1.1), 0, 10, {
+            note: 'Share of frames in which this track sits at digital silence while the partner track is voiced. Non-zero values indicate an echo canceller was active despite the capture request and suppressed the near-end microphone during partner speech.',
           }),
         ],
       },
       {
         title: 'Conversational dynamics',
         description:
-          'Derived from the two independent tracks, so overlap is measured rather than inferred from one mixed channel.',
+          'Derived from the two independent signals rather than estimated from a mixture.',
         metrics: [
-          metric('Turn-taking gap', 'ms', normal(196, 430), -800, 1600, {
+          metric('Overlap', '% of voiced time', logNormal(1.72, 0.72), 0, 25, {
+            note: 'Share of voiced time in which both tracks are simultaneously voiced. Reported separately from the turn-taking gap: a mixed-channel recording cannot distinguish this from a single speaker.',
+          }),
+          metric('Turn-taking gap', 'ms', logNormal(5.3, 0.78), 0, 2000, {
             decimals: 0,
-            note: 'Median gap between one speaker stopping and the other starting. Negative values are overlapping turn transitions.',
+            note: 'Median silence between one speaker’s last voiced frame and the other’s first, per conversation. Non-negative by construction; simultaneous speech is counted under Overlap, not as a negative gap. Ships as turn_taking_gap_ms.',
           }),
           metric('Speech dominance', 'share to speaker A', normal(0.5, 0.11), 0.1, 0.9, {
             decimals: 2,
-            note: '0.5 is an even split of spoken words between the two speakers.',
+            note: 'Speaker A’s share of the conversation’s total transcript words. 0.5 is an even split. Ships as speech_dominance.',
           }),
-          metric('Speaking rate', 'words/min', normal(151, 26), 70, 240, { decimals: 0 }),
+          metric('Speaking rate', 'words/min', normal(151, 26), 70, 240, {
+            decimals: 0,
+            note: 'Transcript words per minute of voiced time, per speaker. Ships as avg_wpm.',
+          }),
         ],
       },
     ],
