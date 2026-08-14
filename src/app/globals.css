@@ -22,6 +22,11 @@
    model where surfaces darken slightly as they nest, under a warm near-black.
    =========================================================================== */
 .dataset {
+  --color-card: #f2f1ed; /* card surface */
+  --color-card-02: #ebeae5; /* insets, dividers */
+  --color-card-03: #e6e5e0; /* hairline borders */
+  --color-card-04: #e1e0db; /* stronger borders */
+
   --color-zinc-50: #f2f1ed; /* subtle fills / hovers */
   --color-zinc-100: #ebeae5; /* dividers, chart tracks */
   --color-zinc-200: #e6e5e0; /* hairline borders */
@@ -60,6 +65,21 @@
 
 .dataset h2 {
   letter-spacing: -0.02em;
+}
+
+/* Cards paint on the warm Card surface, not pure white — the paper-stack model,
+   where a card sits slightly DARKER than the canvas it rests on. Components
+   reach for `bg-white`; remapping it here is what keeps them from having to
+   know that. */
+.dataset .bg-white {
+  background-color: var(--color-card);
+}
+
+/* Table headers sit a notch fainter and larger than the shared default, matching
+   the eyebrow labels on the stats strip. */
+.dataset thead th {
+  color: var(--color-zinc-400);
+  font-size: 12px;
 }
 
 html,

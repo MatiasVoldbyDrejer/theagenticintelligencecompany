@@ -32,7 +32,7 @@ export default function Collapsible({
         <button
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
-          className="rounded-md border border-zinc-200 bg-white px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.12em] text-zinc-700 transition-colors hover:bg-zinc-50"
+          className="rounded-md border border-zinc-200 bg-white px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.12em] text-zinc-700 transition-colors hover:bg-zinc-100"
         >
           {open ? closeLabel : openLabel}
         </button>

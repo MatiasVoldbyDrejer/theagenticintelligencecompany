@@ -59,7 +59,7 @@ export default function RequestForm() {
 
   if (status === "done") {
     return (
-      <div className="rounded-lg border border-zinc-200 bg-white px-6 py-12 text-center">
+      <div className="rounded-sm border border-zinc-200 bg-white px-6 py-12 text-center">
         <p className="text-sm font-medium text-zinc-900">Request received</p>
         <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-zinc-500">
           Thanks, {name.trim().split(/\s+/)[0] || "there"}. We read every request and will reply
@@ -171,7 +171,7 @@ export default function RequestForm() {
         </label>
       </div>
 
-      <label className="flex cursor-pointer items-start gap-3 rounded-lg border border-zinc-200 bg-white px-4 py-3.5">
+      <label className="flex cursor-pointer items-start gap-3 rounded-sm border border-zinc-200 bg-white px-4 py-3.5">
         <input
           type="checkbox"
           checked={accepted}

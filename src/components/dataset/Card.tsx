@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 
-/** Matches the vendor portal's card: rounded-lg, hairline zinc border, white. */
+/** A 4px corner and a hairline border on the warm Card surface — no shadow.
+ *  `bg-white` is remapped to that surface by the `.dataset` block. */
 export function Card({
   className = "",
   children,
@@ -9,7 +10,7 @@ export function Card({
   children: ReactNode;
 }) {
   return (
-    <div className={`rounded-lg border border-zinc-200 bg-white ${className}`}>{children}</div>
+    <div className={`rounded-sm border border-zinc-200 bg-white ${className}`}>{children}</div>
   );
 }
 

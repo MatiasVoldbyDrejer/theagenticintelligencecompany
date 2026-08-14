@@ -49,7 +49,7 @@ export default function SpeakerContribution({ minutes }: { minutes: number[] }) 
         <span className="font-mono text-[11px] tabular-nums text-zinc-400">n={n}</span>
       </div>
 
-      <div className="rounded-lg border border-zinc-200 bg-white p-5 sm:p-6">
+      <div className="rounded-sm border border-zinc-200 bg-white p-5 sm:p-6">
         <div className="mb-6 flex gap-10">
           <Stat label="Top contributor" value={pct(top1Share)} />
           <Stat label="Top 10 contributors" value={pct(top10Share)} />

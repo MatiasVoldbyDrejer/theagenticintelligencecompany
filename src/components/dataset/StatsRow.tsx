@@ -9,7 +9,7 @@ export default function StatsRow({ stats }: { stats: DatasetSnapshot["stats"] })
     { label: "Avg. duration", value: `${stats.averageDurationMinutes} min` },
   ];
   return (
-    <div className="overflow-hidden rounded-lg border border-zinc-200 bg-white">
+    <div className="overflow-hidden rounded-sm border border-zinc-200 bg-white">
       <div className="grid grid-cols-2 divide-x divide-y divide-zinc-100 sm:grid-cols-4 sm:divide-y-0">
         {cards.map((c) => (
           <div key={c.label} className="flex flex-col gap-1.5 px-5 py-5">

@@ -24,7 +24,7 @@ export default function Hero({ dataset }: { dataset: DatasetSnapshot }) {
         </Link>
         <Link
           href="/dataset/license"
-          className="rounded-md border border-zinc-200 bg-white px-4 py-2.5 text-sm font-medium text-zinc-900 transition-colors hover:bg-zinc-50"
+          className="rounded-md border border-zinc-200 bg-white px-4 py-2.5 text-sm font-medium text-zinc-900 transition-colors hover:bg-zinc-100"
         >
           {dataset.license.name}
         </Link>
@@ -56,7 +56,7 @@ function SamplePlaceholder() {
               <span className="w-16 shrink-0 font-mono text-[10px] uppercase tracking-[0.1em] text-zinc-300">
                 {row === 0 ? "Speaker A" : "Speaker B"}
               </span>
-              <div className="h-9 flex-1 rounded-sm bg-zinc-50" />
+              <div className="h-9 flex-1 rounded-sm bg-zinc-100" />
             </div>
           ))}
         </div>
