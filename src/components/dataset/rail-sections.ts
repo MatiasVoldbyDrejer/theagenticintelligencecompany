@@ -7,7 +7,6 @@ export const SECTIONS = [
   { id: "data", label: "Conversations" },
   { id: "population", label: "Speakers" },
   { id: "quality", label: "Validation" },
-  { id: "limitations", label: "Limitations" },
   { id: "use-cases", label: "Supported tasks" },
   { id: "provenance", label: "Provenance" },
   { id: "metadata", label: "Metadata" },

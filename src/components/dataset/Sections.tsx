@@ -99,37 +99,3 @@ export function VocabularyCard({
   );
 }
 
-/**
- * What the corpus does not do.
- *
- * Numbered and given the same weight as every other section: a reader
- * evaluating a corpus needs this to decide whether it fits, and finding it out
- * later costs more than reading it here.
- */
-export function Limitations({ limitations }: { limitations: string[] }) {
-  return (
-    <Section
-      id="limitations"
-      title="Limitations"
-      intro="Known constraints on what this corpus can support, and what has not been verified."
-    >
-      <Card>
-        <ol className="px-5 py-2">
-          {limitations.map((item, i) => (
-            <li
-              key={item.slice(0, 40)}
-              className={`flex items-start gap-4 py-3.5 ${
-                i === limitations.length - 1 ? "" : "border-b border-zinc-100"
-              }`}
-            >
-              <span className="mt-0.5 shrink-0 font-mono text-[11px] tabular-nums text-zinc-300">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <span className="text-[13.5px] leading-6 text-zinc-600">{item}</span>
-            </li>
-          ))}
-        </ol>
-      </Card>
-    </Section>
-  );
-}

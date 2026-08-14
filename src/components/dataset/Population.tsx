@@ -17,7 +17,7 @@ export default function Population({
     <Section
       id="population"
       title="Speakers"
-      intro="All fields self-reported at registration, before any recording, and never inferred from audio. Counts are speakers, not hours or conversations; the contribution chart at the end shows how delivered hours distribute across them. The population is not balanced — see Limitations."
+      intro="All fields self-reported at registration, before any recording, and never inferred from audio. Counts are speakers, not hours or conversations; the contribution chart at the end shows how delivered hours distribute across them."
     >
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <BarDistribution title="Gender" data={population.gender} />
