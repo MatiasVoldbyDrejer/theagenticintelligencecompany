@@ -24,7 +24,7 @@ export default function Access({ license }: { license: DatasetSnapshot["license"
       <h2 className={t.sectionTitle}>Access</h2>
       <p className={t.sectionIntro}>
         This is a public release: it is not licensed exclusively, anyone may request it, and it
-        is free for both commercial and research use. It is not a public download — access is
+        is free for both commercial and research use. It is not a public download - access is
         granted per recipient under a data use agreement. Review is not a competitive
         assessment. Access is granted to anyone who can say who they are and what they intend
         to use the corpus for, and who accepts the terms.

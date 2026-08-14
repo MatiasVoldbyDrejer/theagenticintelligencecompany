@@ -97,7 +97,7 @@ export default function RequestForm() {
 
       <Field
         label="Email"
-        hint="Please use your organizational or institutional address — it is what lets us verify the affiliation above."
+        hint="Please use your organizational or institutional address - it is what lets us verify the affiliation above."
       >
         <Input
           type="email"

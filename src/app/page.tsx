@@ -31,7 +31,7 @@ export default function Home() {
           <p>
             The interface between humans and computers is changing. For sixty
             years, people have communicated with machines through keyboards,
-            mice, and screens — a series of workarounds for the medium humans
+            mice, and screens - a series of workarounds for the medium humans
             actually use to communicate with one another. Recent progress in
             speech models suggests that this is ending. Within a decade, most
             interaction with computers will be conducted through speech, and
@@ -42,7 +42,7 @@ export default function Home() {
             Voice is the hardest modality. Speech carries not only words but
             identity, emotion, intent, hesitation, and the texture of a room.
             To train a model that hears the way humans do, you need data that
-            captures all of it — at scale, across languages, across the long
+            captures all of it - at scale, across languages, across the long
             tail of how people actually talk.
           </p>
           <p>

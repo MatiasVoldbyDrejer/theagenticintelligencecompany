@@ -62,7 +62,7 @@
     }
   ],
   "comparison": {
-    "note": "English conversational speech corpora commonly used as reference points, by documented hours. Structure differs across entries — AMI is multi-party, DailyTalk is acted, SpokenWOZ is task-oriented — see the capture column. Telephone-band corpora carry roughly 3.4 kHz of usable speech regardless of the container they ship in, so hours are not directly comparable across the two groups.",
+    "note": "English conversational speech corpora commonly used as reference points, by documented hours. Structure differs across entries - AMI is multi-party, DailyTalk is acted, SpokenWOZ is task-oriented - see the capture column. Telephone-band corpora carry roughly 3.4 kHz of usable speech regardless of the container they ship in, so hours are not directly comparable across the two groups.",
     "datasets": [
       {
         "name": "Fisher English",
@@ -555,7 +555,7 @@
     },
     {
       "title": "Track alignment",
-      "body": "Both tracks are trimmed to a common start reference and equalised to an identical sample count. Pairs that cannot be aligned — either track missing a recorder-start anchor — are excluded from the release rather than shipped approximately aligned."
+      "body": "Both tracks are trimmed to a common start reference and equalised to an identical sample count. Pairs that cannot be aligned - either track missing a recorder-start anchor - are excluded from the release rather than shipped approximately aligned."
     },
     {
       "title": "Transcript screening",
@@ -2876,7 +2876,7 @@
     },
     {
       "field": "recording",
-      "description": "{ sample_rate: 24000, duration_seconds, bit_depth: 16, channels: 1, integrated_lufs (measured LUFS, nullable), true_peak_dbtp (measured dBTP, nullable) } — audio is delivered un-normalized; loudness + true-peak are measured and reported so you can normalize to your own target",
+      "description": "{ sample_rate: 24000, duration_seconds, bit_depth: 16, channels: 1, integrated_lufs (measured LUFS, nullable), true_peak_dbtp (measured dBTP, nullable) } - audio is delivered un-normalized; loudness + true-peak are measured and reported so you can normalize to your own target",
       "file": "conv_<id>/speaker_<a|b>_meta.json"
     },
     {

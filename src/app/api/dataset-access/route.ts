@@ -104,7 +104,7 @@ export async function POST(request: NextRequest) {
 
   const lines = [
     `Name:        ${name}`,
-    `Role:        ${role || "—"}`,
+    `Role:        ${role || "-"}`,
     `Affiliation: ${affiliation}`,
     `Email:       ${email}`,
     `Purpose:     ${purpose}`,
@@ -112,7 +112,7 @@ export async function POST(request: NextRequest) {
     "Intended use:",
     useCase,
     "",
-    "— Acceptance record —",
+    "- Acceptance record -",
     `Agreement:   ${LICENSE_NAME}`,
     `Version:     ${LICENSE_VERSION}`,
     `Text sha256: ${licenseHash}`,
@@ -130,7 +130,7 @@ export async function POST(request: NextRequest) {
       from: FROM_EMAIL,
       to: [NOTIFY_EMAIL],
       reply_to: email,
-      subject: `Dataset access request — ${affiliation} (${purpose})`,
+      subject: `Dataset access request - ${affiliation} (${purpose})`,
       text: lines.join("\n"),
       html: `<pre style="font:13px ui-monospace,monospace;white-space:pre-wrap">${escapeHtml(
         lines.join("\n"),

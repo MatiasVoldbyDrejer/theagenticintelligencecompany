@@ -8,7 +8,7 @@ import { LICENSE_NAME, LICENSE_TEXT, LICENSE_VERSION } from "@/lib/license";
 const dataset = snapshot as DatasetSnapshot;
 
 export const metadata: Metadata = {
-  title: `${LICENSE_NAME} — ${dataset.name}`,
+  title: `${LICENSE_NAME} - ${dataset.name}`,
   description: `Terms governing access to ${dataset.name}.`,
   alternates: { canonical: "/open-yap-1k/license" },
 };

@@ -85,7 +85,7 @@ export default function AudioMetrics({
                       {(c.passRate * 100).toFixed(2)}%
                     </span>
                     <span className="hidden w-20 shrink-0 text-right font-mono text-[12px] tabular-nums text-zinc-400 sm:block">
-                      {excluded === 0 ? "—" : `${(excluded * 100).toFixed(2)}%`}
+                      {excluded === 0 ? "-" : `${(excluded * 100).toFixed(2)}%`}
                     </span>
                   </div>
                 );

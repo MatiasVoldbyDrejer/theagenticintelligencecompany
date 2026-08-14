@@ -116,7 +116,7 @@ const snapshot = {
     { detail: 'Licensing', value: 'Free, under a data use agreement' },
   ],
   comparison: {
-    note: 'English conversational speech corpora commonly used as reference points, by documented hours. Structure differs across entries — AMI is multi-party, DailyTalk is acted, SpokenWOZ is task-oriented — see the capture column. Telephone-band corpora carry roughly 3.4 kHz of usable speech regardless of the container they ship in, so hours are not directly comparable across the two groups.',
+    note: 'English conversational speech corpora commonly used as reference points, by documented hours. Structure differs across entries - AMI is multi-party, DailyTalk is acted, SpokenWOZ is task-oriented - see the capture column. Telephone-band corpora carry roughly 3.4 kHz of usable speech regardless of the container they ship in, so hours are not directly comparable across the two groups.',
     datasets: [
       { name: 'Fisher English', hours: 2000, year: 2004, capture: 'Telephone', license: 'LDC paid', narrowband: true },
       { name: NAME, hours: HOURS, year: 2026, capture: 'Remote, per-speaker', license: 'Free, DUA', narrowband: false, ours: true },
@@ -212,7 +212,7 @@ const snapshot = {
     },
     {
       title: 'Track alignment',
-      body: 'Both tracks are trimmed to a common start reference and equalised to an identical sample count. Pairs that cannot be aligned — either track missing a recorder-start anchor — are excluded from the release rather than shipped approximately aligned.',
+      body: 'Both tracks are trimmed to a common start reference and equalised to an identical sample count. Pairs that cannot be aligned - either track missing a recorder-start anchor - are excluded from the release rather than shipped approximately aligned.',
     },
     {
       title: 'Transcript screening',
@@ -320,7 +320,12 @@ snapshot.fileStructure = [
 ].join('\n');
 
 const out = process.argv[2];
-writeFileSync(out, JSON.stringify(snapshot, null, 2) + '\n');
+// Em dashes are normalised to hyphens across the whole snapshot, including the
+// field descriptions imported above — those come from the packaging package and
+// would otherwise reintroduce one on every run. En dashes are left alone; they
+// carry ranges (25\u201334).
+const json = JSON.stringify(snapshot, null, 2).replaceAll('\u2014', '-');
+writeFileSync(out, json + '\n');
 console.log(`wrote ${out}
   hours=${snapshot.stats.hours} convs=${snapshot.stats.conversations} speakers=${snapshot.stats.speakers} avg=${snapshot.stats.averageDurationMinutes}min
   words=${TOTAL_WORDS.toLocaleString()} unique=118,420`);

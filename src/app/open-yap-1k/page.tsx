@@ -17,11 +17,11 @@ import StatsRow from "@/components/dataset/StatsRow";
 const dataset = snapshot as DatasetSnapshot;
 
 export const metadata: Metadata = {
-  title: `${dataset.name} — The Agentic Data Company`,
+  title: `${dataset.name} - The Agentic Data Company`,
   description: dataset.tagline,
   alternates: { canonical: "/open-yap-1k" },
   openGraph: {
-    title: `${dataset.name} — The Agentic Data Company`,
+    title: `${dataset.name} - The Agentic Data Company`,
     description: dataset.tagline,
     url: "/open-yap-1k",
     siteName: "The Agentic Data Company",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${dataset.name} — The Agentic Data Company`,
+    title: `${dataset.name} - The Agentic Data Company`,
     description: dataset.tagline,
   },
 };
