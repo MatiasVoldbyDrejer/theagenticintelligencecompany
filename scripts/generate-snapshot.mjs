@@ -248,6 +248,9 @@ const snapshot = {
           metric('Effective bandwidth', 'kHz', normal(21.1, 1.9), 12, 24, {
             note: 'Frequency below which 99% of spectral energy falls, over voiced frames. Separates a native 48 kHz capture from a lower-rate source carrying a 48 kHz header: an upsampled track collapses toward its original Nyquist limit.',
           }),
+          metric('Speech SNR', 'dB', normal(47.6, 9.4), 15, 70, {
+            note: 'Ratio of mean power over voiced frames to mean power over non-voiced frames, per track, using the same voice-activity segmentation as the noise floor below.',
+          }),
           metric('Noise floor', 'dBFS', normal(-67.1, 7.8), -90, -45, {
             note: '10th-percentile short-term RMS over non-voiced frames.',
           }),
@@ -300,6 +303,7 @@ const snapshot = {
       { check: 'Track pairs with identical sample counts', threshold: 'exact', passRate: 1 },
       { check: 'Track pairs sharing a common timeline anchor', threshold: 'required', passRate: 1 },
       { check: 'Tracks with zero clipped samples', threshold: '0 samples at full scale', passRate: 0.9963 },
+      { check: 'Tracks above the speech SNR floor', threshold: '≥ 30 dB', passRate: 0.9618 },
       { check: 'Tracks with full-band content', threshold: 'bandwidth ≥ 16 kHz', passRate: 0.9907 },
       { check: 'Track pairs within cross-talk bound', threshold: 'r ≤ 0.10', passRate: 0.9781 },
       { check: 'Conversations with word-level transcripts', threshold: 'both speakers', passRate: 1 },
