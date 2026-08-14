@@ -48,7 +48,8 @@
     },
     {
       "detail": "Transcription type",
-      "value": "ASR, word-level with timings"
+      "value": "ASR, word-level with timings",
+      "note": "(not human-verified)"
     },
     {
       "detail": "Transcription engine",

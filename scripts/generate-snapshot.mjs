@@ -107,7 +107,11 @@ const snapshot = {
     { detail: 'Bit depth', value: '16-bit PCM', chip: true },
     { detail: 'Languages', value: 'English (en)' },
     { detail: 'Metadata format', value: '.json', chip: true, note: 'UTF-8' },
-    { detail: 'Transcription type', value: 'ASR, word-level with timings' },
+    {
+      detail: 'Transcription type',
+      value: 'ASR, word-level with timings',
+      note: '(not human-verified)',
+    },
     { detail: 'Transcription engine', value: 'Deepgram Nova-3', chip: true },
     { detail: 'Licensing', value: 'Free, under a data use agreement' },
   ],
