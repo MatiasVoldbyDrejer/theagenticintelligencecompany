@@ -540,6 +540,10 @@
     4,
     4
   ],
+  "citation": {
+    "text": "The Agentic Data Company. Open Yap 1K: channel-separated English natural two-speaker conversations. 2026. Version 1.0. https://theagenticdatacompany.com/open-yap-1k",
+    "bibtex": "@misc{openyap1k,\n  title     = {Open Yap 1K: Channel-Separated English Natural Two-Speaker Conversations},\n  author    = {The Agentic Data Company},\n  year      = {2026},\n  version   = {1.0},\n  publisher = {The Agentic Data Company},\n  url       = {https://theagenticdatacompany.com/open-yap-1k},\n}"
+  },
   "provenance": {
     "summary": "All audio was recorded on our own platform. No part of the corpus is scraped, licensed from a third party, or synthesised.",
     "points": [

@@ -196,6 +196,22 @@ const snapshot = {
     },
   },
   speakerMinutes,
+  citation: {
+    // Key and year are the dataset's, not the page's. Bump `version` when a
+    // rebuild changes what a recipient receives, so a paper can name which one
+    // it used.
+    text: `The Agentic Data Company. ${NAME}: channel-separated English natural two-speaker conversations. 2026. Version 1.0. https://theagenticdatacompany.com/${SLUG}`,
+    bibtex: [
+      '@misc{openyap1k,',
+      `  title     = {${NAME}: Channel-Separated English Natural Two-Speaker Conversations},`,
+      '  author    = {The Agentic Data Company},',
+      '  year      = {2026},',
+      '  version   = {1.0},',
+      '  publisher = {The Agentic Data Company},',
+      `  url       = {https://theagenticdatacompany.com/${SLUG}},`,
+      '}',
+    ].join('\n'),
+  },
   provenance: {
     summary:
       'All audio was recorded on our own platform. No part of the corpus is scraped, licensed from a third party, or synthesised.',

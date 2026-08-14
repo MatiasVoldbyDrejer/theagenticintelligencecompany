@@ -126,6 +126,7 @@ export type DatasetSnapshot = {
   };
   /** Per-speaker delivered minutes, unsorted. Drives the contribution chart. */
   speakerMinutes: number[];
+  citation: { text: string; bibtex: string };
   provenance: { summary: string; points: string[] };
   quality: Prose[];
   useCases: Prose[];

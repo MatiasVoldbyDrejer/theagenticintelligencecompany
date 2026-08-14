@@ -10,5 +10,6 @@ export const SECTIONS = [
   { id: "metadata", label: "Metadata" },
   { id: "files", label: "Files" },
   { id: "comparison", label: "Comparable corpora" },
+  { id: "citation", label: "Citation" },
   { id: "access", label: "Access" },
 ] as const;

@@ -1,66 +1,381 @@
 /**
  * The data use agreement, as one exported constant.
  *
- * PLACEHOLDER TEXT — not legal terms. Replace `LICENSE_TEXT` with the real
- * agreement and bump `LICENSE_VERSION`; never edit a published version in
- * place, because an acceptance record points at a version and a hash and both
- * have to keep resolving to what the person actually read.
+ * DRAFT FOR LEGAL REVIEW. Written to be reviewed by a lawyer before anyone is
+ * asked to rely on it; it is not legal advice and is not settled terms. Every
+ * open question is marked [LEGAL REVIEW] inline.
+ *
+ * Never edit a published version in place, because an acceptance record points
+ * at a version and a hash and both have to keep resolving to what the person
+ * actually read. Revise by bumping `LICENSE_VERSION`.
  *
  * The retention clause is load-bearing rather than boilerplate, and cuts both
- * ways. Speaker withdrawal does not reach recordings already delivered — a
+ * ways. Speaker withdrawal does not reach recordings already delivered - a
  * recipient needs that before they build on the corpus. Breach, or a written
  * request from us, does reach them.
  */
-export const LICENSE_VERSION = "placeholder-v0";
+export const LICENSE_VERSION = "draft-v1";
 
-export const LICENSE_NAME = "Placeholder Data Use Agreement v0";
+export const LICENSE_NAME = "Open Yap 1K Data Use Agreement (draft v1)";
 
-export const LICENSE_TEXT = `PLACEHOLDER DATA USE AGREEMENT (v0)
+export const LICENSE_TEXT = `OPEN YAP 1K DATA USE AGREEMENT (draft v1)
 
-This text is a structural placeholder. It is not legal advice and is not the
-agreement that will govern access to the release.
+Draft, pending legal review. Not legal advice, and not final terms.
 
-1. Grant
-   The Agentic Data Company grants the recipient a non-exclusive,
-   non-transferable, royalty-free licence to use the dataset for commercial or
-   research purposes, subject to the terms below.
+This agreement governs access to Open Yap 1K, a corpus of English two-speaker
+conversational speech published by The Agentic Data Company. It is offered on
+the same terms to every recipient, at no charge, for both commercial and
+research use.
 
-2. No redistribution
-   The recipient may not publish, share, sublicense, resell, or otherwise make
-   the dataset or any substantial part of it available to any third party,
-   including by depositing it in a public or third-party repository.
+1. Parties and acceptance
+   This agreement is between The Agentic Data Company [LEGAL REVIEW: registered
+   name, entity form, and registered address] ("the Company") and the
+   organisation on whose behalf access is requested ("the Recipient"). The
+   person completing the access request confirms that they are authorised to
+   accept these terms for the Recipient and that the information in the request
+   is accurate. Where no organisation is named, the person accepting is the
+   Recipient in a personal capacity.
 
-3. No re-identification
-   The recipient may not attempt to identify any speaker in the dataset, nor
-   link any recording or metadata to any external identifier or record.
+   Acceptance is given electronically, by marking the acceptance box on the
+   access request form, and the parties intend it to have the same effect as a
+   signature. Clause 24 sets out what the Company records as evidence of it.
 
-4. No voice cloning
-   The recipient may not use the dataset to create synthetic voice clones,
-   voice replicas, or generative reproductions of any person's voice or
-   likeness that a reasonable person would identify as matching an individual
-   in the dataset.
+2. Definitions
+   "Dataset" means Open Yap 1K as delivered to the Recipient: the audio
+   recordings, transcripts, speaker and conversation metadata, per-conversation
+   metrics, manifest and accompanying documentation, in whole or in part, in
+   any format.
 
-5. Retention
-   The licence to the dataset delivered under this agreement is perpetual. A
-   speaker may withdraw from the platform at any time; withdrawal ends further
-   collection and further distribution of their recordings, and does not
-   require the recipient to delete or stop using any part of the dataset
-   already received, or anything derived from it.
+   "Derived Materials" means anything the Recipient creates from the Dataset,
+   including extracts, subsets, transformed or re-encoded audio, annotations,
+   alignments, features, embeddings, statistics and Models.
 
-   The recipient will permanently delete all copies of the dataset from its
-   systems if it breaches this agreement, or on written request from The
-   Agentic Data Company.
+   "Model" means a machine learning model, and the weights, adapters,
+   embeddings or other parameters of one, trained or tuned in whole or in part
+   on the Dataset.
 
-6. Security
-   The recipient will hold the dataset under access controls no weaker than
-   those applied to its own confidential material.
+   "Output" means content a Model generates.
 
-7. Attribution
-   Published work making use of the dataset should cite it by name.
+   "Speaker" means an individual whose voice appears in the Dataset.
 
-8. Term
-   The licence continues until terminated by either party. Clauses 2, 3, 4 and
-   5 survive termination.
+   "Personnel" means the Recipient's employees, and the contractors and
+   individual consultants working on the Recipient's behalf.
+
+   "Affiliate" means an entity that controls, is controlled by, or is under
+   common control with a party.
+
+3. Grant
+   The Company grants the Recipient a worldwide, non-exclusive,
+   non-transferable, non-sublicensable, royalty-free licence to use, copy and
+   modify the Dataset for commercial or research purposes, subject to this
+   agreement. No fee is payable for the Dataset.
+
+   The licence is granted to the Recipient alone. An Affiliate of the Recipient
+   is not licensed and must request access separately, unless the Company
+   agrees otherwise in writing.
+
+   The Company is under no obligation to deliver further data, to correct the
+   Dataset, to support it, or to keep it available.
+
+4. Permitted use
+   Within the limits of clauses 5 to 9, the Recipient may:
+
+   (a) use the Dataset internally for any commercial or research purpose,
+       including developing products it sells;
+   (b) train, fine-tune, adapt, evaluate, benchmark and test Models on the
+       Dataset, including generative speech, speech-to-speech, recognition,
+       diarization and audio understanding models;
+   (c) deploy, license and commercialise those Models and their Outputs;
+   (d) create and use Derived Materials for those purposes.
+
+   The Company claims no ownership of a Model the Recipient trains or of its
+   Outputs. A Model or an Output is not restricted by clause 8 merely because
+   the Dataset was among the data a Model was trained on.
+
+5. No redistribution
+   The Recipient may not publish, share, sublicense, sell, lend or otherwise
+   make the Dataset, or any part of it, available to any third party, and may
+   not deposit it in a public repository, a shared research archive, a model
+   hub, or any other third-party repository.
+
+   This restriction applies to Derived Materials to the extent they contain,
+   reproduce, or allow the reconstruction of Dataset audio, transcripts or
+   speaker metadata. It does not restrict publication of Models, Outputs,
+   aggregate statistics, or research results that do not.
+
+   Short transcript excerpts, of no more than a few sentences and drawn from no
+   more than a small number of conversations, may be quoted in a publication or
+   presentation where necessary to illustrate a finding. Publishing Dataset
+   audio, in any length or form, requires the Company's prior written consent.
+
+6. Internal copies, personnel and contractors
+   The Recipient may make the copies of the Dataset its permitted use requires,
+   including backups and copies held on cloud or compute infrastructure the
+   Recipient controls or has engaged under a written contract.
+
+   The Recipient may give access to Personnel who need it for a permitted use,
+   and to no one else. It must ensure each of them is bound by confidentiality
+   and use obligations at least as protective as this agreement, remains
+   responsible for their acts and omissions as for its own, and withdraws
+   access when the need ends.
+
+   The Recipient must keep a record of where copies of the Dataset are held,
+   sufficient to carry out clause 13.
+
+7. No re-identification
+   The Recipient may not attempt to identify any Speaker, and may not attempt
+   to link any recording, transcript or item of metadata to a name, an account,
+   a contact detail, an external voice sample, or any other external
+   identifier, record or dataset. It may not attempt to reverse the
+   pseudonymous speaker and conversation identifiers the Dataset uses.
+
+   Using the Dataset's own speaker identifiers to train or evaluate speaker
+   verification, speaker diarization or similar models is permitted. It is not
+   re-identification, because it does not seek the identity of the person
+   behind the identifier.
+
+   If the Recipient learns a Speaker's identity, incidentally or from
+   identifying information left in a recording or transcript, it must not act
+   on or record that knowledge and must notify the Company promptly under
+   clause 21.
+
+8. No voice cloning
+   The Recipient may not use the Dataset to create, and may not configure a
+   Model to produce, a synthetic voice, voice replica, or generative
+   reproduction of a person's voice or likeness that a reasonable person would
+   identify as matching an individual in the Dataset.
+
+   In particular, the Recipient may not:
+
+   (a) train, tune or condition a Model on the recordings of a single Speaker,
+       or of a selected group of Speakers, in order to reproduce that voice;
+   (b) use a Dataset recording as a reference, prompt or target for voice
+       conversion or zero-shot voice cloning;
+   (c) publish, sell or otherwise make available a voice, voice preset or
+       speaker embedding derived from an individual Speaker.
+
+   This clause is about targeting an individual. Training a general Model on
+   the Dataset alongside other data, and deploying it, is permitted by clause
+   4, and an incidental resemblance in an Output that the Recipient did not
+   seek is not a breach of this clause. The Recipient must not deliberately
+   elicit such an Output, and on becoming aware that one of its Models
+   reproduces an identifiable Dataset voice, must take reasonable steps to stop
+   that recurring and notify the Company.
+
+9. Security
+   The Recipient must hold the Dataset under administrative, technical and
+   physical controls no weaker than those it applies to its own confidential
+   material, and in any event under controls reasonable for personal data,
+   including access control, encryption in transit and encryption at rest.
+
+   The Recipient must notify the Company without undue delay, and no later than
+   72 hours, after becoming aware of any loss of the Dataset or any access to
+   it that this agreement does not permit.
+
+10. Confidentiality
+   The Dataset is the Company's confidential information, and the Recipient may
+   not disclose it except as clause 6 allows. This does not apply to
+   information that is or becomes public other than through the Recipient, that
+   the Recipient already held free of any duty of confidence, or that it
+   develops independently.
+
+   The Recipient may disclose the Dataset where required by law or court order,
+   and must, where lawful, give the Company prior notice so it can seek
+   protection. The existence of this agreement and the fact of the Recipient's
+   access are not confidential.
+
+11. Personal data
+   The Dataset contains personal data: recorded voices, and demographic
+   information the Speakers reported about themselves. It is pseudonymised, not
+   anonymous. Names, contact details and account identifiers are not included.
+   Every Speaker gave explicit consent before recording and was paid for their
+   time.
+
+   The Recipient must handle the Dataset in accordance with the data protection
+   law that applies to it, and must not use it in a way inconsistent with that
+   consent or with clauses 7 and 8.
+
+   [LEGAL REVIEW: the roles of the parties (controller to controller, or
+   otherwise), the transfer mechanism for deliveries outside the EEA and the
+   United Kingdom, and whether a data protection annex is attached, all have to
+   be settled in this clause.]
+
+12. Retention and speaker withdrawal
+   The licence granted by clause 3 over a delivery already made is perpetual.
+
+   A Speaker may withdraw from the Company's platform at any time. Withdrawal
+   ends further collection from that Speaker and further distribution of their
+   recordings by the Company. It does not require the Recipient to delete, stop
+   using, or retrain anything already delivered, or any Derived Materials.
+
+   The Company may exclude a Speaker's recordings from later deliveries or
+   later versions of the Dataset without notice.
+
+13. Deletion and certification
+   The Recipient must permanently delete all copies of the Dataset, and all
+   Derived Materials that contain or reproduce Dataset audio, transcripts or
+   speaker metadata:
+
+   (a) if it breaches this agreement; or
+   (b) on written request from the Company, within 30 days of the request.
+
+   Deletion covers copies held by Personnel and copies on infrastructure
+   engaged under clause 6. The Recipient may retain copies it is required by
+   law to keep, and copies in routine backups that cannot practicably be
+   isolated, for as long as those constraints last; this agreement continues to
+   apply to them.
+
+   Models trained before the deletion event, and Derived Materials that do not
+   contain or reproduce Dataset content, may be retained and used, except where
+   the Model or material is itself the subject of a breach of clause 7 or 8, in
+   which case it must be destroyed. [LEGAL REVIEW: whether deletion reaches
+   Models trained before the deletion event is a commercial decision, and is
+   the first clause a recipient's counsel will turn to. The position drafted
+   here is that it does not.]
+
+   Within 30 days of completing a deletion the Recipient must confirm in
+   writing, signed by an officer, that it has done so, and describe anything
+   retained under this clause.
+
+   Separately, once in any twelve month period the Company may ask the
+   Recipient to confirm in writing that it is complying with clauses 5 to 9.
+   This agreement gives the Company no right of on-site audit and no right of
+   access to the Recipient's systems.
+
+14. Attribution
+   Published work that makes use of the Dataset should cite it using the
+   reference published alongside the Dataset, including the version identifier
+   of the build used. The Company publishes that reference, and a BibTeX entry
+   for it, on the Dataset page.
+
+15. Compliance
+   The Recipient must comply with the laws applying to its use of the Dataset,
+   including data protection, privacy, export control and sanctions law. The
+   export control and restricted party statement given with the access request
+   is a separate attestation and is not varied by this agreement.
+
+   The Recipient may not use the Dataset to build or operate a system whose
+   purpose is unlawful surveillance of individuals or unlawful discrimination
+   against them.
+
+16. No warranty
+   The Dataset is provided "as is" and "as available". To the maximum extent
+   permitted by law the Company disclaims all warranties, express or implied,
+   including merchantability, fitness for a particular purpose, accuracy,
+   completeness, quiet enjoyment and non-infringement.
+
+   Transcripts are machine generated and are not human verified. Demographic
+   fields are reported by Speakers about themselves and are not verified
+   against any external record. Published quality figures describe the corpus
+   in aggregate and are not a warranty about any individual file. The Dataset
+   is screened for personally identifying information, but the Company does not
+   warrant that none remains.
+
+17. Limitation of liability
+   To the maximum extent permitted by law, the Company is not liable for any
+   indirect, incidental, special, consequential, exemplary or punitive damages,
+   or for lost profits, lost revenue or loss of data, arising out of or
+   relating to this agreement or the Dataset, whether in contract, tort or
+   otherwise, and whether or not it was advised such loss was possible.
+
+   The Company's total aggregate liability arising out of or relating to this
+   agreement is limited to [LEGAL REVIEW: the Dataset is supplied at no charge,
+   so there is no fee to serve as a cap. A fixed figure, or a nominal amount,
+   has to be stated here].
+
+   This clause does not limit the Recipient's liability for breach of clause 5,
+   7, 8 or 10, or its obligations under clause 18, and does not limit any
+   liability that cannot be limited by law.
+
+18. Indemnity
+   The Recipient will defend, indemnify and hold harmless the Company and its
+   officers, employees and agents against any third-party claim, and against
+   the liabilities, damages, fines, penalties and reasonable legal costs
+   arising from it, to the extent the claim arises out of the Recipient's use
+   of the Dataset in breach of this agreement, its breach of clause 7, 8, 9 or
+   15, or a claim brought by a Speaker arising from either.
+
+   The Company will notify the Recipient of the claim without undue delay, let
+   the Recipient control its defence, and give reasonable cooperation at the
+   Recipient's expense. The Recipient may not settle a claim in a way that
+   admits fault by the Company or imposes an obligation on it without the
+   Company's written consent.
+
+19. Term, termination and survival
+   This agreement starts when the Recipient accepts it and continues until
+   terminated.
+
+   Either party may terminate for convenience on 30 days written notice. The
+   Company may terminate immediately on notice if the Recipient breaches clause
+   5, 7, 8, 9 or 10, or fails to remedy any other breach within 30 days of
+   being asked to.
+
+   Termination ends any right to further deliveries. It does not by itself
+   require deletion: the perpetual licence in clause 12 survives termination
+   for convenience, and deletion is required only in the circumstances set out
+   in clause 13.
+
+   Clauses 2 to 18 and 20 to 24 survive termination. The licence in clause 3
+   survives only over deliveries already made, on the terms of clause 12.
+
+20. Assignment
+   The Recipient may not assign or transfer this agreement, or any right under
+   it, without the Company's prior written consent, except to a successor to
+   all or substantially all of its business or assets, on written notice to the
+   Company. The Company may assign this agreement freely. Any other purported
+   assignment is void, and the Dataset may not be transferred as part of an
+   asset sale except under a permitted assignment.
+
+21. Notices
+   Notices to the Company go to [LEGAL REVIEW: postal address and email address
+   for notices]. Notices to the Recipient go to the email address given in the
+   access request, or to a later address the Recipient gives the Company in
+   writing. A notice sent by email is given when sent, unless the sender
+   receives a delivery failure.
+
+22. Governing law and venue
+   [LEGAL REVIEW: deliberately left open, not defaulted. The Company is
+   incorporated in the United States and operated from Denmark, and recipients
+   are expected in several jurisdictions, so this is a real choice rather than
+   an oversight. One of the following has to be selected, and the governing law
+   and the venue should match:
+
+   (a) the laws of the State of Delaware, USA, with exclusive jurisdiction in
+       the state and federal courts sitting in Delaware; or
+   (b) the laws of Denmark, with exclusive jurisdiction in the Copenhagen City
+       Court.
+
+   Whichever is chosen, the United Nations Convention on Contracts for the
+   International Sale of Goods should be excluded, and conflict of laws rules
+   that would apply another law should be excluded.]
+
+23. General
+   This agreement, together with the access request and the export control
+   attestation given with it, is the entire agreement between the parties about
+   the Dataset and replaces any earlier discussion or understanding about it. A
+   purchase order or a recipient's own standard terms have no effect.
+
+   The Company may issue a revised version of this agreement for later
+   deliveries. A revision does not change the terms accepted for a delivery
+   already made; the version accepted at the time of a delivery governs that
+   delivery.
+
+   If a provision is held unenforceable it is limited to the minimum extent
+   necessary and the rest stays in force. A failure to enforce a right is not a
+   waiver of it. The parties are independent contractors, and this agreement
+   creates no rights for anyone other than them.
+
+24. Acceptance record
+   Acceptance is recorded when the Recipient submits the access request with
+   the acceptance box marked. The Company records the version of this agreement
+   accepted, a SHA-256 hash of the exact text served at that moment, the
+   version and hash of the export control attestation, the answers given in the
+   request, and the time, network address and browser user agent of the
+   submission.
+
+   That record is how the Company evidences what was accepted once this text is
+   revised. The Company will keep each accepted version retrievable at a stable
+   address.
 `;
 
 /**
@@ -73,7 +388,8 @@ agreement that will govern access to the release.
 export const LICENSE_PERMITTED = [
   "Commercial use, including in products you sell",
   "Research use, published or internal",
-  "Training, fine-tuning and evaluating models",
+  "Training, fine-tuning and evaluating models, and deploying what you train",
+  "Internal copies, and access for staff and contractors under the same terms",
   "Retaining the delivered dataset, and anything derived from it, after a speaker withdraws",
 ] as const;
 
@@ -81,6 +397,7 @@ export const LICENSE_PROHIBITED = [
   "Redistributing, resharing, sublicensing or reselling the dataset or any part of it",
   "Attempting to identify a speaker, or link a recording to any external record",
   "Creating voice clones, replicas or generative reproductions identifiable as a speaker in the corpus",
+  "Holding the dataset under weaker controls than your own confidential material",
   "Retaining any copy of the dataset after a breach of these terms, or after a written request from The Agentic Data Company",
 ] as const;
 

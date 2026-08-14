@@ -3,6 +3,7 @@ import snapshot from "@/data/open-release.json";
 import type { DatasetSnapshot } from "@/lib/dataset";
 import Access from "@/components/dataset/Access";
 import AudioMetrics from "@/components/dataset/AudioMetrics";
+import Citation from "@/components/dataset/Citation";
 import ComparisonChart from "@/components/dataset/ComparisonChart";
 import DataCards from "@/components/dataset/DataCards";
 import DataOverview from "@/components/dataset/DataOverview";
@@ -81,6 +82,8 @@ export default function DatasetPage() {
           note={dataset.comparison.note}
         />
       </Section>
+
+      <Citation citation={dataset.citation} />
 
       <Access license={dataset.license} />
     </DatasetFrame>
