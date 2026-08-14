@@ -6,6 +6,7 @@
   --font-geist: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
   --color-paper: #fcfbf8;
+  --color-bg: #fcfbf8;
   --color-ink: #111111;
 }
 

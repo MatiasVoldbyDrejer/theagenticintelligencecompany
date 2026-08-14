@@ -12,7 +12,7 @@
 // documents and what the archive contains stay the same thing.
 //
 // Deterministic (fixed LCG seed), so re-running produces no diff.
-import { writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync } from 'node:fs';
 
 // Checkout holding the built @yaproom/domain package.
 const YAPROOM_ROOT = process.env.YAPROOM_ROOT ?? '/Users/mvd/Projects/yap-room';
@@ -306,7 +306,9 @@ const snapshot = {
       { check: 'Conversations passing content screening', threshold: 'required', passRate: 1 },
     ],
   },
-  samples: [],
+  // PLACEHOLDER audio, from scripts/generate-placeholder-sample.mjs. Replace
+  // with real cut clips; the player renders nothing when this is empty.
+  samples: [JSON.parse(readFileSync('src/data/placeholder-sample.json', 'utf8'))],
 };
 
 // The schema and archive tree are the delivery pipeline's, not this page's —

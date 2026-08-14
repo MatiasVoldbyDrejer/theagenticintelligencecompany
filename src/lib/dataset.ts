@@ -64,14 +64,16 @@ export type ConformanceCheck = {
   passRate: number;
 };
 
-export type Sample = {
-  id: string;
-  label: string;
-  durationSeconds: number;
-  /** Public paths to the two per-speaker tracks. */
-  tracks: [string, string];
-  /** Pre-computed peak envelopes, one per track, normalised to 0–1. */
-  peaks: [number[], number[]];
+/** Absolute-amplitude peak envelope for one track, plus its length. */
+export type PeaksData = { peaks: number[]; duration: number };
+
+export type PairedSample = {
+  conversationId: string;
+  language: string | null;
+  speakerA: { src: string; durationSeconds: number | null };
+  speakerB: { src: string; durationSeconds: number | null };
+  /** Baked, so the waveforms paint without decoding audio in the browser. */
+  peaks: { a: PeaksData; b: PeaksData };
 };
 
 export type Prose = { title: string; body: string };
@@ -131,7 +133,7 @@ export type DatasetSnapshot = {
     groups: MetricGroup[];
     conformance: ConformanceCheck[];
   };
-  samples: Sample[];
+  samples: PairedSample[];
   metadataFields: MetadataField[];
   fileStructure: string;
 };
