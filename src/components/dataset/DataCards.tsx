@@ -6,8 +6,8 @@ import { Section, VocabularyCard } from "./Sections";
 export default function DataCards({ data }: { data: DatasetSnapshot["data"] }) {
   return (
     <Section
-      id="data"
-      title="Conversations"
+      id="conversation-statistics"
+      title="Conversation statistics"
       intro="Per-conversation properties. Relationship is self-reported by the speaker who invited their partner and ships as meta.json:relationship. Language is the BCP-47 tag assigned to the conversation. Word counts are token counts over the delivered ASR transcripts, both speakers combined."
     >
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">

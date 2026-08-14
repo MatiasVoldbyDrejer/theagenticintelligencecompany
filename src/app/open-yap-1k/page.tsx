@@ -45,6 +45,8 @@ export default function DatasetPage() {
 
       <Population population={dataset.population} speakerMinutes={dataset.speakerMinutes} />
 
+      <DataCards data={dataset.data} />
+
       <Section
         id="comparison"
         title="Comparable corpora"
@@ -55,8 +57,6 @@ export default function DatasetPage() {
           note={dataset.comparison.note}
         />
       </Section>
-
-      <DataCards data={dataset.data} />
 
       <Section
         id="quality"

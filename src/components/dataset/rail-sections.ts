@@ -2,8 +2,8 @@
 export const SECTIONS = [
   { id: "data-description", label: "Data description" },
   { id: "speaker-demographics", label: "Speaker demographics" },
+  { id: "conversation-statistics", label: "Conversation statistics" },
   { id: "comparison", label: "Comparable corpora" },
-  { id: "data", label: "Conversations" },
   { id: "quality", label: "Validation" },
   { id: "use-cases", label: "Supported tasks" },
   { id: "provenance", label: "Provenance" },
