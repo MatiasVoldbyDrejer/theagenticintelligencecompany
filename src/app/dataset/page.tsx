@@ -41,7 +41,7 @@ export default function DatasetPage() {
 
       <StatsRow stats={dataset.stats} />
 
-      <Section id="corpus" title="Corpus" intro={dataset.description} />
+      <Section id="corpus" title="Data description" intro={dataset.description} />
 
       <Section
         id="comparison"

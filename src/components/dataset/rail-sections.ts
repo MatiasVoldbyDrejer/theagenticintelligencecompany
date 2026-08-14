@@ -1,6 +1,6 @@
 /** Section order for the rail and the anchors it tracks. */
 export const SECTIONS = [
-  { id: "corpus", label: "Corpus" },
+  { id: "corpus", label: "Data description" },
   { id: "comparison", label: "Comparable corpora" },
   { id: "capture", label: "Recording method" },
   { id: "detail", label: "Specification" },
