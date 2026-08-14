@@ -4,11 +4,11 @@ export const SECTIONS = [
   { id: "intended-use", label: "Intended use" },
   { id: "speaker-demographics", label: "Speaker demographics" },
   { id: "conversation-statistics", label: "Conversation statistics" },
+  { id: "metrics", label: "Audio metrics" },
   { id: "quality-assurance", label: "Quality assurance" },
   { id: "provenance", label: "Provenance" },
   { id: "metadata", label: "Metadata" },
   { id: "files", label: "Files" },
-  { id: "metrics", label: "Audio metrics" },
   { id: "comparison", label: "Comparable corpora" },
   { id: "access", label: "Access" },
 ] as const;

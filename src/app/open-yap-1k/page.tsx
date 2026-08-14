@@ -51,6 +51,12 @@ export default function DatasetPage() {
 
       <DataCards data={dataset.data} />
 
+      <AudioMetrics
+        groups={dataset.audio.groups}
+        conformance={dataset.audio.conformance}
+        note={dataset.audio.note}
+      />
+
       <Section
         id="quality-assurance"
         title="Quality assurance"
@@ -64,12 +70,6 @@ export default function DatasetPage() {
       <MetadataSchema fields={dataset.metadataFields} />
 
       <FileStructure tree={dataset.fileStructure} />
-
-      <AudioMetrics
-        groups={dataset.audio.groups}
-        conformance={dataset.audio.conformance}
-        note={dataset.audio.note}
-      />
 
       <Section
         id="comparison"
