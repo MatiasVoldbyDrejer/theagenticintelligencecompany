@@ -218,16 +218,16 @@ const snapshot = {
   ],
   useCases: [
     {
-      title: 'Full-duplex and speech-to-speech',
-      body: 'Both sides exist as independent signals on one timeline, so at any sample index the model has what one speaker produced and what they were hearing at that instant. Half-duplex targets can be derived from this; the reverse is not possible from a mixed recording.',
+      title: 'Conversational and speech-to-speech',
+      body: 'Both sides as independent signals on one timeline.',
     },
     {
-      title: 'Diarization and turn segmentation',
-      body: 'Speaker attribution follows from the recording setup rather than from annotation: each speaker was captured on a separate microphone in a separate room. Residual cross-talk is quantified under Audio metrics, and is the limit on how clean those labels are.',
+      title: 'Diarization',
+      body: 'Speaker labels by construction, not annotation.',
     },
     {
       title: 'Audio understanding',
-      body: 'Unprompted conversation with word-level transcripts and timings, a self-reported relationship label per conversation, and self-reported speaker demographics. Topic tags and a generated summary ship per conversation in meta.json.',
+      body: 'Unprompted speech with word-level transcripts and speaker metadata.',
     },
   ],
   audio: {

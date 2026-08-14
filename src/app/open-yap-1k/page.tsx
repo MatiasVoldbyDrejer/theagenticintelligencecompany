@@ -55,11 +55,7 @@ export default function DatasetPage() {
         <ProseGrid items={dataset.quality} numbered />
       </Section>
 
-      <Section
-        id="intended-use"
-        title="Intended use"
-        intro="What the structure of this data supports, and the property of the recording that makes each one possible."
-      >
+      <Section id="intended-use" title="Intended use">
         <RuledColumns items={dataset.useCases} />
       </Section>
 

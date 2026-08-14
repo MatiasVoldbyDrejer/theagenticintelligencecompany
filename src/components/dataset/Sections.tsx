@@ -110,11 +110,11 @@ export function VocabularyCard({
  */
 export function RuledColumns({ items }: { items: Prose[] }) {
   return (
-    <div className="grid grid-cols-1 gap-x-10 gap-y-8 md:grid-cols-3">
+    <div className="grid grid-cols-1 gap-x-10 gap-y-6 md:grid-cols-3">
       {items.map((p) => (
-        <div key={p.title} className="border-t border-zinc-900 pt-4">
-          <h3 className="text-sm font-medium text-zinc-900">{p.title}</h3>
-          <p className="mt-2 text-[13px] leading-6 text-zinc-700">{p.body}</p>
+        <div key={p.title} className="border-t border-zinc-900 pt-3.5">
+          <h3 className="text-[15px] font-medium leading-snug text-zinc-900">{p.title}</h3>
+          <p className="mt-1.5 text-[13px] leading-6 text-zinc-700">{p.body}</p>
         </div>
       ))}
     </div>
