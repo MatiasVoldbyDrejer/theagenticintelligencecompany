@@ -48,6 +48,14 @@ export default function DatasetPage() {
       <DataCards data={dataset.data} />
 
       <Section
+        id="quality-assurance"
+        title="Quality assurance"
+        intro="Three checks run before a conversation is eligible for delivery. A conversation that fails any of them is excluded from the release rather than shipped flagged."
+      >
+        <ProseGrid items={dataset.quality} numbered />
+      </Section>
+
+      <Section
         id="comparison"
         title="Comparable corpora"
         intro="Where this release sits among English conversational speech corpora by documented hours. Entries differ in recording structure and licence; both are given per row."
@@ -56,14 +64,6 @@ export default function DatasetPage() {
           entries={dataset.comparison.datasets}
           note={dataset.comparison.note}
         />
-      </Section>
-
-      <Section
-        id="quality"
-        title="Validation"
-        intro="Three checks run before a conversation is eligible for delivery. A conversation that fails any of them is excluded from the release rather than shipped flagged."
-      >
-        <ProseGrid items={dataset.quality} numbered />
       </Section>
 
       <Section
