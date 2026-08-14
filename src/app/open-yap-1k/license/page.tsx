@@ -36,7 +36,7 @@ export default function LicensePage() {
         </div>
 
         <div className="overflow-hidden rounded-sm border border-zinc-200 bg-white">
-          <pre className="overflow-x-auto px-6 py-6 font-mono text-[13px] leading-6 text-zinc-700">
+          <pre className="whitespace-pre-wrap px-6 py-6 font-mono text-[13px] leading-6 text-zinc-700">
             {LICENSE_TEXT}
           </pre>
         </div>

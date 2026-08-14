@@ -300,7 +300,7 @@ research use.
    otherwise, and whether or not it was advised such loss was possible.
 
    The Company's total aggregate liability arising out of or relating to this
-   agreement is limited to one thousand United States dollars (USD 1,000).
+   agreement is limited to one hundred United States dollars (USD 100).
    [DRAFTING POSITION: the Dataset is supplied at no charge, so there are no
    fees to cap against and a nominal figure is used. The cap is deliberately
    one-sided - the Recipient's liability under the carve-outs below is not
@@ -353,10 +353,10 @@ research use.
 21. Notices
    Notices to the Company go to The Agentic Data Company, 131 Continental Dr,
    Suite 305, Newark, New Castle County, Delaware 19713, United States, and by
-   email to legal@theagenticdatacompany.com. Notices to the Recipient go to the email address given in the
-   access request, or to a later address the Recipient gives the Company in
-   writing. A notice sent by email is given when sent, unless the sender
-   receives a delivery failure.
+   email to legal@theagenticdatacompany.com. Notices to the Recipient go to
+   the email address given in the access request, or to a later address the
+   Recipient gives the Company in writing. A notice sent by email is given
+   when sent, unless the sender receives a delivery failure.
 
 22. Governing law and venue
    This agreement is governed by the laws of the State of Delaware, United
