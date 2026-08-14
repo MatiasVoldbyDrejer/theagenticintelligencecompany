@@ -66,6 +66,7 @@ const totalMinutes = speakerMinutes.reduce((a, b) => a + b, 0);
 const HOURS = Math.round(totalMinutes / 60);
 const TOTAL_WORDS = Math.round(HOURS * 9040);
 
+const NAME = 'Yap 1K';
 const SPEAKERS = speakerMinutes.length;
 
 const conversationLength = metric(
@@ -78,18 +79,12 @@ const conversationLength = metric(
 );
 
 const snapshot = {
-  name: 'Yap 1K',
+  name: NAME,
   tagline: 'Channel-separated English natural two-speaker conversations',
   description: [
-    'Yap 1K is a corpus of channel-separated English natural two-speaker conversations.',
+    `${NAME} is a dataset of channel-separated English natural two-speaker conversations collected through The Agentic Data Company\u2019s platform. Conversations are between friends, family, partners, and colleagues. The conversations were recorded in diverse, real-world conditions, and microphones and environments vary across sessions. Each speaker\u2019s microphone is captured locally as uncompressed 16-bit PCM at 48 kHz.`,
 
-    'Speakers talk freely. No topic is assigned, no script or prompt is used, and a conversation runs for as long as the two speakers want it to. Speakers are not paired with strangers: each one invites somebody they already know.',
-
-    'Recordings are made in the speakers\u2019 own homes, on their own devices, with speakers instructed to wear headphones. The two speakers are in separate locations, connected over WebRTC so they can hear each other. Each speaker\u2019s microphone is captured locally as uncompressed 16-bit PCM at 48 kHz and delivered as its own mono file \u2014 the call stream is never the source.',
-
-    'Recording happens on our own platform, which is what makes screening possible at both levels: speakers are screened before they record, and every conversation is screened after it. Consent is recorded for every speaker and for every conversation; no audio enters the corpus without both.',
-
-    'The corpus is intended for conversational and speech-to-speech modelling, diarization, and audio understanding.',
+    'The dataset is intended for conversational/S2S, diarization, and audio understanding. It is released publicly to support research and integration into third-party products by downstream developers.',
   ].join('\n\n'),
   captureMethod: {
     summary:
@@ -140,7 +135,7 @@ const snapshot = {
     note: 'English conversational speech corpora commonly used as reference points, by documented hours. Structure differs across entries — AMI is multi-party, DailyTalk is acted, SpokenWOZ is task-oriented — see the capture column. Telephone-band corpora carry roughly 3.4 kHz of usable speech regardless of the container they ship in, so hours are not directly comparable across the two groups.',
     datasets: [
       { name: 'Fisher English', hours: 2000, year: 2004, capture: 'Telephone', license: 'LDC paid', narrowband: true },
-      { name: 'Yap 1K', hours: HOURS, year: 2026, capture: 'Remote, per-speaker', license: 'Free, DUA', narrowband: false, ours: true },
+      { name: NAME, hours: HOURS, year: 2026, capture: 'Remote, per-speaker', license: 'Free, DUA', narrowband: false, ours: true },
       { name: 'CANDOR', hours: 850, year: 2023, capture: 'Video chat', license: 'CC-BY-NC-4.0', narrowband: false },
       { name: 'otoSpeech full-duplex', hours: 280, year: 2026, capture: 'Two-speaker', license: 'CC-BY-4.0', narrowband: false },
       { name: 'Switchboard-1', hours: 260, year: 1993, capture: 'Telephone', license: 'LDC paid', narrowband: true },
