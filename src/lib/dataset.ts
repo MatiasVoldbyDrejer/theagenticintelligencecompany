@@ -94,7 +94,6 @@ export type DatasetSnapshot = {
   name: string;
   tagline: string;
   description: string;
-  captureMethod: { summary: string; points: Prose[] };
   license: { name: string; summary: string };
   stats: {
     conversations: number;

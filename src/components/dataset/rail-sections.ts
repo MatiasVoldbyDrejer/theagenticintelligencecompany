@@ -3,7 +3,6 @@ export const SECTIONS = [
   { id: "data-description", label: "Data description" },
   { id: "speaker-demographics", label: "Speaker demographics" },
   { id: "comparison", label: "Comparable corpora" },
-  { id: "capture", label: "Recording method" },
   { id: "data", label: "Conversations" },
   { id: "quality", label: "Validation" },
   { id: "use-cases", label: "Supported tasks" },

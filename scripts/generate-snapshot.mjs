@@ -88,28 +88,6 @@ const snapshot = {
 
     'The dataset is intended for conversational/S2S, diarization, and audio understanding. It is released publicly to support research and integration into third-party products by downstream developers.',
   ].join('\n\n'),
-  captureMethod: {
-    summary:
-      'Speakers hear each other over a WebRTC connection. The delivered audio does not come from that connection: each client captures its own microphone locally as 16-bit PCM at the sample rate the device reports, and uploads that file whole.',
-    points: [
-      {
-        title: 'The call stream is not the source',
-        body: 'The WebRTC stream is Opus-compressed and exists only so the two speakers can hear each other. Delivered files come from a separate local capture path on each client and never pass through that codec.',
-      },
-      {
-        title: 'Native-rate capture, no upsampling',
-        body: 'Each client writes 16-bit PCM at the rate the device reports. This release is delivered at 48 kHz; conversations captured below 48 kHz are excluded rather than resampled upward. Effective bandwidth is reported per track under Audio metrics so the claim is checkable against the files.',
-      },
-      {
-        title: 'One mono file per speaker',
-        body: 'Each speaker is a separate mono file. The pair is aligned to a common start reference and truncated to an identical sample count. Overlap and turn transitions are therefore measured from two independent signals, not estimated from a mixture.',
-      },
-      {
-        title: 'Capture-side processing disabled',
-        body: 'getUserMedia is requested with noiseSuppression and autoGainControl off. Echo cancellation is off by default; where the browser or OS applied it anyway, the per-track echo_cancellation field records that, and the resulting gating is quantified under Audio metrics.',
-      },
-    ],
-  },
   license: {
     name: 'Placeholder Data Use Agreement v0',
     summary:

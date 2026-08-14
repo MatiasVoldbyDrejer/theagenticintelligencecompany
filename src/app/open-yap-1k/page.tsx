@@ -56,10 +56,6 @@ export default function DatasetPage() {
         />
       </Section>
 
-      <Section id="capture" title="Recording method" intro={dataset.captureMethod.summary}>
-        <ProseGrid items={dataset.captureMethod.points} numbered />
-      </Section>
-
       <DataCards data={dataset.data} />
 
       <Section
