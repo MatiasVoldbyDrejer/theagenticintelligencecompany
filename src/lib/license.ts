@@ -197,10 +197,23 @@ research use.
    law that applies to it, and must not use it in a way inconsistent with that
    consent or with clauses 7 and 8.
 
-   [LEGAL REVIEW: the roles of the parties (controller to controller, or
-   otherwise), the transfer mechanism for deliveries outside the EEA and the
-   United Kingdom, and whether a data protection annex is attached, all have to
-   be settled in this clause.]
+   The parties act as independent controllers in respect of the personal data
+   in the Dataset. Neither party processes that personal data on behalf of the
+   other, and neither is a processor or joint controller of the other. Each
+   determines its own purposes and means for the personal data it holds, and
+   each is separately responsible for its own compliance with the data
+   protection law that applies to it, including for responding to the requests
+   of data subjects it receives.
+
+   The Company remains responsible for the lawfulness of the collection and of
+   the disclosure to the Recipient. The Recipient is responsible for its own
+   processing from the point of delivery onward.
+
+   [LEGAL REVIEW: the instrument relied on for deliveries outside the EEA and
+   the United Kingdom. The controller-to-controller roles above point to the
+   Module One standard contractual clauses where a transfer needs a mechanism,
+   but whether they are attached as an annex, and how adequacy is assessed per
+   recipient, still has to be settled.]
 
 12. Retention and speaker withdrawal
    The licence granted by clause 3 over a delivery already made is perpetual.

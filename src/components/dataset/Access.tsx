@@ -26,8 +26,8 @@ export default function Access({ license }: { license: DatasetSnapshot["license"
         This is a public release: it is not licensed exclusively, anyone may request it, and it
         is free for both commercial and research use. It is not a public download - access is
         granted per recipient under a data use agreement. Review is not a competitive
-        assessment. Access is granted to anyone who can say who they are and what they intend
-        to use the corpus for, and who accepts the terms.
+        assessment. We are looking for who you are, what you intend to use the corpus for,
+        and your acceptance of the terms.
       </p>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
