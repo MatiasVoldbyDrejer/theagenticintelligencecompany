@@ -6,11 +6,10 @@
  * place, because an acceptance record points at a version and a hash and both
  * have to keep resolving to what the person actually read.
  *
- * The retention clause is load-bearing rather than boilerplate. A recording
- * licensed under this agreement is not retractable: withdrawal by a speaker
- * stops further collection and further distribution, and does not reach
- * recordings already delivered. A recipient needs that stated plainly before
- * they build on the corpus.
+ * The retention clause is load-bearing rather than boilerplate, and cuts both
+ * ways. Speaker withdrawal does not reach recordings already delivered — a
+ * recipient needs that before they build on the corpus. Breach, or a written
+ * request from us, does reach them.
  */
 export const LICENSE_VERSION = "placeholder-v0";
 
@@ -35,24 +34,33 @@ agreement that will govern access to the release.
    The recipient may not attempt to identify any speaker in the dataset, nor
    link any recording or metadata to any external identifier or record.
 
-4. Retention
+4. No voice cloning
+   The recipient may not use the dataset to create synthetic voice clones,
+   voice replicas, or generative reproductions of any person's voice or
+   likeness that a reasonable person would identify as matching an individual
+   in the dataset.
+
+5. Retention
    The licence to recordings delivered under this agreement is perpetual. A
    speaker may withdraw from the platform at any time; withdrawal ends further
    collection and further distribution of their recordings, and does not
    require the recipient to delete or stop using recordings already received,
    or anything derived from them.
 
-5. Security
+   The recipient will permanently delete all copies of the dataset from its
+   systems if it breaches this agreement, or on written request from The
+   Agentic Data Company.
+
+6. Security
    The recipient will hold the dataset under access controls no weaker than
    those applied to its own confidential material.
 
-6. Attribution
+7. Attribution
    Published work making use of the dataset should cite it by name.
 
-7. Term
-   The licence continues until terminated by either party. Clauses 2, 3 and 4
-   survive termination; the grant in clause 1 to recordings already delivered
-   is not revoked by termination.
+8. Term
+   The licence continues until terminated by either party. Clauses 2, 3, 4 and
+   5 survive termination.
 `;
 
 /**
@@ -66,10 +74,12 @@ export const LICENSE_PERMITTED = [
   "Commercial use, including in products you sell",
   "Research use, published or internal",
   "Training, fine-tuning and evaluating models",
-  "Retaining delivered recordings, and anything derived from them, indefinitely",
+  "Retaining delivered recordings, and anything derived from them, after a speaker withdraws",
 ] as const;
 
 export const LICENSE_PROHIBITED = [
   "Redistributing, resharing, sublicensing or reselling the audio",
   "Attempting to identify a speaker, or link a recording to any external record",
+  "Creating voice clones, replicas or generative reproductions identifiable as a speaker in the corpus",
+  "Retaining any copy after a breach of these terms, or after a written request from The Agentic Data Company",
 ] as const;
