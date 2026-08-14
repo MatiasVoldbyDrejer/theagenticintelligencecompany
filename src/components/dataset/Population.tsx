@@ -15,8 +15,8 @@ export default function Population({
 }) {
   return (
     <Section
-      id="population"
-      title="Speakers"
+      id="speaker-demographics"
+      title="Speaker demographics"
       intro="All fields self-reported at registration, before any recording, and never inferred from audio. Counts are speakers, not hours or conversations; the contribution chart at the end shows how delivered hours distribute across them."
     >
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
