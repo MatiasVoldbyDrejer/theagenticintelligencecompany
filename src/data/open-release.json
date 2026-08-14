@@ -550,8 +550,8 @@
   },
   "quality": [
     {
-      "title": "Human review",
-      "body": "A reviewer listens to each conversation and records language proficiency, an accent classification, and ratings for naturalness and expressivity. Conversations judged to be read or performed rather than spontaneous are rejected and not delivered."
+      "title": "Human linguistic QA",
+      "body": "A human reviews each conversation for language proficiency, accent classification, and ratings for naturalness and expressivity."
     },
     {
       "title": "Track alignment",
