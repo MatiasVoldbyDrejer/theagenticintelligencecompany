@@ -544,7 +544,6 @@
     "summary": "All audio was recorded on our own platform. No part of the corpus is scraped, licensed from a third party, or synthesised.",
     "points": [
       "Speakers register, give explicit consent before their first recording, and are paid for their time.",
-      "Consent is recorded per speaker and can be withdrawn; withdrawal ends further use of that speaker’s data.",
       "Demographics are self-reported at registration, before any recording, and are never inferred from audio.",
       "Speaker and conversation identifiers are pseudonymous and stable within the release. Names, contact details and account identifiers are not included."
     ]
