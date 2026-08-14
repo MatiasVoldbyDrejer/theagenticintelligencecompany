@@ -41,11 +41,11 @@ agreement that will govern access to the release.
    in the dataset.
 
 5. Retention
-   The licence to recordings delivered under this agreement is perpetual. A
+   The licence to the dataset delivered under this agreement is perpetual. A
    speaker may withdraw from the platform at any time; withdrawal ends further
    collection and further distribution of their recordings, and does not
-   require the recipient to delete or stop using recordings already received,
-   or anything derived from them.
+   require the recipient to delete or stop using any part of the dataset
+   already received, or anything derived from it.
 
    The recipient will permanently delete all copies of the dataset from its
    systems if it breaches this agreement, or on written request from The
@@ -74,12 +74,12 @@ export const LICENSE_PERMITTED = [
   "Commercial use, including in products you sell",
   "Research use, published or internal",
   "Training, fine-tuning and evaluating models",
-  "Retaining delivered recordings, and anything derived from them, after a speaker withdraws",
+  "Retaining the delivered dataset, and anything derived from it, after a speaker withdraws",
 ] as const;
 
 export const LICENSE_PROHIBITED = [
-  "Redistributing, resharing, sublicensing or reselling the audio",
+  "Redistributing, resharing, sublicensing or reselling the dataset or any part of it",
   "Attempting to identify a speaker, or link a recording to any external record",
   "Creating voice clones, replicas or generative reproductions identifiable as a speaker in the corpus",
-  "Retaining any copy after a breach of these terms, or after a written request from The Agentic Data Company",
+  "Retaining any copy of the dataset after a breach of these terms, or after a written request from The Agentic Data Company",
 ] as const;
