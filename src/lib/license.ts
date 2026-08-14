@@ -51,3 +51,24 @@ agreement that will govern access to the release.
    The licence continues until terminated by either party. Clauses 2, 3 and 4
    survive termination.
 `;
+
+/**
+ * Plain-language summary of LICENSE_TEXT for the Access section.
+ *
+ * Kept in this file so a change to the agreement and a change to what the page
+ * claims about it are the same edit. The agreement governs; this is a reading
+ * of it, not a substitute.
+ */
+export const LICENSE_PERMITTED = [
+  "Commercial use, including in products you sell",
+  "Research use, published or internal",
+  "Training, fine-tuning and evaluating models",
+  "Keeping model weights after a deletion notice",
+] as const;
+
+export const LICENSE_PROHIBITED = [
+  "Redistributing, resharing, sublicensing or reselling the audio",
+  "Depositing it in a public or third-party repository",
+  "Attempting to identify a speaker, or link a recording to any external record",
+  "Keeping identified recordings more than 30 days after a deletion notice",
+] as const;
