@@ -31,10 +31,11 @@ export default function Access({ license }: { license: DatasetSnapshot["license"
     <section id="access" className="scroll-mt-24 space-y-4">
       <h2 className={t.sectionTitle}>Access</h2>
       <p className={t.sectionIntro}>
-        The corpus is free for both commercial and research use. It is not a public download:
-        access is granted per recipient under a data use agreement. Speakers consented on the
-        basis that their recordings go to identified, contractually bound recipients, which is
-        what makes deletion on withdrawal enforceable after delivery.
+        This is a public release: it is not licensed exclusively, anyone may request it, and it
+        is free for both commercial and research use. It is not a public download — access is
+        granted per recipient under a data use agreement. Speakers consented on the basis that
+        their recordings go to identified, contractually bound recipients, which is what makes
+        deletion on withdrawal enforceable after delivery.
       </p>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
