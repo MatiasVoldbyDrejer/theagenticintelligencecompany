@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { recordAccessRequest } from "@/lib/access-record";
 import { NextRequest, NextResponse } from "next/server";
 import {
   JURISDICTION_ATTESTATION,
@@ -16,6 +17,10 @@ const FROM_EMAIL = (
 ).trim();
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+// Which release the request is for. One release today; the column exists so a
+// second one does not need a schema change.
+const DATASET_SLUG = "open-yap-1k";
 
 /**
  * Per-instance throttle. Serverless instances are not shared, so this bounds a
@@ -51,8 +56,13 @@ function escapeHtml(s: string): string {
  *
  * The acceptance record is the part that matters: the version AND a hash of the
  * exact agreement text served are captured alongside the answers, so what a
- * requester agreed to stays provable after the text is revised. Today that
- * record lives in the notification email; it is meant to move to a durable row.
+ * requester agreed to stays provable after the text is revised.
+ *
+ * The row is written BEFORE the email. A notification is a convenience and a
+ * send failure is recoverable; the record is the evidence and losing it is not.
+ * If the row cannot be written the request is rejected rather than accepted
+ * into an inbox alone - a requester told "we have it" when nothing was stored
+ * is worse than one asked to try again.
  */
 export async function POST(request: NextRequest) {
   let body: unknown;
@@ -115,10 +125,30 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "send_failed" }, { status: 502 });
   }
 
+  const userAgent = request.headers.get("user-agent") ?? "unknown";
   const sha = (text: string) => createHash("sha256").update(text).digest("hex");
   const licenseHash = sha(LICENSE_TEXT);
   const jurisdictionHash = sha(JURISDICTION_ATTESTATION);
-  const userAgent = request.headers.get("user-agent") ?? "unknown";
+
+  const { id: recordId, error: recordError } = await recordAccessRequest({
+    datasetSlug: DATASET_SLUG,
+    name,
+    role,
+    affiliation,
+    email,
+    purpose,
+    useCase,
+    licenseVersion: LICENSE_VERSION,
+    licenseSha256: licenseHash,
+    jurisdictionVersion: JURISDICTION_VERSION,
+    jurisdictionSha256: jurisdictionHash,
+    ip,
+    userAgent,
+  });
+  if (!recordId) {
+    console.error("[dataset-access] record failed:", recordError);
+    return NextResponse.json({ error: "record_failed" }, { status: 502 });
+  }
 
   const lines = [
     `Name:        ${name}`,
@@ -135,6 +165,7 @@ export async function POST(request: NextRequest) {
     `Version:     ${LICENSE_VERSION}`,
     `Text sha256: ${licenseHash}`,
     `Jurisdiction attestation: ${JURISDICTION_VERSION} (sha256 ${jurisdictionHash})`,
+    `Record:      ${recordId}`,
     `IP:          ${ip}`,
     `User agent:  ${userAgent}`,
   ];
