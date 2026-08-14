@@ -19,11 +19,11 @@ const dataset = snapshot as DatasetSnapshot;
 export const metadata: Metadata = {
   title: `${dataset.name} — The Agentic Data Company`,
   description: dataset.tagline,
-  alternates: { canonical: "/yap-1k" },
+  alternates: { canonical: "/open-yap-1k" },
   openGraph: {
     title: `${dataset.name} — The Agentic Data Company`,
     description: dataset.tagline,
-    url: "/yap-1k",
+    url: "/open-yap-1k",
     siteName: "The Agentic Data Company",
     type: "website",
   },

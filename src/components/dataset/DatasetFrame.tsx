@@ -47,7 +47,7 @@ export default function DatasetFrame({
           </div>
           {showCta && (
             <Link
-              href="/yap-1k/request"
+              href="/open-yap-1k/request"
               className="shrink-0 rounded-md bg-zinc-900 px-3.5 py-1.5 text-[13px] font-medium text-white transition-colors hover:bg-zinc-800"
             >
               Request access
