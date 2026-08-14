@@ -29,7 +29,7 @@ export default function Hero({ dataset }: { dataset: DatasetSnapshot }) {
             </h1>
             <div className="shrink-0">
               <Link
-                href="/dataset/request"
+                href="/yap-1k/request"
                 className="inline-flex rounded-md bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-800"
               >
                 Request access
@@ -39,7 +39,7 @@ export default function Hero({ dataset }: { dataset: DatasetSnapshot }) {
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-zinc-500">{dataset.tagline}</p>
           <div className="mt-5 flex flex-wrap items-center gap-3 text-sm">
             <Link
-              href="/dataset/license"
+              href="/yap-1k/license"
               className="text-zinc-700 underline decoration-zinc-300 underline-offset-4 transition-colors hover:text-zinc-900"
             >
               {dataset.license.name}

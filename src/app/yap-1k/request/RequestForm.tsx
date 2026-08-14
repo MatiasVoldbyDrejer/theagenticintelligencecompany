@@ -182,7 +182,7 @@ export default function RequestForm() {
         <span className="text-[13.5px] leading-6 text-zinc-700">
           I have read and agree to the{" "}
           <Link
-            href="/dataset/license"
+            href="/yap-1k/license"
             className="text-zinc-900 underline decoration-zinc-300 underline-offset-4"
           >
             {LICENSE_NAME}

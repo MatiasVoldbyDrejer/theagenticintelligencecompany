@@ -10,7 +10,7 @@ const dataset = snapshot as DatasetSnapshot;
 export const metadata: Metadata = {
   title: `${LICENSE_NAME} — ${dataset.name}`,
   description: `Terms governing access to ${dataset.name}.`,
-  alternates: { canonical: "/dataset/license" },
+  alternates: { canonical: "/yap-1k/license" },
 };
 
 /**

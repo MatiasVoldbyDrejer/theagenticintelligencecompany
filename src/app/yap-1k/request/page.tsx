@@ -10,7 +10,7 @@ const dataset = snapshot as DatasetSnapshot;
 export const metadata: Metadata = {
   title: `Request access to ${dataset.name}`,
   description: `Request free access to ${dataset.name} for commercial or research use.`,
-  alternates: { canonical: "/dataset/request" },
+  alternates: { canonical: "/yap-1k/request" },
   robots: { index: false, follow: true },
 };
 

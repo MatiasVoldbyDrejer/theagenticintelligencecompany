@@ -67,13 +67,13 @@ export default function Access({ license }: { license: DatasetSnapshot["license"
 
       <div className="flex flex-wrap items-center gap-4 pt-2">
         <Link
-          href="/dataset/request"
+          href="/yap-1k/request"
           className="rounded-md bg-zinc-900 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-zinc-800"
         >
           Request access
         </Link>
         <Link
-          href="/dataset/license"
+          href="/yap-1k/license"
           className="text-sm text-zinc-500 underline decoration-zinc-300 underline-offset-4 transition-colors hover:text-zinc-900"
         >
           Read the {license.name}

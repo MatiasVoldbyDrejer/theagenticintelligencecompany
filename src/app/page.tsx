@@ -83,7 +83,7 @@ export default function Home() {
             The first thousand hours are free. Read what is in them, and who can
             have them, on{" "}
             <Link
-              href="/dataset"
+              href="/yap-1k"
               className="underline decoration-black/25 underline-offset-4 transition-colors hover:decoration-black/60"
             >
               {DATASET_NAME}
