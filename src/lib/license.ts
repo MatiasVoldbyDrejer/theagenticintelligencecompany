@@ -28,8 +28,9 @@ the same terms to every recipient, at no charge, for both commercial and
 research use.
 
 1. Parties and acceptance
-   This agreement is between The Agentic Data Company [LEGAL REVIEW: registered
-   name, entity form, and registered address] ("the Company") and the
+   This agreement is between The Agentic Data Company, a Delaware corporation
+   with its registered office at 131 Continental Dr, Suite 305, Newark, New
+   Castle County, Delaware 19713, United States ("the Company") and the
    organisation on whose behalf access is requested ("the Recipient"). The
    person completing the access request confirms that they are authorised to
    accept these terms for the Recipient and that the information in the request
@@ -70,9 +71,10 @@ research use.
    modify the Dataset for commercial or research purposes, subject to this
    agreement. No fee is payable for the Dataset.
 
-   The licence is granted to the Recipient alone. An Affiliate of the Recipient
-   is not licensed and must request access separately, unless the Company
-   agrees otherwise in writing.
+   The licence extends to the Recipient's Affiliates. The Recipient remains
+   responsible for each Affiliate's compliance with this agreement, and a
+   breach by an Affiliate is a breach by the Recipient. An entity that ceases
+   to be an Affiliate stops being licensed, and clause 13 applies to it.
 
    The Company is under no obligation to deliver further data, to correct the
    Dataset, to support it, or to keep it available.
@@ -327,27 +329,25 @@ research use.
    asset sale except under a permitted assignment.
 
 21. Notices
-   Notices to the Company go to [LEGAL REVIEW: postal address and email address
-   for notices]. Notices to the Recipient go to the email address given in the
+   Notices to the Company go to The Agentic Data Company, 131 Continental Dr,
+   Suite 305, Newark, New Castle County, Delaware 19713, United States, and by
+   email to legal@theagenticdatacompany.com [LEGAL REVIEW: confirm this
+   mailbox exists and is monitored before publication]. Notices to the Recipient go to the email address given in the
    access request, or to a later address the Recipient gives the Company in
    writing. A notice sent by email is given when sent, unless the sender
    receives a delivery failure.
 
 22. Governing law and venue
-   [LEGAL REVIEW: deliberately left open, not defaulted. The Company is
-   incorporated in the United States and operated from Denmark, and recipients
-   are expected in several jurisdictions, so this is a real choice rather than
-   an oversight. One of the following has to be selected, and the governing law
-   and the venue should match:
+   This agreement is governed by the laws of the State of Delaware, United
+   States, without regard to its conflict of laws rules. The state and federal
+   courts sitting in Delaware have exclusive jurisdiction over any dispute
+   arising out of or relating to this agreement, and each party submits to that
+   jurisdiction. The United Nations Convention on Contracts for the
+   International Sale of Goods does not apply.
 
-   (a) the laws of the State of Delaware, USA, with exclusive jurisdiction in
-       the state and federal courts sitting in Delaware; or
-   (b) the laws of Denmark, with exclusive jurisdiction in the Copenhagen City
-       Court.
-
-   Whichever is chosen, the United Nations Convention on Contracts for the
-   International Sale of Goods should be excluded, and conflict of laws rules
-   that would apply another law should be excluded.]
+   Nothing in this clause limits any right a Speaker has under the data
+   protection law of their own jurisdiction, or any obligation the Company owes
+   under it.
 
 23. General
    This agreement, together with the access request and the export control

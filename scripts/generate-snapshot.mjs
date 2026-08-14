@@ -86,12 +86,12 @@ const snapshot = {
   description: [
     `${NAME} is a dataset of channel-separated English natural two-speaker conversations collected through The Agentic Data Company\u2019s platform. Conversations are between friends, family, partners, and colleagues. The conversations were recorded in diverse, real-world conditions, and microphones and environments vary across sessions. Each speaker\u2019s microphone is captured locally as uncompressed 16-bit PCM at 48 kHz.`,
 
-    'The dataset is intended for conversational/S2S, diarization, and audio understanding. It is released publicly to support research and integration into third-party products by downstream developers.',
+    'The dataset is intended for conversational/S2S, diarization, and audio understanding. It is released publicly to support research and the products its recipients build on it.',
   ].join('\n\n'),
   license: {
     name: 'Placeholder Data Use Agreement v0',
     summary:
-      'Free for commercial and research use under a signed data use agreement. No redistribution, no re-identification; delivered recordings are licensed perpetually.',
+      'Free for commercial and research use under a data use agreement. No redistribution, no re-identification; delivered recordings are licensed perpetually.',
   },
   stats: {
     conversations: CONVERSATIONS,
