@@ -66,7 +66,9 @@ const totalMinutes = speakerMinutes.reduce((a, b) => a + b, 0);
 const HOURS = Math.round(totalMinutes / 60);
 const TOTAL_WORDS = Math.round(HOURS * 9040);
 
-const NAME = 'Yap 1K';
+const NAME = 'Open Yap 1K';
+// Archive root follows the name, so the tree and the heading cannot disagree.
+const SLUG = NAME.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 const SPEAKERS = speakerMinutes.length;
 
 const conversationLength = metric(
@@ -329,7 +331,7 @@ const snapshot = {
 const domain = await import(`${YAPROOM_ROOT}/packages/domain/dist/index.js`);
 snapshot.metadataFields = domain.DATASET_METADATA_FIELDS;
 snapshot.fileStructure = [
-  'yap-1k/',
+  `${SLUG}/`,
   '  manifest.json',
   '  LICENSE.txt',
   '  conv_a1b2c3d4e5f6/',

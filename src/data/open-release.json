@@ -1,7 +1,7 @@
 {
-  "name": "Yap 1K",
+  "name": "Open Yap 1K",
   "tagline": "Channel-separated English natural two-speaker conversations",
-  "description": "Yap 1K is a dataset of channel-separated English natural two-speaker conversations collected through The Agentic Data Company’s platform. Conversations are between friends, family, partners, and colleagues. The conversations were recorded in diverse, real-world conditions, and microphones and environments vary across sessions. Each speaker’s microphone is captured locally as uncompressed 16-bit PCM at 48 kHz.\n\nThe dataset is intended for conversational/S2S, diarization, and audio understanding. It is released publicly to support research and integration into third-party products by downstream developers.",
+  "description": "Open Yap 1K is a dataset of channel-separated English natural two-speaker conversations collected through The Agentic Data Company’s platform. Conversations are between friends, family, partners, and colleagues. The conversations were recorded in diverse, real-world conditions, and microphones and environments vary across sessions. Each speaker’s microphone is captured locally as uncompressed 16-bit PCM at 48 kHz.\n\nThe dataset is intended for conversational/S2S, diarization, and audio understanding. It is released publicly to support research and integration into third-party products by downstream developers.",
   "captureMethod": {
     "summary": "Speakers hear each other over a WebRTC connection. The delivered audio does not come from that connection: each client captures its own microphone locally as 16-bit PCM at the sample rate the device reports, and uploads that file whole.",
     "points": [
@@ -93,7 +93,7 @@
         "narrowband": true
       },
       {
-        "name": "Yap 1K",
+        "name": "Open Yap 1K",
         "hours": 1020,
         "year": 2026,
         "capture": "Remote, per-speaker",
@@ -2995,5 +2995,5 @@
       "file": "conv_<id>/speaker_<a|b>_transcript.json"
     }
   ],
-  "fileStructure": "yap-1k/\n  manifest.json\n  LICENSE.txt\n  conv_a1b2c3d4e5f6/\n    meta.json\n    speaker_a.flac   (or .wav)\n    speaker_b.flac   (or .wav)\n    speaker_a_meta.json\n    speaker_b_meta.json\n    speaker_a_transcript.json\n    speaker_b_transcript.json\n  conv_7f3e9d014a6c/\n    ..."
+  "fileStructure": "open-yap-1k/\n  manifest.json\n  LICENSE.txt\n  conv_a1b2c3d4e5f6/\n    meta.json\n    speaker_a.flac   (or .wav)\n    speaker_b.flac   (or .wav)\n    speaker_a_meta.json\n    speaker_b_meta.json\n    speaker_a_transcript.json\n    speaker_b_transcript.json\n  conv_7f3e9d014a6c/\n    ..."
 }
