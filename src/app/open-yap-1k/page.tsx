@@ -11,7 +11,7 @@ import FileStructure from "@/components/dataset/FileStructure";
 import Hero from "@/components/dataset/Hero";
 import MetadataSchema from "@/components/dataset/MetadataSchema";
 import Population from "@/components/dataset/Population";
-import { ProseGrid, Provenance, Section } from "@/components/dataset/Sections";
+import { ProseGrid, Provenance, RuledColumns, Section } from "@/components/dataset/Sections";
 import StatsRow from "@/components/dataset/StatsRow";
 
 const dataset = snapshot as DatasetSnapshot;
@@ -56,6 +56,14 @@ export default function DatasetPage() {
       </Section>
 
       <Section
+        id="intended-use"
+        title="Intended use"
+        intro="What the structure of this data supports, and the property of the recording that makes each one possible."
+      >
+        <RuledColumns items={dataset.useCases} />
+      </Section>
+
+      <Section
         id="comparison"
         title="Comparable corpora"
         intro="Where this release sits among English conversational speech corpora by documented hours. Entries differ in recording structure and licence; both are given per row."
@@ -64,14 +72,6 @@ export default function DatasetPage() {
           entries={dataset.comparison.datasets}
           note={dataset.comparison.note}
         />
-      </Section>
-
-      <Section
-        id="use-cases"
-        title="Supported tasks"
-        intro="Tasks the structure of this data supports, and the property of the recording that makes each one possible."
-      >
-        <ProseGrid items={dataset.useCases} />
       </Section>
 
       <Provenance provenance={dataset.provenance} />

@@ -28,7 +28,7 @@ export function Section({
   );
 }
 
-/** Numbered prose blocks — capture method, QA, intended use. */
+/** Numbered prose blocks in filled cards. */
 export function ProseGrid({ items, numbered }: { items: Prose[]; numbered?: boolean }) {
   return (
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -99,3 +99,24 @@ export function VocabularyCard({
   );
 }
 
+
+/**
+ * Prose as columns on the canvas, ruled at the top.
+ *
+ * Deliberately not the card grid: this sits two sections below one, and a
+ * second grid of filled cards would read as more of the same list rather than a
+ * different kind of statement. No fill, no border box, no ordinals — the rule
+ * and the column do the work.
+ */
+export function RuledColumns({ items }: { items: Prose[] }) {
+  return (
+    <div className="grid grid-cols-1 gap-x-10 gap-y-8 md:grid-cols-3">
+      {items.map((p) => (
+        <div key={p.title} className="border-t border-zinc-900 pt-4">
+          <h3 className="text-sm font-medium text-zinc-900">{p.title}</h3>
+          <p className="mt-2 text-[13px] leading-6 text-zinc-700">{p.body}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
