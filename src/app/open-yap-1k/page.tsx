@@ -59,17 +59,6 @@ export default function DatasetPage() {
         <ProseGrid items={dataset.quality} numbered />
       </Section>
 
-      <Section
-        id="comparison"
-        title="Comparable corpora"
-        intro="Where this release sits among English conversational speech corpora by documented hours. Entries differ in recording structure and licence; both are given per row."
-      >
-        <ComparisonChart
-          entries={dataset.comparison.datasets}
-          note={dataset.comparison.note}
-        />
-      </Section>
-
       <Provenance provenance={dataset.provenance} />
 
       <MetadataSchema fields={dataset.metadataFields} />
@@ -81,6 +70,17 @@ export default function DatasetPage() {
         conformance={dataset.audio.conformance}
         note={dataset.audio.note}
       />
+
+      <Section
+        id="comparison"
+        title="Comparable corpora"
+        intro="Where this release sits among English conversational speech corpora by documented hours. Entries differ in recording structure and licence; both are given per row."
+      >
+        <ComparisonChart
+          entries={dataset.comparison.datasets}
+          note={dataset.comparison.note}
+        />
+      </Section>
 
       <Access license={dataset.license} />
     </DatasetFrame>
