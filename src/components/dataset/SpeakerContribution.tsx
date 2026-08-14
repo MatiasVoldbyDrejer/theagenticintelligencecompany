@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { t } from "./type";
+import { ACCENT, INK } from "./colors";
 
 const pct = (x: number) => `${(x * 100).toFixed(1)}%`;
 const round1 = (x: number) => Math.round(x * 10) / 10;
@@ -92,10 +93,11 @@ export default function SpeakerContribution({ minutes }: { minutes: number[] }) 
                 onPointerEnter={() => setHover(i)}
               >
                 <div
-                  className={`w-full transition-colors ${
-                    hover === i ? "bg-lilac-300" : "bg-zinc-900"
-                  }`}
-                  style={{ height: `${(v / max) * 100}%` }}
+                  className="w-full transition-colors"
+                  style={{
+                    height: `${(v / max) * 100}%`,
+                    background: hover === i ? ACCENT : INK,
+                  }}
                 />
               </div>
             ))}

@@ -3,11 +3,12 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { Sample } from "@/lib/dataset";
 import { t } from "./type";
+import { ACCENT, INK } from "./colors";
 
 // One colour per speaker, held across the waveform, the labels, and the
 // playhead — the whole point of the sample is that these are two separate
 // tracks, so they must never render as one blended signal.
-const INK = ["#18181b", "#7c6bb0"] as const;
+const TRACK_INK = [INK, ACCENT] as const;
 
 /**
  * Two-track sample player. Each speaker's audio is a separate element and the
@@ -136,7 +137,7 @@ export default function SamplePlayer({ samples }: { samples: Sample[] }) {
               key={i}
               peaks={peaks}
               progress={progress}
-              color={INK[i] ?? INK[0]}
+              color={TRACK_INK[i] ?? TRACK_INK[0]}
               label={i === 0 ? "Speaker A" : "Speaker B"}
               onSeek={seek}
             />

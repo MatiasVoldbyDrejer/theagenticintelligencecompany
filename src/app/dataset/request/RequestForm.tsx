@@ -59,7 +59,7 @@ export default function RequestForm() {
 
   if (status === "done") {
     return (
-      <div className="rounded-sm border border-zinc-200 bg-white px-6 py-12 text-center">
+      <div className="rounded-lg border border-zinc-200 bg-white px-6 py-12 text-center">
         <p className="text-sm font-medium text-zinc-900">Request received</p>
         <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-zinc-500">
           Thanks, {name.trim().split(/\s+/)[0] || "there"}. We read every request and will reply
@@ -72,7 +72,7 @@ export default function RequestForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
       {error && (
-        <div className="rounded-sm border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+        <div className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
           {error}
         </div>
       )}
@@ -120,7 +120,7 @@ export default function RequestForm() {
           ).map(([value, label, note]) => (
             <label
               key={value}
-              className={`cursor-pointer rounded-sm border px-4 py-3 transition-colors ${
+              className={`cursor-pointer rounded-md border px-4 py-3 transition-colors ${
                 purpose === value
                   ? "border-zinc-900 bg-white"
                   : "border-zinc-200 bg-white hover:border-zinc-300"
@@ -153,7 +153,7 @@ export default function RequestForm() {
           onChange={(e) => setUseCase(e.target.value)}
           rows={5}
           required
-          className="w-full rounded-sm border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 transition-colors placeholder:text-zinc-400 focus-visible:border-zinc-400 focus-visible:outline-none"
+          className="w-full rounded-md border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 transition-colors placeholder:text-zinc-400 focus-visible:border-zinc-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-900"
         />
       </Field>
 
@@ -171,7 +171,7 @@ export default function RequestForm() {
         </label>
       </div>
 
-      <label className="flex cursor-pointer items-start gap-3 rounded-sm border border-zinc-200 bg-white px-4 py-3.5">
+      <label className="flex cursor-pointer items-start gap-3 rounded-lg border border-zinc-200 bg-white px-4 py-3.5">
         <input
           type="checkbox"
           checked={accepted}
@@ -194,7 +194,7 @@ export default function RequestForm() {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="rounded-sm bg-zinc-900 px-5 py-2.5 text-sm font-medium text-zinc-50 transition-colors hover:bg-zinc-700 disabled:opacity-50"
+        className="rounded-md bg-zinc-900 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-zinc-800 disabled:opacity-50"
       >
         {status === "sending" ? "Sending…" : "Submit request"}
       </button>
@@ -249,7 +249,7 @@ function Input({
       required={required}
       placeholder={placeholder}
       autoComplete={autoComplete}
-      className="w-full rounded-sm border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 transition-colors placeholder:text-zinc-400 focus-visible:border-zinc-400 focus-visible:outline-none"
+      className="w-full rounded-md border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 transition-colors placeholder:text-zinc-400 focus-visible:border-zinc-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-900"
     />
   );
 }

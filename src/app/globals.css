@@ -7,14 +7,59 @@
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
   --color-paper: #fcfbf8;
   --color-ink: #111111;
-  --color-lilac-300: #c3b2f0;
 }
 
-/* The dataset pages are an instrument panel, not an essay: Geist for prose,
-   Geist Mono for every number, on the same warm paper as the manifesto. The
-   serif is reserved for prose. */
+/* ===========================================================================
+   Dataset pages.
+
+   Ported from the vendor portal's own theme so a recipient moving between the
+   two sees one surface. Tailwind utilities resolve their colours from CSS
+   variables, so remapping the neutral scale INSIDE this class re-themes every
+   component at once — cards, tables, charts, code blocks — without touching
+   them. The essay on the home page has no `.dataset` ancestor and is unaffected.
+
+   The neutrals are warm, not Tailwind's cool zinc: a paper-stack elevation
+   model where surfaces darken slightly as they nest, under a warm near-black.
+   =========================================================================== */
 .dataset {
+  --color-zinc-50: #f2f1ed; /* subtle fills / hovers */
+  --color-zinc-100: #ebeae5; /* dividers, chart tracks */
+  --color-zinc-200: #e6e5e0; /* hairline borders */
+  --color-zinc-300: #e1e0db; /* stronger borders */
+  --color-zinc-400: #9e9c93; /* faint / uppercase labels */
+  --color-zinc-500: #7b786f; /* muted body / labels */
+  --color-zinc-600: var(--color-zinc-500); /* folded: two body greys, not three */
+  --color-zinc-700: #46443b; /* body */
+  --color-zinc-800: #3b3a33; /* dark borders / surfaces */
+  --color-zinc-900: #26251e; /* headings, bars, buttons */
+  --color-zinc-950: #23221e; /* darkest surface (code bg) */
+
+  /* The one accent: hovered chart marks, the median caliper, the played half of
+     a waveform. Validated against both the canvas and the card surface. */
+  --color-accent: #0087ff;
+  --color-accent-soft: #a9d2f2;
+
+  --color-bg: #f7f7f4; /* warm bone canvas */
+  --color-ink: #26251e;
+  --radius-lg: 0.875rem; /* softer than the Tailwind default */
+
+  background: var(--color-bg);
+  color: var(--color-ink);
   font-family: var(--font-geist);
+}
+
+/* Its own colour, not the accent — a highlight that competed with hovered
+   chart marks would make the two read as the same signal. */
+.dataset ::selection {
+  background-color: #d8d8d4;
+}
+
+.dataset h1 {
+  letter-spacing: -0.03em;
+}
+
+.dataset h2 {
+  letter-spacing: -0.02em;
 }
 
 html,

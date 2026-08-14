@@ -28,7 +28,11 @@ export default function Population({
           orderedKeys={EDUCATION_ORDER}
         />
         <BarDistribution title="Native language" data={population.nativeLanguage} maxRows={8} />
-        <BarDistribution title="Birth country" data={population.birthCountry} maxRows={9} />
+        {/* Odd card out: full width rather than left alone beside a gap, and it
+            has the longest tail so the extra room is not wasted. */}
+        <div className="lg:col-span-2">
+          <BarDistribution title="Birth country" data={population.birthCountry} maxRows={10} />
+        </div>
       </div>
 
       <div className="pt-6">

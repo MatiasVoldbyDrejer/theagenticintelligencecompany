@@ -15,7 +15,7 @@ export default function Conformance({ checks }: { checks: ConformanceCheck[] }) 
         archive so the numbers below can be reproduced from the files themselves.
       </p>
 
-      <div className="overflow-hidden rounded-sm border border-zinc-200 bg-white">
+      <div className="overflow-hidden rounded-lg border border-zinc-200 bg-white">
         <div className="flex items-center gap-5 border-b border-zinc-100 px-5 py-2.5">
           <span className={`flex-1 ${t.eyebrow}`}>Check</span>
           <span className={`hidden w-40 shrink-0 sm:block ${t.eyebrow}`}>Threshold</span>

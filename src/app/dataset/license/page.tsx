@@ -29,11 +29,11 @@ export default function LicensePage() {
           </h1>
         </div>
 
-        <div className="rounded-sm border border-amber-200 bg-amber-50 px-4 py-3 text-[13px] leading-6 text-amber-900">
+        <div className="rounded-md border border-amber-200 bg-amber-50 px-4 py-3 text-[13px] leading-6 text-amber-900">
           Placeholder text. These are not the final terms and carry no legal effect.
         </div>
 
-        <div className="overflow-hidden rounded-sm border border-zinc-200 bg-white">
+        <div className="overflow-hidden rounded-lg border border-zinc-200 bg-white">
           <pre className="overflow-x-auto px-6 py-6 font-mono text-[13px] leading-6 text-zinc-700">
             {LICENSE_TEXT}
           </pre>

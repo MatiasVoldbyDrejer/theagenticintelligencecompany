@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import type { Distribution } from "@/lib/dataset";
 import { Card, CardHeader } from "./Card";
+import { ACCENT, INK } from "./colors";
 
 const OTHER = "Other";
 
@@ -107,11 +108,11 @@ export default function BarDistribution({
                 <div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-zinc-200" />
                 <div
                   className="absolute left-0 top-1/2 h-[3px] -translate-y-1/2 transition-colors"
-                  style={{ width: `${width}%`, background: on ? "#7c6bb0" : "#18181b" }}
+                  style={{ width: `${width}%`, background: on ? ACCENT : INK }}
                 />
                 <div
                   className="absolute top-1/2 h-2 w-px -translate-y-1/2 transition-colors"
-                  style={{ left: `${width}%`, background: on ? "#7c6bb0" : "#18181b" }}
+                  style={{ left: `${width}%`, background: on ? ACCENT : INK }}
                 />
               </div>
 

@@ -3,9 +3,7 @@
 import { useState } from "react";
 import type { ComparisonEntry } from "@/lib/dataset";
 import { Card, CardHeader } from "./Card";
-
-const INK = "#18181b";
-const ACCENT = "#7c6bb0";
+import { ACCENT, INK } from "./colors";
 
 /**
  * Delivered hours across comparable corpora.

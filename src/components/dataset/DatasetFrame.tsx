@@ -28,7 +28,7 @@ export default function DatasetFrame({
 }) {
   return (
     <div className="dataset relative z-10 min-h-dvh">
-      <header className="sticky top-0 z-30 border-b border-zinc-200/80 bg-paper/85 backdrop-blur-md">
+      <header className="sticky top-0 z-30 border-b border-zinc-200/80 bg-[var(--color-bg)]/85 backdrop-blur-md">
         <div className="mx-auto flex h-14 max-w-[1180px] items-center justify-between gap-4 px-5 sm:px-8">
           <div className="flex min-w-0 items-center gap-3">
             <Link href="/" className="shrink-0">
@@ -48,7 +48,7 @@ export default function DatasetFrame({
           {showCta && (
             <Link
               href="/dataset/request"
-              className="shrink-0 rounded-sm bg-zinc-900 px-3.5 py-1.5 text-[13px] font-medium text-zinc-50 transition-colors hover:bg-zinc-700"
+              className="shrink-0 rounded-md bg-zinc-900 px-3.5 py-1.5 text-[13px] font-medium text-white transition-colors hover:bg-zinc-800"
             >
               Request access
             </Link>

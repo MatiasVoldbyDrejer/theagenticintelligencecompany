@@ -68,7 +68,7 @@ export default function Access({ license }: { license: DatasetSnapshot["license"
       <div className="flex flex-wrap items-center gap-4 pt-2">
         <Link
           href="/dataset/request"
-          className="rounded-sm bg-zinc-900 px-5 py-2.5 text-sm font-medium text-zinc-50 transition-colors hover:bg-zinc-700"
+          className="rounded-md bg-zinc-900 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-zinc-800"
         >
           Request access
         </Link>

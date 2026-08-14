@@ -18,13 +18,13 @@ export default function Hero({ dataset }: { dataset: DatasetSnapshot }) {
       <div className="flex flex-wrap items-center gap-3">
         <Link
           href="/dataset/request"
-          className="rounded-sm bg-zinc-900 px-5 py-2.5 text-sm font-medium text-zinc-50 transition-colors hover:bg-zinc-700"
+          className="rounded-md bg-zinc-900 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-zinc-800"
         >
           Request access
         </Link>
         <Link
           href="/dataset/license"
-          className="rounded-sm border border-zinc-300 px-5 py-2.5 text-sm font-medium text-zinc-700 transition-colors hover:border-zinc-400 hover:text-zinc-900"
+          className="rounded-md border border-zinc-200 bg-white px-4 py-2.5 text-sm font-medium text-zinc-900 transition-colors hover:bg-zinc-50"
         >
           {dataset.license.name}
         </Link>

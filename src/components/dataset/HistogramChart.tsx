@@ -3,9 +3,8 @@
 import { useState, type ReactNode } from "react";
 import type { Metric } from "@/lib/dataset";
 import { Card, CardHeader } from "./Card";
+import { ACCENT, INK } from "./colors";
 import { t } from "./type";
-
-const ACCENT = "#7c6bb0";
 
 /**
  * A binned distribution as hoverable columns.
@@ -104,7 +103,7 @@ export default function HistogramChart({
                       // A populated bin never disappears — a 2px stub still reads
                       // as "some", where 0 height would read as "none".
                       height: count === 0 ? 0 : `max(2px, ${(count / max) * 100}%)`,
-                      background: on ? ACCENT : "#18181b",
+                      background: on ? ACCENT : INK,
                     }}
                   />
                 </div>
