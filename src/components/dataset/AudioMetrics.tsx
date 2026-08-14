@@ -39,7 +39,7 @@ export default function AudioMetrics({
             <div key={group.title} className="space-y-4">
               <div className="space-y-1.5">
                 <h3 className="text-[17px] font-medium text-zinc-900">{group.title}</h3>
-                <p className="max-w-3xl text-[13.5px] leading-6 text-zinc-700">
+                <p className="text-[13.5px] leading-6 text-zinc-700">
                   {group.description}
                 </p>
               </div>
