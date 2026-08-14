@@ -83,3 +83,19 @@ export const LICENSE_PROHIBITED = [
   "Creating voice clones, replicas or generative reproductions identifiable as a speaker in the corpus",
   "Retaining any copy of the dataset after a breach of these terms, or after a written request from The Agentic Data Company",
 ] as const;
+
+/**
+ * Export-control attestation, agreed separately from the data use agreement.
+ *
+ * Versioned like the agreement: the acceptance record stores this version, so a
+ * later revision cannot be mistaken for what a given requester attested to.
+ */
+export const JURISDICTION_VERSION = "ofac-v1";
+
+export const JURISDICTION_ATTESTATION =
+  "I confirm that I am not located in, and will not access this dataset from, any " +
+  "jurisdiction subject to comprehensive US economic sanctions administered by the " +
+  "Office of Foreign Assets Control (OFAC), including Cuba, Iran, North Korea, Syria, " +
+  "and the Crimea, Donetsk, and Luhansk regions of Ukraine. I further confirm that I am " +
+  "not located in, and will not access this dataset from, China, Russia, or Belarus, and " +
+  "that I am not listed on any US government restricted party list.";

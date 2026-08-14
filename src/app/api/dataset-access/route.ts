@@ -1,6 +1,12 @@
 import { createHash } from "node:crypto";
 import { NextRequest, NextResponse } from "next/server";
-import { LICENSE_NAME, LICENSE_TEXT, LICENSE_VERSION } from "@/lib/license";
+import {
+  JURISDICTION_ATTESTATION,
+  JURISDICTION_VERSION,
+  LICENSE_NAME,
+  LICENSE_TEXT,
+  LICENSE_VERSION,
+} from "@/lib/license";
 
 const NOTIFY_EMAIL = (
   process.env.DATASET_ACCESS_NOTIFY_EMAIL ?? "matias@theagenticdatacompany.com"
@@ -69,10 +75,14 @@ export async function POST(request: NextRequest) {
   const purpose = clean(f.purpose, 20);
   const useCase = clean(f.useCase, 4000);
   const accepted = f.acceptedLicense === true;
+  const confirmedJurisdiction = f.confirmedJurisdiction === true;
 
-  if (!name || !affiliation || !useCase || !EMAIL_RE.test(email)) {
+  if (!name || !role || !affiliation || !useCase || !EMAIL_RE.test(email)) {
     return NextResponse.json(
-      { error: "Please fill in your name, affiliation, a valid email, and your intended use." },
+      {
+        error:
+          "Please fill in your name, role, affiliation, a valid email, and your intended use.",
+      },
       { status: 400 },
     );
   }
@@ -82,6 +92,12 @@ export async function POST(request: NextRequest) {
   if (!accepted) {
     return NextResponse.json(
       { error: "Please accept the data use agreement." },
+      { status: 400 },
+    );
+  }
+  if (!confirmedJurisdiction) {
+    return NextResponse.json(
+      { error: "Please confirm the jurisdiction and restricted-party statement." },
       { status: 400 },
     );
   }
@@ -99,12 +115,14 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "send_failed" }, { status: 502 });
   }
 
-  const licenseHash = createHash("sha256").update(LICENSE_TEXT).digest("hex");
+  const sha = (text: string) => createHash("sha256").update(text).digest("hex");
+  const licenseHash = sha(LICENSE_TEXT);
+  const jurisdictionHash = sha(JURISDICTION_ATTESTATION);
   const userAgent = request.headers.get("user-agent") ?? "unknown";
 
   const lines = [
     `Name:        ${name}`,
-    `Role:        ${role || "-"}`,
+    `Role:        ${role}`,
     `Affiliation: ${affiliation}`,
     `Email:       ${email}`,
     `Purpose:     ${purpose}`,
@@ -116,6 +134,7 @@ export async function POST(request: NextRequest) {
     `Agreement:   ${LICENSE_NAME}`,
     `Version:     ${LICENSE_VERSION}`,
     `Text sha256: ${licenseHash}`,
+    `Jurisdiction attestation: ${JURISDICTION_VERSION} (sha256 ${jurisdictionHash})`,
     `IP:          ${ip}`,
     `User agent:  ${userAgent}`,
   ];

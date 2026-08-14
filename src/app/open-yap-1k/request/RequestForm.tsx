@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState, type FormEvent, type ReactNode } from "react";
-import { LICENSE_NAME } from "@/lib/license";
+import { JURISDICTION_ATTESTATION, LICENSE_NAME } from "@/lib/license";
 import { t } from "@/components/dataset/type";
 
 const FALLBACK_EMAIL = "matias@theagenticdatacompany.com";
@@ -19,6 +19,7 @@ export default function RequestForm() {
   const [purpose, setPurpose] = useState<"research" | "commercial" | "">("");
   const [useCase, setUseCase] = useState("");
   const [accepted, setAccepted] = useState(false);
+  const [confirmedJurisdiction, setConfirmedJurisdiction] = useState(false);
   const [website, setWebsite] = useState("");
 
   async function handleSubmit(e: FormEvent) {
@@ -37,6 +38,7 @@ export default function RequestForm() {
           purpose,
           useCase,
           acceptedLicense: accepted,
+          confirmedJurisdiction,
           website,
         }),
       });
@@ -81,10 +83,11 @@ export default function RequestForm() {
         <Field label="Name">
           <Input value={name} onChange={setName} required autoComplete="name" />
         </Field>
-        <Field label="Role" optional>
+        <Field label="Role">
           <Input
             value={role}
             onChange={setRole}
+            required
             placeholder="Research scientist, ML engineer…"
             autoComplete="organization-title"
           />
@@ -171,15 +174,8 @@ export default function RequestForm() {
         </label>
       </div>
 
-      <label className="flex cursor-pointer items-start gap-3 rounded-sm border border-zinc-200 bg-white px-4 py-3.5">
-        <input
-          type="checkbox"
-          checked={accepted}
-          onChange={(e) => setAccepted(e.target.checked)}
-          required
-          className="mt-0.5 h-3.5 w-3.5 shrink-0 accent-zinc-900"
-        />
-        <span className="text-[13.5px] leading-6 text-zinc-700">
+      <div className="space-y-3">
+        <Consent checked={accepted} onChange={setAccepted}>
           I have read and agree to the{" "}
           <Link
             href="/open-yap-1k/license"
@@ -188,8 +184,11 @@ export default function RequestForm() {
             {LICENSE_NAME}
           </Link>
           , including its no-redistribution and no-re-identification terms.
-        </span>
-      </label>
+        </Consent>
+        <Consent checked={confirmedJurisdiction} onChange={setConfirmedJurisdiction}>
+          {JURISDICTION_ATTESTATION}
+        </Consent>
+      </div>
 
       <button
         type="submit"
@@ -251,5 +250,30 @@ function Input({
       autoComplete={autoComplete}
       className="w-full rounded-md border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 transition-colors placeholder:text-zinc-400 focus-visible:border-zinc-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-zinc-900"
     />
+  );
+}
+
+/** A required attestation. Unchecked by default, and the whole box is the hit
+ *  target so the long ones do not demand a click on a 14px square. */
+function Consent({
+  checked,
+  onChange,
+  children,
+}: {
+  checked: boolean;
+  onChange: (v: boolean) => void;
+  children: ReactNode;
+}) {
+  return (
+    <label className="flex cursor-pointer items-start gap-3 rounded-sm border border-zinc-200 bg-white px-4 py-3.5">
+      <input
+        type="checkbox"
+        checked={checked}
+        onChange={(e) => onChange(e.target.checked)}
+        required
+        className="mt-1 h-3.5 w-3.5 shrink-0 accent-zinc-900"
+      />
+      <span className="text-[13.5px] leading-6 text-zinc-700">{children}</span>
+    </label>
   );
 }
