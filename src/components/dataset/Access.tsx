@@ -40,7 +40,7 @@ export default function Access({ license }: { license: DatasetSnapshot["license"
         {STEPS.map((s, i) => (
           <div key={s.title} className="rounded-sm border border-zinc-200 bg-white p-5">
             <div className="flex items-baseline gap-2.5">
-              <span className="font-mono text-[11px] tabular-nums text-zinc-300">
+              <span className="font-mono text-[11px] tabular-nums text-zinc-700">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <h3 className={t.cardTitle}>{s.title}</h3>

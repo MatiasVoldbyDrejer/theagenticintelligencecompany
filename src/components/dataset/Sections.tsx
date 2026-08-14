@@ -36,7 +36,7 @@ export function ProseGrid({ items, numbered }: { items: Prose[]; numbered?: bool
         <Card key={p.title} className="p-5">
           <div className="flex items-baseline gap-2.5">
             {numbered && (
-              <span className="font-mono text-[11px] tabular-nums text-zinc-300">
+              <span className="font-mono text-[11px] tabular-nums text-zinc-700">
                 {String(i + 1).padStart(2, "0")}
               </span>
             )}
