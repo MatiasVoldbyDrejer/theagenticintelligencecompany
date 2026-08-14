@@ -107,11 +107,7 @@ const snapshot = {
   },
   overview: [
     { detail: 'Speakers per recording', value: '2' },
-    {
-      detail: 'Channels',
-      value: 'Dual-channel recording, delivered as one mono file per speaker',
-      note: 'not source-separated',
-    },
+    { detail: 'Channels', value: 'Dual (one file per speaker)' },
     { detail: 'Audio format', value: '.flac / .wav', chip: true },
     { detail: 'Sample rate', value: '48 kHz', chip: true, note: 'native capture' },
     { detail: 'Bit depth', value: '16-bit PCM', chip: true },
