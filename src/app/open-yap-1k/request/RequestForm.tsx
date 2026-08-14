@@ -187,7 +187,7 @@ export default function RequestForm() {
           >
             {LICENSE_NAME}
           </Link>
-          , including its no-redistribution and deletion-on-notice terms.
+          , including its no-redistribution and no-re-identification terms.
         </span>
       </label>
 

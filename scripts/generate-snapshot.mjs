@@ -91,7 +91,7 @@ const snapshot = {
   license: {
     name: 'Placeholder Data Use Agreement v0',
     summary:
-      'Free for commercial and research use under a signed data use agreement. No redistribution, no re-identification, deletion on notice.',
+      'Free for commercial and research use under a signed data use agreement. No redistribution, no re-identification; delivered recordings are licensed perpetually.',
   },
   stats: {
     conversations: CONVERSATIONS,

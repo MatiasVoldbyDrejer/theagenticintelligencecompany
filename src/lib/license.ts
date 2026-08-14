@@ -6,10 +6,11 @@
  * place, because an acceptance record points at a version and a hash and both
  * have to keep resolving to what the person actually read.
  *
- * Two clauses are load-bearing rather than boilerplate: deletion on notice, and
- * no redistribution. They are what makes a gated release compatible with
- * speaker consent — recipients stay identified and accountable, so audio can
- * still be withdrawn after it has been handed over.
+ * The retention clause is load-bearing rather than boilerplate. A recording
+ * licensed under this agreement is not retractable: withdrawal by a speaker
+ * stops further collection and further distribution, and does not reach
+ * recordings already delivered. A recipient needs that stated plainly before
+ * they build on the corpus.
  */
 export const LICENSE_VERSION = "placeholder-v0";
 
@@ -34,11 +35,12 @@ agreement that will govern access to the release.
    The recipient may not attempt to identify any speaker in the dataset, nor
    link any recording or metadata to any external identifier or record.
 
-4. Deletion on notice
-   A speaker may withdraw at any time. On written notice, the recipient will
-   delete the identified recordings from all systems, including backups and
-   derived intermediate artefacts, within thirty days, and confirm in writing.
-   Trained model weights are not required to be deleted.
+4. Retention
+   The licence to recordings delivered under this agreement is perpetual. A
+   speaker may withdraw from the platform at any time; withdrawal ends further
+   collection and further distribution of their recordings, and does not
+   require the recipient to delete or stop using recordings already received,
+   or anything derived from them.
 
 5. Security
    The recipient will hold the dataset under access controls no weaker than
@@ -49,7 +51,8 @@ agreement that will govern access to the release.
 
 7. Term
    The licence continues until terminated by either party. Clauses 2, 3 and 4
-   survive termination.
+   survive termination; the grant in clause 1 to recordings already delivered
+   is not revoked by termination.
 `;
 
 /**
@@ -63,11 +66,10 @@ export const LICENSE_PERMITTED = [
   "Commercial use, including in products you sell",
   "Research use, published or internal",
   "Training, fine-tuning and evaluating models",
-  "Keeping model weights after a deletion notice",
+  "Retaining delivered recordings, and anything derived from them, indefinitely",
 ] as const;
 
 export const LICENSE_PROHIBITED = [
   "Redistributing, resharing, sublicensing or reselling the audio",
   "Attempting to identify a speaker, or link a recording to any external record",
-  "Keeping identified recordings more than 30 days after a deletion notice",
 ] as const;
