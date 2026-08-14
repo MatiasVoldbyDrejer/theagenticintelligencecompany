@@ -43,6 +43,10 @@ export default function DatasetPage() {
 
       <DataOverview description={dataset.description} rows={dataset.overview} />
 
+      <Section id="intended-use" title="Intended use">
+        <IconColumns items={dataset.useCases} />
+      </Section>
+
       <Population population={dataset.population} speakerMinutes={dataset.speakerMinutes} />
 
       <DataCards data={dataset.data} />
@@ -53,10 +57,6 @@ export default function DatasetPage() {
         intro="Three checks run before a conversation is eligible for delivery. A conversation that fails any of them is excluded from the release rather than shipped flagged."
       >
         <ProseGrid items={dataset.quality} numbered />
-      </Section>
-
-      <Section id="intended-use" title="Intended use">
-        <IconColumns items={dataset.useCases} />
       </Section>
 
       <Section
