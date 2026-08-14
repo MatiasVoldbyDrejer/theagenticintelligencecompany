@@ -46,7 +46,7 @@ export default function Access({ license }: { license: DatasetSnapshot["license"
               </span>
               <h3 className={t.cardTitle}>{s.title}</h3>
             </div>
-            <p className="mt-2 text-[13px] leading-5 text-zinc-500">{s.body}</p>
+            <p className="mt-2 text-[13px] leading-5 text-zinc-700">{s.body}</p>
           </div>
         ))}
       </div>
@@ -57,7 +57,7 @@ export default function Access({ license }: { license: DatasetSnapshot["license"
         </div>
         <ul className="grid grid-cols-1 gap-x-8 px-5 py-4 sm:grid-cols-2">
           {ASKS.map((a) => (
-            <li key={a} className="flex items-start gap-2.5 py-1.5 text-sm text-zinc-600">
+            <li key={a} className="flex items-start gap-2.5 py-1.5 text-sm text-zinc-700">
               <span aria-hidden className="mt-2 h-px w-3 shrink-0 bg-zinc-300" />
               {a}
             </li>

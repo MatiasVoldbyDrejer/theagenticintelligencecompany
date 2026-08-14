@@ -112,7 +112,7 @@ export default function ComparisonChart({
       </div>
 
       <div className="border-t border-zinc-100 px-5 py-3.5">
-        <p className="text-[12.5px] leading-5 text-zinc-500">{note}</p>
+        <p className="text-[12.5px] leading-5 text-zinc-700">{note}</p>
       </div>
     </Card>
   );

@@ -42,7 +42,7 @@ export function ProseGrid({ items, numbered }: { items: Prose[]; numbered?: bool
             )}
             <h3 className="text-sm font-medium text-zinc-900">{p.title}</h3>
           </div>
-          <p className="mt-2 text-[13px] leading-6 text-zinc-500">{p.body}</p>
+          <p className="mt-2 text-[13px] leading-6 text-zinc-700">{p.body}</p>
         </Card>
       ))}
     </div>
@@ -57,7 +57,7 @@ export function Provenance({ provenance }: { provenance: DatasetSnapshot["proven
           {provenance.points.map((point, i) => (
             <li
               key={point}
-              className={`flex items-start gap-3 py-3 text-[13.5px] leading-6 text-zinc-600 ${
+              className={`flex items-start gap-3 py-3 text-[13.5px] leading-6 text-zinc-700 ${
                 i === provenance.points.length - 1 ? "" : "border-b border-zinc-100"
               }`}
             >

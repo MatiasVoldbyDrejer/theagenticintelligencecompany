@@ -126,7 +126,7 @@ export default function HistogramChart({
         </div>
 
         {metric.note && (
-          <p className="mt-3 text-[12.5px] leading-5 text-zinc-400">{metric.note}</p>
+          <p className="mt-3 text-[12.5px] leading-5 text-zinc-700">{metric.note}</p>
         )}
       </div>
     </Card>

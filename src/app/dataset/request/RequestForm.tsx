@@ -61,7 +61,7 @@ export default function RequestForm() {
     return (
       <div className="rounded-sm border border-zinc-200 bg-white px-6 py-12 text-center">
         <p className="text-sm font-medium text-zinc-900">Request received</p>
-        <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-zinc-500">
+        <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-zinc-700">
           Thanks, {name.trim().split(/\s+/)[0] || "there"}. We read every request and will reply
           to <span className="text-zinc-900">{email}</span> either way.
         </p>
@@ -138,7 +138,7 @@ export default function RequestForm() {
                 />
                 <span className="text-sm font-medium text-zinc-900">{label}</span>
               </div>
-              <p className="mt-1 pl-6 text-[12.5px] text-zinc-500">{note}</p>
+              <p className="mt-1 pl-6 text-[12.5px] text-zinc-700">{note}</p>
             </label>
           ))}
         </div>
@@ -179,7 +179,7 @@ export default function RequestForm() {
           required
           className="mt-0.5 h-3.5 w-3.5 shrink-0 accent-zinc-900"
         />
-        <span className="text-[13.5px] leading-6 text-zinc-600">
+        <span className="text-[13.5px] leading-6 text-zinc-700">
           I have read and agree to the{" "}
           <Link
             href="/dataset/license"

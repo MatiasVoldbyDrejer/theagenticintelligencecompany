@@ -17,5 +17,5 @@ export const t = {
   eyebrow:
     "font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-zinc-400",
 
-  sectionIntro: "max-w-3xl text-sm leading-6 text-zinc-500",
+  sectionIntro: "max-w-3xl text-sm leading-6 text-zinc-700",
 } as const;
