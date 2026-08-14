@@ -1,6 +1,6 @@
 {
-  "name": "Open Corpus 1K",
-  "tagline": "1,020 hours of unscripted English dyadic conversation. Each speaker on a separate uncompressed 48 kHz track, aligned to a shared timeline.",
+  "name": "Yap 1K",
+  "tagline": "Channel-separated English natural two-speaker conversations",
   "description": "Speakers recruited on our own platform selected their own conversation partner rather than being paired with a stranger; the resulting relationship distribution is reported below. No topic was assigned and no script was used. The two speakers were in separate physical locations, each recording at home on their own device.\n\nEach speaker's microphone is captured locally and delivered as a separate mono track. The two tracks of a conversation share a start reference and an identical sample count, so sample index n denotes the same instant on both, and simultaneous speech is preserved rather than summed into one channel.",
   "captureMethod": {
     "summary": "Speakers hear each other over a WebRTC connection. The delivered audio does not come from that connection: each client captures its own microphone locally as 16-bit PCM at the sample rate the device reports, and uploads that file whole.",
@@ -93,7 +93,7 @@
         "narrowband": true
       },
       {
-        "name": "Open Corpus 1K",
+        "name": "Yap 1K",
         "hours": 1020,
         "year": 2026,
         "capture": "Remote, per-speaker",
@@ -2995,5 +2995,5 @@
       "file": "conv_<id>/speaker_<a|b>_transcript.json"
     }
   ],
-  "fileStructure": "open-corpus-1k/\n  manifest.json\n  LICENSE.txt\n  conv_a1b2c3d4e5f6/\n    meta.json\n    speaker_a.flac   (or .wav)\n    speaker_b.flac   (or .wav)\n    speaker_a_meta.json\n    speaker_b_meta.json\n    speaker_a_transcript.json\n    speaker_b_transcript.json\n  conv_7f3e9d014a6c/\n    ..."
+  "fileStructure": "yap-1k/\n  manifest.json\n  LICENSE.txt\n  conv_a1b2c3d4e5f6/\n    meta.json\n    speaker_a.flac   (or .wav)\n    speaker_b.flac   (or .wav)\n    speaker_a_meta.json\n    speaker_b_meta.json\n    speaker_a_transcript.json\n    speaker_b_transcript.json\n  conv_7f3e9d014a6c/\n    ..."
 }

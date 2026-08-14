@@ -67,9 +67,8 @@ const HOURS = Math.round(totalMinutes / 60);
 const TOTAL_WORDS = Math.round(HOURS * 9040);
 
 const snapshot = {
-  name: 'Open Corpus 1K',
-  tagline:
-    `${HOURS.toLocaleString()} hours of unscripted English dyadic conversation. Each speaker on a separate uncompressed 48 kHz track, aligned to a shared timeline.`,
+  name: 'Yap 1K',
+  tagline: 'Channel-separated English natural two-speaker conversations',
   description:
     `Speakers recruited on our own platform selected their own conversation partner rather than being paired with a stranger; the resulting relationship distribution is reported below. No topic was assigned and no script was used. The two speakers were in separate physical locations, each recording at home on their own device.\n\nEach speaker's microphone is captured locally and delivered as a separate mono track. The two tracks of a conversation share a start reference and an identical sample count, so sample index n denotes the same instant on both, and simultaneous speech is preserved rather than summed into one channel.`,
   captureMethod: {
@@ -121,7 +120,7 @@ const snapshot = {
     note: 'English conversational speech corpora commonly used as reference points, by documented hours. Structure differs across entries — AMI is multi-party, DailyTalk is acted, SpokenWOZ is task-oriented — see the capture column. Telephone-band corpora carry roughly 3.4 kHz of usable speech regardless of the container they ship in, so hours are not directly comparable across the two groups.',
     datasets: [
       { name: 'Fisher English', hours: 2000, year: 2004, capture: 'Telephone', license: 'LDC paid', narrowband: true },
-      { name: 'Open Corpus 1K', hours: HOURS, year: 2026, capture: 'Remote, per-speaker', license: 'Free, DUA', narrowband: false, ours: true },
+      { name: 'Yap 1K', hours: HOURS, year: 2026, capture: 'Remote, per-speaker', license: 'Free, DUA', narrowband: false, ours: true },
       { name: 'CANDOR', hours: 850, year: 2023, capture: 'Video chat', license: 'CC-BY-NC-4.0', narrowband: false },
       { name: 'otoSpeech full-duplex', hours: 280, year: 2026, capture: 'Two-speaker', license: 'CC-BY-4.0', narrowband: false },
       { name: 'Switchboard-1', hours: 260, year: 1993, capture: 'Telephone', license: 'LDC paid', narrowband: true },
@@ -322,7 +321,7 @@ const snapshot = {
 const domain = await import(`${YAPROOM_ROOT}/packages/domain/dist/index.js`);
 snapshot.metadataFields = domain.DATASET_METADATA_FIELDS;
 snapshot.fileStructure = [
-  'open-corpus-1k/',
+  'yap-1k/',
   '  manifest.json',
   '  LICENSE.txt',
   '  conv_a1b2c3d4e5f6/',
