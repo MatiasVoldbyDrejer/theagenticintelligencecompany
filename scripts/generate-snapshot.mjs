@@ -109,7 +109,7 @@ const snapshot = {
     { detail: 'Speakers per recording', value: '2' },
     {
       detail: 'Channels',
-      value: 'One file per speaker, captured independently',
+      value: 'Dual-channel recording, delivered as one mono file per speaker',
       note: 'not source-separated',
     },
     { detail: 'Audio format', value: '.flac / .wav', chip: true },

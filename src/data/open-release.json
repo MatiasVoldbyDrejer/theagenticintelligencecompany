@@ -40,7 +40,7 @@
     },
     {
       "detail": "Channels",
-      "value": "One file per speaker, captured independently",
+      "value": "Dual-channel recording, delivered as one mono file per speaker",
       "note": "not source-separated"
     },
     {
