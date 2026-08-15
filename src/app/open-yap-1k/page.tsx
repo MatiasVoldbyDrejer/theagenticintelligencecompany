@@ -17,6 +17,14 @@ import StatsRow from "@/components/dataset/StatsRow";
 
 const dataset = snapshot as DatasetSnapshot;
 
+/**
+ * The claim is deliberately narrow - publicly available, licensed for commercial
+ * use, natural two-speaker English - because that is the form a reader can check
+ * against the table directly beneath it. Larger corpora exist and each fails one
+ * of those three; the grounds are in the chart's own note.
+ */
+const COMPARISON_INTRO = `${dataset.name} is the largest publicly available dataset of natural two-speaker English conversation, licensed for commercial use. Scientific progress is a collective effort, and we believe we’ll most effectively advance it by collaborating with the wider community of researchers and builders.`;
+
 export const metadata: Metadata = {
   title: `${dataset.name} - The Agentic Data Company`,
   description: dataset.tagline,
@@ -72,11 +80,7 @@ export default function DatasetPage() {
 
       <FileStructure tree={dataset.fileStructure} />
 
-      <Section
-        id="comparison"
-        title="Comparable corpora"
-        intro="Where this release sits among English conversational speech corpora by documented hours. Entries differ in recording structure and licence; both are given per row."
-      >
+      <Section id="comparison" title="Comparable datasets" intro={COMPARISON_INTRO}>
         <ComparisonChart
           entries={dataset.comparison.datasets}
           note={dataset.comparison.note}

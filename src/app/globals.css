@@ -8,6 +8,12 @@
   --color-paper: #fcfbf8;
   --color-bg: #fcfbf8;
   --color-ink: #111111;
+
+  /* Site bar and footer. Their own pair, declared outside `.dataset` and never
+     remapped by it, so the chrome reads identically over the essay's paper and
+     the dataset page's bone. */
+  --color-chrome: #3c3830;
+  --color-chrome-muted: #6b6860; /* 5.4:1 on paper — the muted half still has to be read */
 }
 
 /* ===========================================================================
@@ -49,7 +55,10 @@
   --color-ink: #26251e;
   --radius-lg: 0.875rem; /* softer than the Tailwind default */
 
-  background: var(--color-bg);
+  /* No background of its own. The canvas is painted by the page, so that the
+     grain under the content layer reaches this surface too — an opaque fill
+     here would cover the grain and leave a step wherever the page ends and the
+     footer begins. The route sets `--color-paper` to match `--color-bg`. */
   color: var(--color-ink);
   font-family: var(--font-geist);
 }
@@ -125,15 +134,29 @@ body {
   position: relative;
 }
 
-body::before {
+/* The grain multiplies over the page background but is painted UNDER the content
+   layer, so any opaque surface above it comes out flat while the page around it
+   is tinted. A bar the reader expects to be the page colour has to carry the
+   same grain, or the difference shows as a seam along its bottom edge. Both
+   start their tile at the viewport origin, so the two are in phase. */
+body::before,
+.grain::after {
   content: "";
-  position: fixed;
-  inset: 0;
   pointer-events: none;
-  z-index: 0;
   opacity: 0.035;
   mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.7 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+.grain::after {
+  position: absolute;
+  inset: 0;
 }
 
 @keyframes rise {

@@ -1,14 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import snapshot from "@/data/open-release.json";
-import { Waveform } from "./waveform";
 
 const DATASET_NAME = snapshot.name;
 
 export default function Home() {
   return (
     <main className="relative z-10 min-h-dvh font-serif">
-      <div className="mx-auto w-full max-w-[600px] px-6 pt-[112px] pb-24 sm:px-0">
+      <div className="mx-auto w-full max-w-[600px] px-6 pt-[58px] sm:px-0">
         <div className="flex justify-center rise" style={{ ["--rise-delay" as string]: "0ms" }}>
           <Image
             src="/logo.png"
@@ -27,7 +26,20 @@ export default function Home() {
           The Agentic Data Company
         </h1>
 
-        <div className="mt-[68px] space-y-[30px] text-[20px] leading-[30px] [&>p]:rise [&>p:nth-child(1)]:[--rise-delay:420ms] [&>p:nth-child(2)]:[--rise-delay:520ms] [&>p:nth-child(3)]:[--rise-delay:600ms] [&>p:nth-child(4)]:[--rise-delay:680ms] [&>p:nth-child(5)]:[--rise-delay:760ms] [&>p:nth-child(6)]:[--rise-delay:840ms]">
+        <Link
+          href="/open-yap-1k"
+          className="rise mt-[26px] flex items-center justify-center gap-2.5 font-sans decoration-black/25 underline-offset-4 hover:underline"
+          style={{ ["--rise-delay" as string]: "300ms" }}
+        >
+          <span className="rounded-full bg-black/5 px-2 py-1 text-[10px] leading-none font-medium tracking-[0.08em] text-chrome">
+            NEW
+          </span>
+          <span className="text-[15px] leading-6 text-chrome">
+            {DATASET_NAME}: Publicly available dataset
+          </span>
+        </Link>
+
+        <div className="mt-[52px] space-y-[30px] text-[20px] leading-[30px] [&>p]:rise [&>p:nth-child(1)]:[--rise-delay:420ms] [&>p:nth-child(2)]:[--rise-delay:520ms] [&>p:nth-child(3)]:[--rise-delay:600ms] [&>p:nth-child(4)]:[--rise-delay:680ms] [&>p:nth-child(5)]:[--rise-delay:760ms] [&>p:nth-child(6)]:[--rise-delay:840ms]">
           <p>
             The interface between humans and computers is changing. For sixty
             years, people have communicated with machines through keyboards,
@@ -74,38 +86,6 @@ export default function Home() {
             building the company equal to it.
           </p>
         </div>
-
-        <div
-          className="rise mt-[68px] border-t border-black/10 pt-[30px] text-[20px] leading-[30px]"
-          style={{ ["--rise-delay" as string]: "920ms" }}
-        >
-          <p>
-            The first thousand hours are free. Read what is in them, and who can
-            have them, on{" "}
-            <Link
-              href="/open-yap-1k"
-              className="underline decoration-black/25 underline-offset-4 transition-colors hover:decoration-black/60"
-            >
-              {DATASET_NAME}
-            </Link>
-            .
-          </p>
-        </div>
-
-        <div
-          className="rise mt-[96px] flex justify-center text-black/40"
-          style={{ ["--rise-delay" as string]: "1000ms" }}
-          aria-hidden
-        >
-          <Waveform />
-        </div>
-
-        <footer
-          className="rise mt-[40px] text-center font-sans text-[14px] leading-6 text-[#afafaf]"
-          style={{ ["--rise-delay" as string]: "1100ms" }}
-        >
-          © The Agentic Data Company 2026
-        </footer>
       </div>
     </main>
   );

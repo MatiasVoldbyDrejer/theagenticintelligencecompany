@@ -4,9 +4,10 @@ import type { ReactNode } from "react";
 import SectionRail from "./SectionRail";
 
 /**
- * Frame for the dataset pages: a hairline top bar that keeps the access CTA
+ * Frame for the dataset pages: a bar of their own that keeps the access CTA
  * reachable from anywhere on a long page, a reading column, and a section rail
- * on wide screens.
+ * on wide screens. The site bar stands down on these routes so there is only
+ * one — see SiteHeader.
  *
  * Deliberately not the home page's 600px essay column — this surface is dense
  * measured data, and a narrow measure would force every table and chart to
@@ -15,8 +16,8 @@ import SectionRail from "./SectionRail";
 export default function DatasetFrame({
   datasetName,
   // The rail tracks anchors that exist only on the dataset page itself, and the
-  // top-bar CTA is pointless on the request page. Both are opt-in so a sub-page
-  // can never render navigation to sections it does not have.
+  // bar's CTA is pointless on the request page. Both are opt-in so a sub-page
+  // can never render navigation to something it does not have.
   showRail = false,
   showCta = true,
   children,
@@ -56,7 +57,7 @@ export default function DatasetFrame({
         </div>
       </header>
 
-      <div className="mx-auto w-full max-w-[1180px] px-5 pb-32 pt-10 sm:px-8">
+      <div className="mx-auto w-full max-w-[1180px] px-5 pt-10 pb-8 sm:px-8">
         <div className="flex gap-14">
           <main className="min-w-0 flex-1 space-y-16 md:space-y-20">{children}</main>
           {showRail && (
@@ -66,15 +67,6 @@ export default function DatasetFrame({
           )}
         </div>
       </div>
-
-      <footer className="border-t border-zinc-200">
-        <div className="mx-auto flex max-w-[1180px] flex-col gap-2 px-5 py-8 text-[13px] text-zinc-400 sm:flex-row sm:items-center sm:justify-between sm:px-8">
-          <span>The Agentic Data Company</span>
-          <Link href="/" className="transition-colors hover:text-zinc-600">
-            Back to the home page
-          </Link>
-        </div>
-      </footer>
     </div>
   );
 }

@@ -9,7 +9,7 @@ export const SECTIONS = [
   { id: "provenance", label: "Provenance" },
   { id: "metadata", label: "Metadata" },
   { id: "files", label: "Files" },
-  { id: "comparison", label: "Comparable corpora" },
+  { id: "comparison", label: "Comparable datasets" },
   { id: "citation", label: "Citation" },
   { id: "access", label: "Access" },
 ] as const;

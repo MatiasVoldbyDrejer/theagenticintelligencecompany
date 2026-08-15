@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Goudy_Bookletter_1911, Inter } from "next/font/google";
+import SiteFooter from "@/components/site/SiteFooter";
+import SiteHeader from "@/components/site/SiteHeader";
 import "./globals.css";
 
 const goudy = Goudy_Bookletter_1911({
@@ -54,7 +56,11 @@ export default function RootLayout({
       lang="en"
       className={`${goudy.variable} ${inter.variable} ${geistSans.variable} ${geistMono.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <SiteHeader />
+        {children}
+        <SiteFooter />
+      </body>
     </html>
   );
 }
