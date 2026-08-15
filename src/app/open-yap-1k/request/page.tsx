@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
-import snapshot from "@/data/open-release.json";
-import type { DatasetSnapshot } from "@/lib/dataset";
+import { dataset } from "@/data/snapshot";
 import DatasetFrame from "@/components/dataset/DatasetFrame";
 import { t } from "@/components/dataset/type";
 import RequestForm from "./RequestForm";
 
-const dataset = snapshot as DatasetSnapshot;
 
 export const metadata: Metadata = {
   title: `Request access to ${dataset.name}`,

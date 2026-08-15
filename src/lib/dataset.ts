@@ -7,9 +7,15 @@
  * committed, which is what keeps this page static and independent of any
  * running service.
  *
- * `metadataFields` and `fileStructure` are copied from the delivery pipeline's
- * own definitions, not re-described here — what the page documents and what the
- * archive contains have to be the same thing.
+ * SPLIT IN TWO, and the split is load-bearing. `MeasuredSnapshot` is emitted by
+ * yap-room from the release itself and is overwritten wholesale on every
+ * regenerate; `Editorial` is written by hand here. Holding both in one file
+ * meant a regenerate silently reverted copy edits, and it meant a copy edit
+ * could put any figure it liked on the page. Neither is possible now: nothing
+ * hand-written is generated, and nothing generated is hand-written.
+ *
+ * `metadataFields` and `fileStructure` are the delivery pipeline's own — what
+ * the page documents and what the archive contains have to be the same thing.
  */
 
 export type OverviewRow = {
@@ -91,19 +97,30 @@ export type ComparisonEntry = {
   ours?: boolean;
 };
 
-export type DatasetSnapshot = {
-  /** Placeholder until the release is named — swap here and in the page route. */
-  name: string;
-  tagline: string;
-  description: string;
+/** What every section reports its figures over, so a thin one is visible. */
+export type Coverage = Record<string, { measured: number; of: number }>;
+
+/**
+ * Emitted by yap-room's `build-open-release-snapshot`. Regenerated wholesale —
+ * never edit by hand, the next run will discard it.
+ */
+export type MeasuredSnapshot = {
+  slug: string;
   stats: {
     conversations: number;
     hours: number;
     speakers: number;
     averageDurationMinutes: number;
   };
-  overview: OverviewRow[];
-  comparison: { note: string; datasets: ComparisonEntry[] };
+  population: {
+    gender: Distribution;
+    age: Distribution;
+    education: Distribution;
+    nativeLanguage: Distribution;
+    childhoodCountry: Distribution;
+  };
+  /** Per-speaker delivered minutes, unsorted. Drives the contribution chart. */
+  speakerMinutes: number[];
   data: {
     relationship: Distribution;
     language: Distribution;
@@ -111,30 +128,52 @@ export type DatasetSnapshot = {
     wordsPerConversation: Metric;
     vocabulary: {
       totalWords: number;
-      uniqueWords: number;
-      typeTokenRatio: number;
+      uniqueWords: number | null;
+      typeTokenRatio: number | null;
       wordsPerMinute: number;
     };
   };
-  population: {
-    gender: Distribution;
-    age: Distribution;
-    education: Distribution;
-    nativeLanguage: Distribution;
-    birthCountry: Distribution;
+  audio: {
+    groups: { title: string; metrics: Metric[] }[];
+    conformance: ConformanceCheck[];
   };
-  /** Per-speaker delivered minutes, unsorted. Drives the contribution chart. */
-  speakerMinutes: number[];
+  metadataFields: MetadataField[];
+  fileStructure: string;
+  coverage: Coverage;
+  /** Set by the placeholder generator. A true here must never reach production. */
+  synthetic?: boolean;
+};
+
+/** Written by hand in `src/data/editorial.ts`. Never generated. */
+export type Editorial = {
+  name: string;
+  tagline: string;
+  description: string;
+  overview: OverviewRow[];
+  comparison: { note: string; datasets: ComparisonEntry[] };
   citation: { text: string; bibtex: string };
   provenance: { summary: string; points: string[] };
   quality: Prose[];
   useCases: Prose[];
   audio: {
     note: string;
-    groups: MetricGroup[];
-    conformance: ConformanceCheck[];
+    /** Keyed by the measured group title. Every emitted group needs one. */
+    groupDescriptions: Record<string, string>;
+    /** Keyed by the measured metric label. Optional per metric. */
+    metricNotes: Record<string, string>;
   };
   samples: PairedSample[];
-  metadataFields: MetadataField[];
-  fileStructure: string;
 };
+
+export type DatasetSnapshot = Omit<Editorial, "audio"> &
+  Omit<MeasuredSnapshot, "audio" | "coverage" | "synthetic" | "slug"> & {
+    slug: string;
+    data: MeasuredSnapshot["data"] & {
+      vocabulary: { uniqueWords: number; typeTokenRatio: number };
+    };
+    audio: {
+      note: string;
+      groups: MetricGroup[];
+      conformance: ConformanceCheck[];
+    };
+  };

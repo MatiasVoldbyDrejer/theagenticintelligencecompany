@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import snapshot from "@/data/open-release.json";
+import { editorial } from "@/data/editorial";
 
-const DATASET_NAME = snapshot.name;
+const DATASET_NAME = editorial.name;
 
 export default function Home() {
   return (

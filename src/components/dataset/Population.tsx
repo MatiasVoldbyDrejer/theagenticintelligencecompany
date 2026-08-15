@@ -31,7 +31,11 @@ export default function Population({
         {/* Odd card out: full width rather than left alone beside a gap, and it
             has the longest tail so the extra room is not wasted. */}
         <div className="lg:col-span-2">
-          <BarDistribution title="Birth country" data={population.birthCountry} maxRows={10} />
+          <BarDistribution
+            title="Childhood country"
+            data={population.childhoodCountry}
+            maxRows={10}
+          />
         </div>
       </div>
 

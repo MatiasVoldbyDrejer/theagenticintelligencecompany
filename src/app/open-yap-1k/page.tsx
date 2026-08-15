@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import snapshot from "@/data/open-release.json";
-import type { DatasetSnapshot } from "@/lib/dataset";
+import { dataset } from "@/data/snapshot";
 import Access from "@/components/dataset/Access";
 import AudioMetrics from "@/components/dataset/AudioMetrics";
 import Citation from "@/components/dataset/Citation";
@@ -15,7 +14,6 @@ import Population from "@/components/dataset/Population";
 import { ProseGrid, Provenance, IconColumns, Section } from "@/components/dataset/Sections";
 import StatsRow from "@/components/dataset/StatsRow";
 
-const dataset = snapshot as DatasetSnapshot;
 
 /**
  * The claim is deliberately narrow - publicly available, licensed for commercial
