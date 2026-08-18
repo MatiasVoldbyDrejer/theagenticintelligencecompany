@@ -59,7 +59,7 @@ Version 1
    we are not liable for indirect, incidental or consequential loss. Nothing
    in this clause limits liability that cannot be limited by law.
 
-5. Changes, and governing law
+5. Changes to these terms
    We may revise these terms. A revision is published at this address under a
    new version number and applies from the date it is published.
 `;
