@@ -27,12 +27,6 @@ Version 1
    the sample audio on open datasets. Using the site means accepting
    them.
 
-   They do not cover data.theagenticdatacompany.com, where datasets and samples
-   are shared with labs under their own agreements.
-
-   They do not cover a full dataset. Access to one is granted per recipient,
-   free of charge, under the data use agreement published with it.
-
 2. The site
    The text, figures, charts and design here are ours. You may read, quote and
    cite them with attribution. Do not republish a substantial part of the site
