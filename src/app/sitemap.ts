@@ -7,5 +7,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: BASE, priority: 1 },
     { url: `${BASE}/open-yap-1k`, priority: 0.9 },
     { url: `${BASE}/open-yap-1k/license`, priority: 0.3 },
+    { url: `${BASE}/terms`, priority: 0.3 },
   ];
 }

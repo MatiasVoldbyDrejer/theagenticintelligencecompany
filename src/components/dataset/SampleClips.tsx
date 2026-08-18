@@ -1,7 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { PairedSample } from "@/lib/dataset";
+import { SAMPLE_LICENSE_NAME, SAMPLE_LICENSE_URL } from "@/lib/terms";
 import DualAudioPlayer, { type DualAudioPlayerHandle } from "./DualAudioPlayer";
 import AnimatedWaveform from "./AnimatedWaveform";
 import { Card } from "./Card";
@@ -104,6 +106,30 @@ export default function SampleClips({
             progressColorB={progressColorB}
             muteColorB={muteColorB}
           />
+
+          {/* Earns its place: these files are fetchable from the page, so the
+              terms they carry have to be on the page too. A reader who takes
+              one and never visits /terms has still been told. */}
+          <p className="border-t border-zinc-100 pt-3.5 text-[12px] leading-5 text-zinc-500">
+            Samples are licensed under{" "}
+            <a
+              href={SAMPLE_LICENSE_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="underline decoration-zinc-300 underline-offset-2 transition-colors hover:text-zinc-800"
+            >
+              {SAMPLE_LICENSE_NAME}
+            </a>
+            . Speakers' voice and personality rights are not licensed, and no
+            sample may be used to build a voice identifiable as a speaker -{" "}
+            <Link
+              href="/terms"
+              className="underline decoration-zinc-300 underline-offset-2 transition-colors hover:text-zinc-800"
+            >
+              terms of use
+            </Link>
+            .
+          </p>
         </div>
       </Card>
     </section>

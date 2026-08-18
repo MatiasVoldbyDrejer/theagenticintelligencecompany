@@ -12,6 +12,7 @@ export const FOOTER_COLUMNS: { heading: string; links: SiteLink[] }[] = [
     links: [
       { label: "About", href: "/" },
       { label: "Contact", href: "mailto:matias@theagenticdatacompany.com" },
+      { label: "Terms of use", href: "/terms" },
     ],
   },
   {
