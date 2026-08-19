@@ -3,8 +3,122 @@
 @theme {
   --font-serif: var(--font-goudy), "Goudy Bookletter 1911", Georgia, serif;
   --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-geist: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
   --color-paper: #fcfbf8;
+  --color-bg: #fcfbf8;
   --color-ink: #111111;
+
+  /* Site bar and footer. Their own pair, declared outside `.dataset` and never
+     remapped by it, so the chrome reads identically over the essay's paper and
+     the dataset page's bone. */
+  --color-chrome: #3c3830;
+  --color-chrome-muted: #6b6860; /* 5.4:1 on paper — the muted half still has to be read */
+}
+
+/* ===========================================================================
+   Dataset pages.
+
+   Ported from the vendor portal's own theme so a recipient moving between the
+   two sees one surface. Tailwind utilities resolve their colours from CSS
+   variables, so remapping the neutral scale INSIDE this class re-themes every
+   component at once — cards, tables, charts, code blocks — without touching
+   them. The essay on the home page has no `.dataset` ancestor and is unaffected.
+
+   The neutrals are warm, not Tailwind's cool zinc: a paper-stack elevation
+   model where surfaces darken slightly as they nest, under a warm near-black.
+   =========================================================================== */
+.dataset {
+  --color-card: #f2f1ed; /* card surface */
+  --color-card-02: #ebeae5; /* insets, dividers */
+  --color-card-03: #e6e5e0; /* hairline borders */
+  --color-card-04: #e1e0db; /* stronger borders */
+
+  --color-zinc-50: #f2f1ed; /* subtle fills / hovers */
+  --color-zinc-100: #ebeae5; /* dividers, chart tracks */
+  --color-zinc-200: #e6e5e0; /* hairline borders */
+  --color-zinc-300: #e1e0db; /* stronger borders */
+  --color-zinc-400: #9e9c93; /* faint / uppercase labels */
+  --color-zinc-500: #7b786f; /* muted body / labels */
+  --color-zinc-600: var(--color-zinc-500); /* folded: two body greys, not three */
+  --color-zinc-700: #46443b; /* body */
+  --color-zinc-800: #3b3a33; /* dark borders / surfaces */
+  --color-zinc-900: #26251e; /* headings, bars, buttons */
+  --color-zinc-950: #23221e; /* darkest surface (code bg) */
+
+  /* The one accent: hovered chart marks, the median caliper, the played half of
+     a waveform. Validated against both the canvas and the card surface. */
+  --color-accent: #0087ff;
+  --color-accent-soft: #a9d2f2;
+
+  --color-bg: #f7f7f4; /* warm bone canvas */
+  --color-ink: #26251e;
+  --radius-lg: 0.875rem; /* softer than the Tailwind default */
+
+  /* No background of its own. The canvas is painted by the page, so that the
+     grain under the content layer reaches this surface too — an opaque fill
+     here would cover the grain and leave a step wherever the page ends and the
+     footer begins. The route sets `--color-paper` to match `--color-bg`. */
+  color: var(--color-ink);
+  font-family: var(--font-geist);
+}
+
+/* Its own colour, not the accent — a highlight that competed with hovered
+   chart marks would make the two read as the same signal. */
+.dataset ::selection {
+  background-color: #d8d8d4;
+}
+
+.dataset h1 {
+  letter-spacing: -0.03em;
+}
+
+.dataset h2 {
+  letter-spacing: -0.02em;
+}
+
+/* Cards paint on the warm Card surface, not pure white — the paper-stack model,
+   where a card sits slightly DARKER than the canvas it rests on. Components
+   reach for `bg-white`; remapping it here is what keeps them from having to
+   know that. */
+.dataset .bg-white {
+  background-color: var(--color-card);
+}
+
+/* Painterly hero surface. Applied to the hero's image half ONLY — never the
+   whole card — so it never sits behind the solid top panel. Cropped to fill. */
+.ds-hero {
+  background-color: #bfcbd0; /* misty-blue tint before the image paints */
+  background-image: url("/images/dataset-hero.webp");
+  background-size: cover;
+  background-position: center 28%;
+  background-repeat: no-repeat;
+}
+
+/* Table headers sit a notch fainter and larger than the shared default, matching
+   the eyebrow labels on the stats strip. */
+.dataset thead th {
+  color: var(--color-zinc-400);
+  font-size: 12px;
+}
+
+/*
+  Tailwind v4 removed the default cursor: pointer on buttons and interactive
+  roles. Restore it globally so every native <button> and role="button" reads
+  as clickable. Disabled buttons keep the not-allowed cursor they already have
+  via utility classes.
+*/
+button:not(:disabled),
+[role="button"]:not([aria-disabled="true"]) {
+  cursor: pointer;
+}
+
+/* Checkboxes and radios are clickable targets too, and their wrapping labels
+   already read as pointer — without this the control itself feels dead while
+   the card around it does not. */
+input[type="checkbox"]:not(:disabled),
+input[type="radio"]:not(:disabled) {
+  cursor: pointer;
 }
 
 html,
@@ -20,15 +134,29 @@ body {
   position: relative;
 }
 
-body::before {
+/* The grain multiplies over the page background but is painted UNDER the content
+   layer, so any opaque surface above it comes out flat while the page around it
+   is tinted. A bar the reader expects to be the page colour has to carry the
+   same grain, or the difference shows as a seam along its bottom edge. Both
+   start their tile at the viewport origin, so the two are in phase. */
+body::before,
+.grain::after {
   content: "";
-  position: fixed;
-  inset: 0;
   pointer-events: none;
-  z-index: 0;
   opacity: 0.035;
   mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.7 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+.grain::after {
+  position: absolute;
+  inset: 0;
 }
 
 @keyframes rise {
@@ -60,20 +188,4 @@ body::before {
   }
 }
 
-@keyframes breathe {
-  from {
-    transform: scaleY(0.55);
-    opacity: 0.55;
-  }
-  to {
-    transform: scaleY(1);
-    opacity: 1;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  svg line {
-    animation: none !important;
-  }
-}
 

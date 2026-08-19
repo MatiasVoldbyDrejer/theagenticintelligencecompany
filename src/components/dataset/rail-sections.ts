@@ -1,0 +1,15 @@
+/** Section order for the rail and the anchors it tracks. */
+export const SECTIONS = [
+  { id: "data-description", label: "Data description" },
+  { id: "intended-use", label: "Intended use" },
+  { id: "speaker-demographics", label: "Speaker demographics" },
+  { id: "conversation-statistics", label: "Conversation statistics" },
+  { id: "metrics", label: "Audio metrics" },
+  { id: "quality-assurance", label: "Quality assurance" },
+  { id: "provenance", label: "Provenance" },
+  { id: "metadata", label: "Metadata" },
+  { id: "files", label: "Files" },
+  { id: "comparison", label: "Comparable datasets" },
+  { id: "citation", label: "Citation" },
+  { id: "access", label: "Access" },
+] as const;
