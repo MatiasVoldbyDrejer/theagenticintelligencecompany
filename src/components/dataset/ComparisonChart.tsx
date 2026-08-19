@@ -1,22 +1,30 @@
 "use client";
 
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import type { AccessClass, ComparisonEntry } from "@/lib/dataset";
 import { Card, CardHeader } from "./Card";
 import { ACCENT, INK } from "./colors";
 
 /**
- * Delivered hours across comparable corpora, PARTITIONED BY WHAT IT COSTS AND
- * WHAT YOU MAY DO WITH IT.
+ * What each corpus costs and what you may do with it, as a pill on the row.
  *
- * Sorted by hours alone, this chart argued against the sentence above it: the
- * longest bar is Fisher English, at twice our size, and the reason that does not
- * refute "largest" — it is behind a licence fee that bars commercial use — was
- * visible only on hover. Grouping puts the qualifying set first and leaves the
- * reader to check the claim by looking rather than by trusting.
+ * Sorted by hours alone the chart argued against the sentence above it: the
+ * longest bar is Fisher English at twice our size, and the reason that does not
+ * refute "largest publicly available, licensed for commercial use" was visible
+ * only on hover. The pill puts it on every row instead.
  *
- * The scale stays shared across groups on purpose. Fisher's bar is still twice
- * as long as ours; the chart is not hiding that, it is saying what it costs.
+ * The qualifying class is the only one drawn dark. Tone, not hue - a fourth
+ * colour here would fight the accent that marks our own bar, and the ordering
+ * (free-commercial > everything else) is exactly what the claim rests on.
+ */
+const ACCESS: Record<AccessClass, { label: string; strong: boolean }> = {
+  "free-commercial": { label: "Free · commercial", strong: true },
+  "free-noncommercial": { label: "Non-commercial", strong: false },
+  paid: { label: "Paid", strong: false },
+};
+
+/**
+ * Delivered hours across comparable corpora.
  *
  * One measure, so no categorical palette: colour marks emphasis (this release)
  * and every bar is directly labelled, so identity is never carried by colour.
@@ -24,12 +32,6 @@ import { ACCENT, INK } from "./colors";
  * distinction is a property of the bar, and texture survives greyscale, print
  * and colour-vision deficiency where a second hue would not.
  */
-
-const GROUPS: { access: AccessClass; label: string }[] = [
-  { access: "free-commercial", label: "Free · commercial use permitted" },
-  { access: "free-noncommercial", label: "Free · non-commercial only" },
-  { access: "paid", label: "Paid licence" },
-];
 export default function ComparisonChart({
   entries,
   note,
@@ -39,15 +41,8 @@ export default function ComparisonChart({
 }) {
   const [hover, setHover] = useState<number | null>(null);
 
-  const max = Math.max(...entries.map((e) => e.hours), 1);
-  // Flattened back into one list so hover state stays a single index and the
-  // row separators keep running the full height of the card.
-  const rows = GROUPS.flatMap((g) => {
-    const members = entries
-      .filter((e) => e.access === g.access)
-      .sort((a, b) => b.hours - a.hours);
-    return members.map((entry, i) => ({ entry, heading: i === 0 ? g.label : null }));
-  });
+  const sorted = [...entries].sort((a, b) => b.hours - a.hours);
+  const max = Math.max(...sorted.map((e) => e.hours), 1);
 
   return (
     <Card>
@@ -62,41 +57,33 @@ export default function ComparisonChart({
       />
 
       <div className="px-5 py-4" onPointerLeave={() => setHover(null)}>
-        {rows.map(({ entry: e, heading }, i) => {
+        {sorted.map((e, i) => {
           const on = hover === i;
           const fill = e.ours ? ACCENT : INK;
           const width = Math.max((e.hours / max) * 100, 1.5);
           return (
-            <Fragment key={e.name}>
-              {heading && (
-                <div
-                  className={`font-mono text-[10px] uppercase tracking-[0.12em] text-zinc-400 ${
-                    i === 0 ? "pb-2.5" : "pt-5 pb-2.5"
-                  }`}
-                >
-                  {heading}
-                </div>
-              )}
             <div
+              key={e.name}
               tabIndex={0}
               onPointerEnter={() => setHover(i)}
               onFocus={() => setHover(i)}
               onBlur={() => setHover(null)}
               aria-label={`${e.name}: ${e.hours.toLocaleString()} hours, ${e.year}, ${e.capture}, ${e.license}`}
               className={`relative flex items-center gap-4 py-2.5 outline-none ${
-                i === rows.length - 1 || rows[i + 1]?.heading
-                  ? ""
-                  : "border-b border-zinc-100"
+                i === sorted.length - 1 ? "" : "border-b border-zinc-100"
               }`}
             >
-              <span
-                className={`w-44 shrink-0 truncate text-[13px] ${
-                  e.ours ? "font-medium text-zinc-900" : on ? "text-zinc-900" : "text-zinc-500"
-                }`}
-                title={e.name}
-              >
-                {e.name}
-              </span>
+              <div className="flex w-64 shrink-0 items-center gap-2">
+                <span
+                  className={`truncate text-[13px] ${
+                    e.ours ? "font-medium text-zinc-900" : on ? "text-zinc-900" : "text-zinc-500"
+                  }`}
+                  title={e.name}
+                >
+                  {e.name}
+                </span>
+                <AccessPill access={e.access} />
+              </div>
 
               <div className="relative h-4 flex-1" aria-hidden>
                 <div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-zinc-100" />
@@ -141,7 +128,6 @@ export default function ComparisonChart({
                 </div>
               )}
             </div>
-            </Fragment>
           );
         })}
       </div>
@@ -150,6 +136,19 @@ export default function ComparisonChart({
         <p className="text-[12.5px] leading-5 text-zinc-700">{note}</p>
       </div>
     </Card>
+  );
+}
+
+function AccessPill({ access }: { access: AccessClass }) {
+  const { label, strong } = ACCESS[access];
+  return (
+    <span
+      className={`shrink-0 whitespace-nowrap rounded-[3px] px-1 py-px font-mono text-[8px] uppercase tracking-[0.06em] ${
+        strong ? "bg-zinc-900 text-zinc-50" : "bg-zinc-100 text-zinc-500"
+      }`}
+    >
+      {label}
+    </span>
   );
 }
 
