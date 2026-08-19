@@ -86,12 +86,19 @@ export type UseIcon = "duplex" | "diarization" | "understanding";
 
 export type Prose = { title: string; body: string; icon?: UseIcon };
 
+/**
+ * What it costs and what you may do with it - the axis the chart partitions on,
+ * because "largest" is only true within the first of these.
+ */
+export type AccessClass = "free-commercial" | "free-noncommercial" | "paid";
+
 export type ComparisonEntry = {
   name: string;
   hours: number;
   year: number;
   capture: string;
   license: string;
+  access: AccessClass;
   /** Telephone-band, so band-limited to roughly 3.4 kHz of usable speech. */
   narrowband: boolean;
   ours?: boolean;

@@ -1,12 +1,22 @@
 "use client";
 
-import { useState } from "react";
-import type { ComparisonEntry } from "@/lib/dataset";
+import { Fragment, useState } from "react";
+import type { AccessClass, ComparisonEntry } from "@/lib/dataset";
 import { Card, CardHeader } from "./Card";
 import { ACCENT, INK } from "./colors";
 
 /**
- * Delivered hours across comparable corpora.
+ * Delivered hours across comparable corpora, PARTITIONED BY WHAT IT COSTS AND
+ * WHAT YOU MAY DO WITH IT.
+ *
+ * Sorted by hours alone, this chart argued against the sentence above it: the
+ * longest bar is Fisher English, at twice our size, and the reason that does not
+ * refute "largest" — it is behind a licence fee that bars commercial use — was
+ * visible only on hover. Grouping puts the qualifying set first and leaves the
+ * reader to check the claim by looking rather than by trusting.
+ *
+ * The scale stays shared across groups on purpose. Fisher's bar is still twice
+ * as long as ours; the chart is not hiding that, it is saying what it costs.
  *
  * One measure, so no categorical palette: colour marks emphasis (this release)
  * and every bar is directly labelled, so identity is never carried by colour.
@@ -14,6 +24,12 @@ import { ACCENT, INK } from "./colors";
  * distinction is a property of the bar, and texture survives greyscale, print
  * and colour-vision deficiency where a second hue would not.
  */
+
+const GROUPS: { access: AccessClass; label: string }[] = [
+  { access: "free-commercial", label: "Free · commercial use permitted" },
+  { access: "free-noncommercial", label: "Free · non-commercial only" },
+  { access: "paid", label: "Paid licence" },
+];
 export default function ComparisonChart({
   entries,
   note,
@@ -23,8 +39,15 @@ export default function ComparisonChart({
 }) {
   const [hover, setHover] = useState<number | null>(null);
 
-  const sorted = [...entries].sort((a, b) => b.hours - a.hours);
-  const max = Math.max(...sorted.map((e) => e.hours), 1);
+  const max = Math.max(...entries.map((e) => e.hours), 1);
+  // Flattened back into one list so hover state stays a single index and the
+  // row separators keep running the full height of the card.
+  const rows = GROUPS.flatMap((g) => {
+    const members = entries
+      .filter((e) => e.access === g.access)
+      .sort((a, b) => b.hours - a.hours);
+    return members.map((entry, i) => ({ entry, heading: i === 0 ? g.label : null }));
+  });
 
   return (
     <Card>
@@ -39,20 +62,31 @@ export default function ComparisonChart({
       />
 
       <div className="px-5 py-4" onPointerLeave={() => setHover(null)}>
-        {sorted.map((e, i) => {
+        {rows.map(({ entry: e, heading }, i) => {
           const on = hover === i;
           const fill = e.ours ? ACCENT : INK;
           const width = Math.max((e.hours / max) * 100, 1.5);
           return (
+            <Fragment key={e.name}>
+              {heading && (
+                <div
+                  className={`font-mono text-[10px] uppercase tracking-[0.12em] text-zinc-400 ${
+                    i === 0 ? "pb-2.5" : "pt-5 pb-2.5"
+                  }`}
+                >
+                  {heading}
+                </div>
+              )}
             <div
-              key={e.name}
               tabIndex={0}
               onPointerEnter={() => setHover(i)}
               onFocus={() => setHover(i)}
               onBlur={() => setHover(null)}
               aria-label={`${e.name}: ${e.hours.toLocaleString()} hours, ${e.year}, ${e.capture}, ${e.license}`}
               className={`relative flex items-center gap-4 py-2.5 outline-none ${
-                i === sorted.length - 1 ? "" : "border-b border-zinc-100"
+                i === rows.length - 1 || rows[i + 1]?.heading
+                  ? ""
+                  : "border-b border-zinc-100"
               }`}
             >
               <span
@@ -107,6 +141,7 @@ export default function ComparisonChart({
                 </div>
               )}
             </div>
+            </Fragment>
           );
         })}
       </div>
