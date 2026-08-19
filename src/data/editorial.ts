@@ -39,7 +39,7 @@ export const editorial: Editorial = {
   ],
 
   comparison: {
-    note: "Hours are as documented by each corpus. Structure differs across entries - AMI is multi-party, DailyTalk is acted, SpokenWOZ is task-oriented - see the capture column. Telephone-band corpora carry roughly 3.4 kHz of usable speech regardless of the container they ship in, so hours are not directly comparable across the two groups. Corpora assembled by separating third-party recordings are left out: DuplexChat indexes 282,634 hours of English podcast audio, but ships no audio of its own, recovers each speaker by estimation rather than by capture, and leaves the recordings under their original copyright.",
+    note: "Hours are as documented by each corpus. Structure differs across entries - AMI is multi-party, DailyTalk is acted, SpokenWOZ is task-oriented - see the capture column. Telephone-band corpora carry roughly 3.4 kHz of usable speech regardless of the container they ship in, so hours are not directly comparable across the two groups. Corpora assembled by separating third-party recordings are left out.",
     datasets: [
       { name: "Fisher English", hours: 2000, year: 2004, capture: "Telephone", license: "LDC paid", narrowband: true, access: "paid" },
       { name: NAME, hours: 1020, year: 2026, capture: "Remote, per-speaker", license: "Free, DUA", narrowband: false, ours: true, access: "free-commercial" },
